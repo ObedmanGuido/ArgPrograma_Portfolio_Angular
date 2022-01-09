@@ -1,0 +1,22 @@
+<div class="card mat-card" class="section1" id="profile">
+  <div id="banner"><img [src]="miPortfolio.banner"
+  alt="Banner from https://images.pexels.com/photos/235992/pexels-photo-235992.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" height="200" width="3000"></div>
+  <div id="info" style="padding: 20px">
+      <div class="row">
+          <img id="Foto-perfil" class="col-4" class="img-fluid" class="img-responsive"
+          [src]="miPortfolio.profilepicture"
+          alt="Profile picture">
+          <div class="col-8">
+              <h1 id="Name" style="font-size: 55px;">{{miPortfolio.name}}</h1>
+              <h2 id="Person-title" style="font-size: 35px;">{{miPortfolio.title}}</h2>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-1"><button class="btn" ><i class="fas fa-tools" id="EditBtn"></i></button></div>
+        <div class="col-8">
+            <h2>{{miPortfolio.position}}</h2>
+            <h2>{{miPortfolio.location}}</h2>
+        </div>
+      </div>
+  </div>
+</div>

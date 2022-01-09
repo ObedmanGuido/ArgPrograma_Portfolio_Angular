@@ -1,0 +1,28 @@
+<div class="card mat-card" class="section1" id="work">
+  <div id="work-experience" style="padding: 20px;">
+    <div id="Work-experience-header">
+      <i class="fas fa-briefcase"></i><h2>Experiencia laboral</h2>
+      <button class="btn" >
+        <a href="#" class="btn-right"><i class="fas fa-tools" id="EditBtn"></i></a>
+      </button>
+    </div>
+    <div>
+      <ul class="items-list">
+        <li *ngFor="let experiencialaboral of experiencialaboralList">
+          <div class="data-container">
+            <div class="logo-image-container">
+              <img class="logo-image" [src]="experiencialaboral.logo">
+            </div>
+            <div class="list-info">
+              <div>
+                <h3>{{experiencialaboral.position}}</h3>
+                <h3>{{experiencialaboral.company}}</h3>
+                <p><time>{{experiencialaboral.start}}</time> - <time>{{experiencialaboral.end}}</time></p>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

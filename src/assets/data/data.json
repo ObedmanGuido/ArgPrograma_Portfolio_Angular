@@ -1,0 +1,54 @@
+{
+    "name": "Guido Esteban Obedman",
+    "banner": "https://images.pexels.com/photos/235992/pexels-photo-235992.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    "profilepicture": "https://scontent.faep33-1.fna.fbcdn.net/v/t1.18169-9/16681879_10212332457612272_5992945448169818793_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=HC7i9i5CEGUAX8vfVkk&_nc_ht=scontent.faep33-1.fna&oh=00_AT9sr3Ei0yRfspQY8PhUOJLPeAOIpqBKTCFXrdInDo376Q&oe=61EE8809",
+    "title": "Licenciado en Ciencias de la Comunicación",
+    "position": "Administrativo, analista bancario",
+    "company": {
+        "name": "Universidad de la Marina Mercante",
+        "logo": "https://pbs.twimg.com/profile_images/378800000757793736/dc21ac4954bb03a634ee52545df615aa_400x400.jpeg",
+        "url": "https://www.udemm.edu.ar/"
+    },
+    "school": {
+        "name": "Universidad de la Marina Mercante",
+        "logo": "https://pbs.twimg.com/profile_images/378800000757793736/dc21ac4954bb03a634ee52545df615aa_400x400.jpeg",
+        "url": "https://www.udemm.edu.ar/"
+    },
+    "location": "Buenos Aires, Argentina",
+    "about": "Licenciado en Ciencias de la Comunicación, con experiencia administrativa en bancos. Me considero un jugador de equipo muy meticuloso y atento a los detalles, listo para asumir nuevos desafíos.",
+    "workexperience": [{
+        "company": "Universidad de la Marina Mercante",
+        "position": "Administrativo",
+        "logo": "https://pbs.twimg.com/profile_images/378800000757793736/dc21ac4954bb03a634ee52545df615aa_400x400.jpeg",
+        "start": "Abril 2021",
+        "end": "Actualmente"
+    },
+    {
+        "company": "Activo Contact Center",
+        "position": "Vendedor",
+        "logo": "",
+        "start": "Febrero 2021",
+        "end": "Marzo 2021"
+    },
+    {
+        "company": "J. P. Morgan Services Argentina S. R. L.",
+        "position": "Analista",
+        "logo": "https://www.jpmorgan.com/content/dam/shared/logos/logos-cb-jpm.svg",
+        "start": "Junio 2018",
+        "end": "Noviembre 2019"
+    },
+    {
+        "company": "Universidad de la Marina Mercante",
+        "position": "Jefe de Trabajos Prácticos",
+        "logo": "https://pbs.twimg.com/profile_images/378800000757793736/dc21ac4954bb03a634ee52545df615aa_400x400.jpeg",
+        "start": "Septiembre 2017",
+        "end": "Octubre 2018"
+    },
+    {
+        "company": "Banco Hipotecario",
+        "position": "Administrativo",
+        "logo": "",
+        "start": "Mayo 2017",
+        "end": "Julio 2017"
+    }]
+}
