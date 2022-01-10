@@ -26,7 +26,7 @@
     {
         "company": "Activo Contact Center",
         "position": "Vendedor",
-        "logo": "",
+        "logo": "https://media-exp1.licdn.com/dms/image/C4D0BAQEzSbSECn-JBA/company-logo_200_200/0/1519908583883?e=2159024400&v=beta&t=75ZKUEb2quLMmzpF9roGHUe_pnCABf_cyXvz1_-8hec",
         "start": "Febrero 2021",
         "end": "Marzo 2021"
     },
@@ -47,8 +47,26 @@
     {
         "company": "Banco Hipotecario",
         "position": "Administrativo",
-        "logo": "",
+        "logo": "https://yt3.ggpht.com/ytc/AKedOLROSV8uZB73ugOBo2SU_ag-jJ-2U5Kb3u1fSX3QYg=s900-c-k-c0x00ffffff-no-rj",
         "start": "Mayo 2017",
         "end": "Julio 2017"
+    }],
+    "education": [{
+        "school": "Universidad de la Marina Mercante",
+        "title": "Licenciado en Ciencias de la Comunicación",
+        "logo": "https://pbs.twimg.com/profile_images/378800000757793736/dc21ac4954bb03a634ee52545df615aa_400x400.jpeg",
+        "start": "2013",
+        "end": "2016",
+        "typeofschool": "Universidad",
+        "status": "Graduado"
+    },
+    {
+        "school": "Instituto Formar Futuro",
+        "title": "Bachiller con Orientación en Comunicación y Diseño",
+        "logo": "https://2.bp.blogspot.com/-7OVpC7EPJRA/Tj_eClR7K3I/AAAAAAAABGA/mlyxKmhxaB8/s1600/FORMAR+FUTURO+%2528L%2529.jpg",
+        "start": "2008",
+        "end": "2012",
+        "typeofschool": "Escuela Secundaria",
+        "status": "Graduado"
     }]
 }

@@ -2,14 +2,14 @@
   <div id="work-experience" style="padding: 20px;">
     <div id="Work-experience-header">
       <i class="fas fa-briefcase"></i><h2>Experiencia laboral</h2>
-      <button class="btn" >
+      <button class="btn" style="float: right;">
         <a href="#" class="btn-right"><i class="fas fa-tools" id="EditBtn"></i></a>
       </button>
     </div>
     <div>
       <ul class="items-list">
         <li *ngFor="let experiencialaboral of experiencialaboralList">
-          <div class="data-container">
+          <div class="data-container" style="border-style: double; margin-bottom: 10px;">
             <div class="logo-image-container">
               <img class="logo-image" [src]="experiencialaboral.logo">
             </div>

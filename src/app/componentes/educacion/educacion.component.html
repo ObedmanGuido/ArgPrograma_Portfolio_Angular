@@ -1,13 +1,29 @@
-<div class="card mat-card" class="section1" id="education">
+  <div class="card mat-card" class="section1" id="education">
     <div id="education-experience" style="padding: 20px;">
-      <div id="education-experience-header"><i class="fas fa-book-open"></i><h2>Educación</h2></div>
-      <div id="UdeMM-education">
-        <h3>Licenciatura en Ciencias de la Comunicación en Universidad de la Marina Mercante</h3>
-        <p>Desde 2013 a 2016. Título universitario. Completado.</p>
+      <div id="education-experience-header">
+        <i class="fas fa-book-open"></i><h2>Educación</h2>
+        <button class="btn" style="float: right;">
+          <a href="#" class="btn-right"><i class="fas fa-tools" id="EditBtn"></i></a>
+        </button>
       </div>
-      <div id="Instituto-Formar-Futuro">
-        <h3>Bachiller con Orientación en Comunicación y Diseño en Instituto Formar Futuro</h3>
-        <p>Desde 2008 a 2012. Título secundario. Completado.</p>
+      <div>
+        <ul class="items-list">
+          <li *ngFor="let educacion of educacionList">
+            <div class="data-container">
+              <div class="logo-image-container">
+                <img class="logo-image" [src]="educacion.logo">
+              </div>
+              <div class="list-info">
+                <div>
+                  <h3>{{educacion.school}}</h3>
+                  <h3>{{educacion.title}}</h3>
+                  <p><time>{{educacion.start}}</time> - <time>{{educacion.end}}</time></p>
+                  <p>{{educacion.typeofschool}} - {{educacion.status}}</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
