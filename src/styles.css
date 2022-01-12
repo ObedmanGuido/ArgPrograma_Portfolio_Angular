@@ -2,22 +2,11 @@
 #first-part { margin-bottom: 150px; font-family: Verdana;}
 #Foto-perfil { 
     width: 10%;
+    position: relative;
+    display: inline-block;
  }
 img {
     max-width: 100%;
-}
-#EditBtn {
-  background-color: black;
-  border: none;
-  color: red;
-  padding: 10px;
-  font-size: 25px;
-  cursor: pointer;
-  margin: 0%;
-  border-radius: 50%;
-}
-#EditBtn:hover{
-    color: blue;
 }
 .fas {
     color: red;
@@ -28,6 +17,19 @@ img {
 .fas + p {
     clear: left;
 }
+.edit-btn {
+    background-color: black;
+    border: none;
+    color: red;
+    padding: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    margin: 0%;
+    border-radius: 50%;
+  }
+  .edit-btn:hover{
+      color: blue;
+  }
 .section1 {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -40,4 +42,8 @@ img {
     height: 50px;
     float: left;
     margin-right: 10px;
+}
+#img-btn {
+    position: absolute;
+    right: 0%;
 }
