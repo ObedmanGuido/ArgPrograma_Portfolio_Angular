@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-#first-part { margin-bottom: 150px; font-family: Verdana;}
+#first-part { 
+    margin-bottom: 150px;
+    font-family: Verdana;
+}
 #Foto-perfil { 
     width: 10%;
     position: relative;
@@ -8,11 +11,21 @@
 img {
     max-width: 100%;
 }
-.fas {
-    color: red;
-    float: left;
-    margin-right: 10px;
+.fa-linkedin {
+    color: #2867B2;
+}
+.fa-square {
+    color: white;
+    font-size: 30px;
+}
+.fa-stack {
     font-size: 35px;
+}
+.fas {
+    float: left;
+    font-size: 25px;
+    padding: 10px;
+    margin: 0%;
 }
 .fas + p {
     clear: left;
@@ -24,14 +37,13 @@ img {
     padding: 10px;
     font-size: 20px;
     cursor: pointer;
-    margin: 0%;
     border-radius: 50%;
-  }
-  .edit-btn:hover{
-      color: blue;
-  }
+}
+.edit-btn:hover{
+    color: blue;
+}
 .section1 {
-    margin-top: 10px;
+    margin-top: 0px;
     margin-bottom: 10px;
     border: red;
     border-style: double;
@@ -54,4 +66,19 @@ ul {
 .section-header {
     display: inline-block;
     padding-bottom: 10px;
+}
+.fixed-header {
+    position: fixed;
+    z-index:999;
+    background-color: red;
+    width: 100%;
+    top: 0%;
+    max-height: 50px;
+}
+.fixed-footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0%;
+    max-height: 20px;
+    font-size: 100%;
 }
