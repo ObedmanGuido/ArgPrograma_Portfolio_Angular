@@ -70,10 +70,14 @@ ul {
 .fixed-header {
     position: fixed;
     z-index:999;
-    background-color: red;
+    background-color: transparent;
     width: 100%;
     top: 0%;
     max-height: 50px;
+    justify-content: right;
+}
+.fixed-header:hover{
+    background-color: red;
 }
 .fixed-footer {
     position: fixed;
