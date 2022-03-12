@@ -45,6 +45,8 @@ img {
 .section1 {
     margin-top: 0px;
     margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
     border: red;
     border-style: double;
     background-color: grey;

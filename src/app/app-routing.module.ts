@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { IniciarSesionComponent } from './componentes/iniciar-sesion/iniciar-sesion.component';
+import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path:'iniciar-sesion',component:IniciarSesionComponent},
+  {path:'portfolio',component:PortfolioComponent},
+  {path:'',redirectTo:'portfolio',pathMatch:'full'}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
