@@ -11,10 +11,16 @@ import { EncabezadoComponent } from './componentes/encabezado/encabezado.compone
 import { AcercaDeComponent } from './componentes/acerca-de/acerca-de.component';
 import { ExperienciaLaboralComponent } from './componentes/experiencia-laboral/experiencia-laboral.component';
 import { EducacionComponent } from './componentes/educacion/educacion.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderComponent } from './componentes/header/header.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { IniciarSesionComponent } from './componentes/iniciar-sesion/iniciar-sesion.component';
+import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PortfolioService } from './servicios/portfolio.service';
+import { InterceptorService } from './servicios/interceptor.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +30,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ExperienciaLaboralComponent,
     EducacionComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    IniciarSesionComponent,
+    PortfolioComponent
   ],
   imports: [
     BrowserModule,
@@ -32,9 +40,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [PortfolioService,
+  {provide:HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
