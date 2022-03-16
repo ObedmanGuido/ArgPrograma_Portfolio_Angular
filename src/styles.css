@@ -45,8 +45,8 @@ img {
 .section1 {
     margin-top: 0px;
     margin-bottom: 10px;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
     border: red;
     border-style: double;
     background-color: grey;
@@ -87,4 +87,13 @@ ul {
     bottom: 0%;
     max-height: 20px;
     font-size: 100%;
+}
+.mat-progress-bar-fill::after {
+    background: red;
+}
+.mat-progress-bar-buffer {
+    background: white;
+}
+#blanket {
+    background-color: black;
 }
