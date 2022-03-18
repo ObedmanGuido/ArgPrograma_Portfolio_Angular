@@ -79,39 +79,39 @@
         "typeofschool": "Escuela Secundaria",
         "status": "Graduado"
     }],
-    "skills": [{
+    "skill": [{
         "skillname": "Ingles",
-        "level": "Experto",
+        "levelname": "Experto",
         "levelnumber": 100
     },
     {
         "skillname": "Word",
-        "level": "Experto",
+        "levelname": "Experto",
         "levelnumber": 100
     },
     {
         "skillname": "Powerpoint",
-        "level": "Experto",
+        "levelname": "Experto",
         "levelnumber": 100
     },
     {
         "skillname": "Excel",
-        "level": "Avanzado",
+        "levelname": "Avanzado",
         "levelnumber": 75
     },
     {
         "skillname": "Access",
-        "level": "Intermedio",
+        "levelname": "Intermedio",
         "levelnumber": 50
     },
     {
         "skillname": "Visio",
-        "level": "Intermedio",
+        "levelname": "Intermedio",
         "levelnumber": 50
     },
     {
         "skillname": "Office completo",
-        "level": "Avanzado",
+        "levelname": "Avanzado",
         "levelnumber": 75
     }]
 }
