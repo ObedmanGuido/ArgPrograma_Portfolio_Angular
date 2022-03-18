@@ -15,16 +15,23 @@
                 <img class="logo-image" [src]="educacion.logo">
               </div>
               <div class="list-info">
-                <div>
+                <div class="table">
+                  <tr>
+                    <h3>{{educacion.title}}</h3>
+                    <td><i class="far fa-edit text-info"></i></td>
+                    <td><i class="far fa-trash-alt text-danger"></i></td>
+                  </tr>
                   <h3>{{educacion.schoolname}}</h3>
-                  <h3>{{educacion.title}}</h3>
-                  <p><time>{{educacion.startyear}}</time> - <time>{{educacion.endyear}}</time></p>
-                  <p>{{educacion.typeofschool}} - {{educacion.status}}</p>
-                </div>
+                  <tr>
+                    <col>Desde <time>{{educacion.startyear}}</time> - hasta <time>{{educacion.endyear}}</time>
+                    <br>
+                    <col>{{educacion.typeofschool}} - {{educacion.status}}
+                  </tr>
               </div>
             </div>
-          </li>
-        </ul>
-      </div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
+</div>

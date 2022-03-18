@@ -15,10 +15,16 @@
               <img class="logo-image" [src]="experiencialaboral.logo">
             </div>
             <div class="list-info">
-              <div>
-                <h3>{{experiencialaboral.position}}</h3>
+              <div class="table">
+                <tr>
+                  <h3>{{experiencialaboral.position}}</h3>
+                  <td><i class="far fa-edit text-info"></i></td>
+                  <td><i class="far fa-trash-alt text-danger"></i></td>
+                </tr>
                 <h3>{{experiencialaboral.company}}</h3>
-                <p>{{experiencialaboral.startmonth}} <time>{{experiencialaboral.startyear}}</time> - {{experiencialaboral.endmonth}} <time>{{experiencialaboral.endyear}}</time></p>
+                <tr>
+                  <col>{{experiencialaboral.startmonth}} <time>{{experiencialaboral.startyear}}</time> - {{experiencialaboral.endmonth}} <time>{{experiencialaboral.endyear}}</time>
+                </tr>
               </div>
             </div>
           </div>

@@ -12,8 +12,12 @@
                 <li *ngFor="let skill of skillsList">
                     <div class="data-container" style="border-style: double; margin-bottom: 10px;">
                         <div class="list-info">
-                            <div>
-                                <h3>{{skill.skillname}}</h3>
+                            <div class="table">
+                                <tr>
+                                    <h3>{{skill.skillname}}</h3>
+                                    <td><i class="far fa-edit text-info"></i></td>
+                                    <td><i class="far fa-trash-alt text-danger"></i></td>
+                                </tr>
                                 <p>Nivel: {{skill.levelname}}</p>
                             </div>
                             <div class="progress">

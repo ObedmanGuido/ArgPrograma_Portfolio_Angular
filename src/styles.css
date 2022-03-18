@@ -97,3 +97,6 @@ ul {
 #blanket {
     background-color: black;
 }
+.far {
+    cursor: pointer;
+}
