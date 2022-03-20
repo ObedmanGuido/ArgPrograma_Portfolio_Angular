@@ -1,0 +1,16 @@
+<div class="card mat-card" class="section1" id="profile" *ngFor="let persona of personaLista">
+    <div id="banner"><img src="https://images.pexels.com/photos/235992/pexels-photo-235992.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            alt="Banner from https://images.pexels.com/photos/235992/pexels-photo-235992.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            height="200" width="3000"></div>
+    <div id="info" style="padding: 0px 20px 20px 20px">
+        <div class="row">
+            <img id="Foto-perfil" class="col-4 img-fluid img-responsive" [src]="persona.profilepicture" alt="Profile picture">
+            <button class="btn" id="img-btn"><i class="fas fa-tools edit-btn"></i></button>
+            <div class="col-8">
+                <h1 id="Fullname" style="font-size: 55px;">{{persona.fullname}}</h1>
+                <h2 id="Person-title" style="font-size: 35px;">{{persona.title}}</h2>
+                <h5>{{persona.position}} viviendo en Capital Federal</h5>
+            </div>
+        </div>
+    </div>
+</div>

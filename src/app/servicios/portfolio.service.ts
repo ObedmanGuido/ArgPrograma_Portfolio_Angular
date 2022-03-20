@@ -19,11 +19,11 @@ export class PortfolioService {
   providedIn: 'root'
 })
 export class PortfolioService {
-  URL = 'http://localhost:8080/api/';
+  URL = 'http://localhost:8080/api/personas/';
   constructor(private http:HttpClient) { }
 
   obtenerDatos():Observable<any>{
-    return this.http.get('./assets/data/data.json');
+    return this.http.get(this.URL+'lista');
   }
 
 }

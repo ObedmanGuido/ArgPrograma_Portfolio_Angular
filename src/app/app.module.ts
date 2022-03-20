@@ -8,7 +8,6 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EncabezadoComponent } from './componentes/encabezado/encabezado.component';
 import { AcercaDeComponent } from './componentes/acerca-de/acerca-de.component';
 import { ExperienciaLaboralComponent } from './componentes/experiencia-laboral/experiencia-laboral.component';
 import { EducacionComponent } from './componentes/educacion/educacion.component';
@@ -20,11 +19,11 @@ import { IniciarSesionComponent } from './componentes/iniciar-sesion/iniciar-ses
 import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
 import { SkillsComponent } from './componentes/skills/skills.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PersonaComponent } from './componentes/persona/persona.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EncabezadoComponent,
     AcercaDeComponent,
     ExperienciaLaboralComponent,
     EducacionComponent,
@@ -32,7 +31,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     IniciarSesionComponent,
     PortfolioComponent,
-    SkillsComponent
+    SkillsComponent,
+    PersonaComponent
   ],
   imports: [
     BrowserModule,
