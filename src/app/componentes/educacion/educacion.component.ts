@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PortfolioService } from 'src/app/servicios/portfolio.service';
+import { EducacionService } from 'src/app/servicios/educacion.service';
 
 @Component({
   selector: 'app-educacion',
@@ -20,14 +20,14 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
 export class EducacionComponent implements OnInit {
   educacionLista:any[] = [{}];
-  constructor(private portfolioService:PortfolioService) { }
+  constructor(private educacionService:EducacionService) { }
 
   ngOnInit(): void {
     this.obtenerEducacion();
   }
 
   obtenerEducacion(){
-    this.portfolioService.obtenerEducacion().subscribe(data => {
+    this.educacionService.obtenerEducacion().subscribe(data => {
       console.log(data);
       this.educacionLista=data;
     }, error => {

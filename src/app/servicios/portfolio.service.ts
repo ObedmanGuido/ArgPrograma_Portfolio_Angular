@@ -26,7 +26,4 @@ export class PortfolioService {
     return this.http.get('./assets/data/data.json');
   }
 
-  obtenerEducacion():Observable<any>{
-    return this.http.get(this.URL+'educacion/lista');
-  }
 }
