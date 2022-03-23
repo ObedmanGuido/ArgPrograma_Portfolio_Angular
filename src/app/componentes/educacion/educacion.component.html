@@ -7,6 +7,57 @@
           <a href="#" class="btn-right"><i class="fas fa-tools edit-btn"></i></a>
         </button>
       </div>
+
+      <button (click) = toggleDisplay()>Agregar educación</button>
+      <div *ngIf = "!isShow">
+        <div class="col-lg-11">
+          <div class="card">
+            <div class="card-body">
+              <h3>Agregar educación</h3>
+              <form [formGroup]="form" (ngSubmit)="crearEducacion()">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Institución</span>
+                  <input formControlName="schoolname" type="text" class="form-control" placeholder="Nombre de la institución">
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Título</span>
+                  <input formControlName="title" type="text" class="form-control" placeholder="Título">
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Logo</span>
+                  <input formControlName="logo" type="text" class="form-control" placeholder="URL del logo">
+                </div>
+                <div class="row">
+                  <div class="col-lg-5">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Año de inicio</span>
+                      <input formControlName="startyear" type="text" class="form-control" placeholder="Año de inicio">
+                    </div>
+                  </div>
+                  <div class="col-lg-5">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Año de fin</span>
+                      <input formControlName="endyear" type="text" class="form-control" placeholder="Año de fin">
+                    </div>
+                  </div>
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Tipo de institución</span>
+                  <input formControlName="typeofschool" type="text" class="form-control" placeholder="Tipo de institución">
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Estado</span>
+                  <input formControlName="status" type="text" class="form-control" placeholder="Estado de estudio">
+                </div>
+                <div class="d-grip gap-2">
+                  <button type="submit" class="btn btn-success btn-lg">Aceptar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div>
         <ul class="items-list">
           <li *ngFor="let educacion of educacionLista">

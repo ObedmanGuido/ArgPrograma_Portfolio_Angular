@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { EducacionService } from 'src/app/servicios/educacion.service';
 
 @Component({
@@ -20,10 +21,26 @@ import { EducacionService } from 'src/app/servicios/educacion.service';
 
 export class EducacionComponent implements OnInit {
   educacionLista:any[] = [{}];
-  constructor(private educacionService:EducacionService) { }
+  isShow = true;
+  form: FormGroup;
+  constructor(private educacionService:EducacionService, private fb:FormBuilder) {
+    this.form = this.fb.group({
+      schoolname: [''],
+      title:[''],
+      logo: [''],
+      startyear: [''],
+      endyear: [''],
+      typeofschool: [''],
+      status: ['']
+    })
+  }
 
   ngOnInit(): void {
     this.obtenerEducacion();
+  }
+
+  toggleDisplay() {
+    this.isShow = !this.isShow;
   }
 
   obtenerEducacion(){
@@ -32,6 +49,24 @@ export class EducacionComponent implements OnInit {
       this.educacionLista=data;
     }, error => {
       console.log(error)
+    })
+  }
+
+  crearEducacion() {
+    const educacion: any = {
+      schoolname: this.form.get('schoolname')?.value,
+      title: this.form.get('title')?.value,
+      logo: this.form.get('logo')?.value,
+      startyear: this.form.get('startyear')?.value,
+      endyear: this.form.get('endyear')?.value,
+      typeofschool: this.form.get('typeofschool')?.value,
+      status: this.form.get('status')?.value,
+    }
+    this.educacionService.crearEducacion(educacion).subscribe(data => {
+      this.obtenerEducacion();
+      this.form.reset();
+    }, error => {
+      console.log(error);
     })
   }
 

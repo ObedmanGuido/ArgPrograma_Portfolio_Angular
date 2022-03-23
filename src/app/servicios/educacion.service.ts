@@ -12,4 +12,8 @@ export class EducacionService {
   obtenerEducacion():Observable<any>{
     return this.http.get(this.URL+'lista');
   }
+
+  crearEducacion(educacion: any):Observable<any> {
+    return this.http.post(this.URL+'nuevo', educacion);
+  }
 }
