@@ -17,7 +17,7 @@ import { EducacionService } from 'src/app/servicios/educacion.service';
     })
   }
 
-} Version previa con JSON.*/
+} Versión previa con JSON.*/
 
 export class EducacionComponent implements OnInit {
   educacionLista:any[] = [{}];

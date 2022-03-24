@@ -12,4 +12,8 @@ export class ExperienciaLaboralService {
   obtenerExperienciaLaboral():Observable<any>{
     return this.http.get(this.URL+'lista');
   }
+
+  crearExperienciaLaboral(experiencialaboral: any):Observable<any> {
+    return this.http.post(this.URL+'nuevo', experiencialaboral);
+  }
 }

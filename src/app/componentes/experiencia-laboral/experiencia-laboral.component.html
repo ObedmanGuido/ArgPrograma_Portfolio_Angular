@@ -7,6 +7,64 @@
         <a href="#" class="btn-right"><i class="fas fa-tools edit-btn"></i></a>
       </button>
     </div>
+
+    <button (click) = toggleDisplay()>Agregar experiencia laboral</button>
+      <div *ngIf = "!isShow">
+        <div class="col-lg-11">
+          <div class="card">
+            <div class="card-body">
+              <h3>Agregar experiencia laboral</h3>
+              <p>Cada experiencia laboral que se agrega, queda primera en la lista.</p>
+              <form [formGroup]="form" (ngSubmit)="crearExperienciaLaboral()">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Empresa</span>
+                  <input formControlName="company" type="text" class="form-control" placeholder="Nombre de la empresa">
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Puesto</span>
+                  <input formControlName="position" type="text" class="form-control" placeholder="Puesto">
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Logo</span>
+                  <input formControlName="logo" type="text" class="form-control" placeholder="URL del logo">
+                </div>
+                <div class="row">
+                  <div class="col-lg-5">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Mes de inicio</span>
+                      <input formControlName="startmonth" type="text" class="form-control" placeholder="Mes de inicio">
+                    </div>
+                  </div>
+                  <div class="col-lg-5">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Año de inicio</span>
+                      <input formControlName="startyear" type="text" class="form-control" placeholder="Año de inicio">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-5">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Mes de fin</span>
+                      <input formControlName="endmonth" type="text" class="form-control" placeholder="Mes de fin">
+                    </div>
+                  </div>
+                  <div class="col-lg-5">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Año de fin</span>
+                      <input formControlName="endyear" type="text" class="form-control" placeholder="Año de fin">
+                    </div>
+                  </div>
+                </div>
+                <div class="d-grip gap-2">
+                  <button type="submit" class="btn btn-success btn-lg">Aceptar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
     <div>
       <ul class="items-list">
         <li *ngFor="let experiencialaboral of experiencialaboralLista">
