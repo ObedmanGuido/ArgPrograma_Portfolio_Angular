@@ -42,6 +42,18 @@ img {
 .edit-btn:hover{
     color: blue;
 }
+.add-btn {
+    background-color: black;
+    border: none;
+    color: red;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.add-btn:hover{
+    color: blue;
+}
 .section1 {
     margin-top: 0px;
     margin-bottom: 10px;
@@ -99,4 +111,7 @@ ul {
 }
 .fa-regular {
     cursor: pointer;
+}
+.card-body {
+    background-color: gray;
 }

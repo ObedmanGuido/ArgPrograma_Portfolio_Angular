@@ -8,12 +8,11 @@
       </button>
     </div>
 
-    <button (click) = toggleDisplay()>Agregar experiencia laboral</button>
+    <h3>Agregar experiencia laboral <button (click) = toggleDisplay() style="background-color: gray;"><i class="fa-solid fa-plus add-btn"></i></button></h3>
       <div *ngIf = "!isShow">
         <div class="col-lg-11">
           <div class="card">
             <div class="card-body">
-              <h3>Agregar experiencia laboral</h3>
               <p>Cada experiencia laboral que se agrega, queda primera en la lista.</p>
               <form [formGroup]="form" (ngSubmit)="crearExperienciaLaboral()">
                 <div class="input-group mb-3">
@@ -26,7 +25,7 @@
                 </div>
                 <div class="input-group mb-3">
                   <span class="input-group-text">Logo</span>
-                  <input formControlName="logo" type="text" class="form-control" placeholder="URL del logo">
+                  <input formControlName="logo" type="text" class="form-control" placeholder="URL del logo (tiene que estar previamente en alguna página)">
                 </div>
                 <div class="row">
                   <div class="col-lg-5">
