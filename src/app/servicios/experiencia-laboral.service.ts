@@ -16,4 +16,8 @@ export class ExperienciaLaboralService {
   crearExperienciaLaboral(experiencialaboral: any):Observable<any> {
     return this.http.post(this.URL+'nuevo', experiencialaboral);
   }
+
+  borrarExperienciaLaboral(id: number): Observable<any> {
+    return this.http.delete(this.URL+'borrar/'+id)
+  }
 }

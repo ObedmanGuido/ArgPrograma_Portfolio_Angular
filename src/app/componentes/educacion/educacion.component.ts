@@ -70,4 +70,12 @@ export class EducacionComponent implements OnInit {
     })
   }
 
+  borrarEducacion(id: number) {
+    this.educacionService.borrarEducacion(id).subscribe(data =>{
+      this.obtenerEducacion()
+    }, error => {
+      console.log(error);
+    })
+  }
+
 }

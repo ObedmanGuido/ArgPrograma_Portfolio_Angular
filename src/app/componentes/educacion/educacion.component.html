@@ -70,7 +70,7 @@
                   <tr>
                     <h3>{{educacion.title}}</h3>
                     <td><i class="fa-regular fa-pen-to-square text-info"></i></td>
-                    <td><i class="fa-regular fa-trash-can text-danger"></i></td>
+                    <td><i (click)="borrarEducacion(educacion.id)" class="fa-regular fa-trash-can text-danger"></i></td>
                   </tr>
                   <h3>{{educacion.schoolname}}</h3>
                   <tr>

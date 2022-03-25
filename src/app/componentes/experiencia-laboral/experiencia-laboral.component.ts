@@ -70,4 +70,12 @@ export class ExperienciaLaboralComponent implements OnInit {
     })
   }
 
+  borrarExperienciaLaboral(id: number) {
+    this.experiencialaboralService.borrarExperienciaLaboral(id).subscribe(data =>{
+      this.obtenerExperienciaLaboral()
+    }, error => {
+      console.log(error);
+    })
+  }
+
 }

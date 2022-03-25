@@ -16,4 +16,8 @@ export class EducacionService {
   crearEducacion(educacion: any):Observable<any> {
     return this.http.post(this.URL+'nuevo', educacion);
   }
+
+  borrarEducacion(id: number): Observable<any> {
+    return this.http.delete(this.URL+'borrar/'+id)
+  }
 }
