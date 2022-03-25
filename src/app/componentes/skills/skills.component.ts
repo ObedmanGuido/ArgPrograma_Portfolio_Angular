@@ -10,10 +10,14 @@ export class SkillsComponent implements OnInit {
   skillsList:any;
   constructor(private datosPortfolio:PortfolioService) { }
 
-  ngOnInit(): void {
+  /*ngOnInit(): void {
     this.datosPortfolio.obtenerDatos().subscribe(data =>{
       this.skillsList=data.skill;
     })
+  } Versión previa usando un JSON.*/
+
+  ngOnInit(): void {
+    
   }
 
 }
