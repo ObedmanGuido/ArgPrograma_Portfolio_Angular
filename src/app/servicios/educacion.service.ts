@@ -20,4 +20,8 @@ export class EducacionService {
   borrarEducacion(id: number): Observable<any> {
     return this.http.delete(this.URL+'borrar/'+id)
   }
+
+  actualizarEducacion(id: number, educacion: any): Observable<any> {
+    return this.http.put(this.URL+'actualizar/'+id, educacion)
+  }
 }

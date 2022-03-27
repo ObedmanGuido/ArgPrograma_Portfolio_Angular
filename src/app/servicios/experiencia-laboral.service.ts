@@ -20,4 +20,8 @@ export class ExperienciaLaboralService {
   borrarExperienciaLaboral(id: number): Observable<any> {
     return this.http.delete(this.URL+'borrar/'+id)
   }
+  
+  actualizarExperienciaLaboral(id: number, experiencialaboral: any): Observable<any> {
+    return this.http.put(this.URL+'actualizar/'+id, experiencialaboral)
+  }
 }

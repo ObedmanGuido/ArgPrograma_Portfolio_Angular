@@ -22,7 +22,9 @@ import { ExperienciaLaboralService } from 'src/app/servicios/experiencia-laboral
 export class ExperienciaLaboralComponent implements OnInit {
   experiencialaboralLista:any[] = [{}];
   isShow = true;
+  accion = 'Agregar';
   form: FormGroup;
+  id: number | undefined;
   constructor(private experiencialaboralService:ExperienciaLaboralService, private fb:FormBuilder) {
     this.form = this.fb.group({
       company: [''],
@@ -41,6 +43,10 @@ export class ExperienciaLaboralComponent implements OnInit {
 
   toggleDisplay() {
     this.isShow = !this.isShow;
+  }
+
+  setDisplay() {
+    this.isShow = false;
   }
 
   obtenerExperienciaLaboral(){
@@ -62,12 +68,25 @@ export class ExperienciaLaboralComponent implements OnInit {
       endmonth: this.form.get('endmonth')?.value,
       endyear: this.form.get('endyear')?.value,
     }
-    this.experiencialaboralService.crearExperienciaLaboral(experiencialaboral).subscribe(data => {
-      this.obtenerExperienciaLaboral();
-      this.form.reset();
-    }, error => {
-      console.log(error);
-    })
+
+    if(this.id == undefined) {
+      this.experiencialaboralService.crearExperienciaLaboral(experiencialaboral).subscribe(data => {
+        this.obtenerExperienciaLaboral();
+        this.form.reset();
+      }, error => {
+        console.log(error);
+      })
+    } else {
+      experiencialaboral.id = this.id;
+      this.experiencialaboralService.actualizarExperienciaLaboral(this.id, experiencialaboral).subscribe(data => {
+        this.form.reset();
+        this.accion = 'Agregar';
+        this.id = undefined;
+        this.obtenerExperienciaLaboral();
+      }, error => {
+        console.log(error);
+      })
+    }
   }
 
   borrarExperienciaLaboral(id: number) {
@@ -78,4 +97,24 @@ export class ExperienciaLaboralComponent implements OnInit {
     })
   }
 
+  actualizarExperienciaLaboral(experiencialaboral: any) {
+    this.accion = 'Editar experiencia laboral: ' + experiencialaboral.position + ' en ' + experiencialaboral.company;
+    this.id = experiencialaboral.id;
+    this.form.patchValue({
+      company: experiencialaboral.company,
+      position: experiencialaboral.position,
+      logo: experiencialaboral.logo,
+      startmonth: experiencialaboral.startmonth,
+      startyear: experiencialaboral.startyear,
+      endmonth: experiencialaboral.endmonth,
+      endyear: experiencialaboral.endyear,
+    })
+  }
+
+  cancelar(){
+    this.form.reset();
+        this.accion = 'Agregar';
+        this.id = undefined;
+        this.obtenerExperienciaLaboral();
+  }
 }

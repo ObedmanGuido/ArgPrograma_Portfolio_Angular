@@ -8,7 +8,10 @@
         </button>
       </div>
 
-      <h3>Agregar educación <button (click) = toggleDisplay() style="background-color: gray;"><i class="fa-solid fa-plus add-btn"></i></button></h3>
+      <h3>Agregar o editar educación
+        <i (click) = toggleDisplay() class="fa-solid fa-plus add-btn"></i>
+        <br>Modo: {{accion}}
+      </h3>
       <div *ngIf = "!isShow">
         <div class="col-lg-11">
           <div class="card">
@@ -51,6 +54,7 @@
                 </div>
                 <div class="d-grip gap-2">
                   <button type="submit" class="btn btn-success btn-lg">Aceptar</button>
+                  <button type="reset" class="btn btn-danger btn-lg" (click)="cancelar()">Cancelar</button>
                 </div>
               </form>
             </div>
@@ -69,7 +73,7 @@
                 <div class="table">
                   <tr>
                     <h3>{{educacion.title}}</h3>
-                    <td><i class="fa-regular fa-pen-to-square text-info"></i></td>
+                    <td><i (click)="actualizarEducacion(educacion)" (click) = setDisplay() class="fa-regular fa-pen-to-square text-info"></i></td>
                     <td><i (click)="borrarEducacion(educacion.id)" class="fa-regular fa-trash-can text-danger"></i></td>
                   </tr>
                   <h3>{{educacion.schoolname}}</h3>

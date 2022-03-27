@@ -22,7 +22,9 @@ import { EducacionService } from 'src/app/servicios/educacion.service';
 export class EducacionComponent implements OnInit {
   educacionLista:any[] = [{}];
   isShow = true;
+  accion = 'Agregar';
   form: FormGroup;
+  id: number | undefined;
   constructor(private educacionService:EducacionService, private fb:FormBuilder) {
     this.form = this.fb.group({
       schoolname: [''],
@@ -41,6 +43,10 @@ export class EducacionComponent implements OnInit {
 
   toggleDisplay() {
     this.isShow = !this.isShow;
+  }
+
+  setDisplay() {
+    this.isShow = false;
   }
 
   obtenerEducacion(){
@@ -62,12 +68,25 @@ export class EducacionComponent implements OnInit {
       typeofschool: this.form.get('typeofschool')?.value,
       status: this.form.get('status')?.value,
     }
-    this.educacionService.crearEducacion(educacion).subscribe(data => {
-      this.obtenerEducacion();
-      this.form.reset();
-    }, error => {
-      console.log(error);
-    })
+
+    if(this.id == undefined) {
+      this.educacionService.crearEducacion(educacion).subscribe(data => {
+        this.obtenerEducacion();
+        this.form.reset();
+      }, error => {
+        console.log(error);
+      })
+    } else {
+      educacion.id = this.id;
+      this.educacionService.actualizarEducacion(this.id, educacion).subscribe(data => {
+        this.form.reset();
+        this.accion = 'Agregar';
+        this.id = undefined;
+        this.obtenerEducacion();
+      }, error => {
+        console.log(error);
+      })
+    }
   }
 
   borrarEducacion(id: number) {
@@ -78,4 +97,24 @@ export class EducacionComponent implements OnInit {
     })
   }
 
+  actualizarEducacion(educacion: any) {
+    this.accion = 'Editar educación: ' + educacion.title + ' en ' + educacion.schoolname;
+    this.id = educacion.id;
+    this.form.patchValue({
+      schoolname: educacion.schoolname,
+      title: educacion.title,
+      logo: educacion.logo,
+      startyear: educacion.startyear,
+      endyear: educacion.endyear,
+      typeofschool: educacion.typeofschool,
+      status: educacion.status
+    })
+  }
+
+  cancelar(){
+    this.form.reset();
+        this.accion = 'Agregar';
+        this.id = undefined;
+        this.obtenerEducacion();
+  }
 }
