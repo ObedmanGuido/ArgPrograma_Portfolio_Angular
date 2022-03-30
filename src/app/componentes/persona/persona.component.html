@@ -1,15 +1,82 @@
 <div class="card mat-card" class="section1" id="profile">
-    <div id="banner"><img src="https://images.pexels.com/photos/235992/pexels-photo-235992.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-            alt="Banner from https://images.pexels.com/photos/235992/pexels-photo-235992.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-            height="200" width="3000"></div>
+    <div id="banner"><img [src]="persona.bannerpicture" alt="Banner from {{persona.bannerpicture}}" height="200"
+            width="3000"></div>
     <div id="info" style="padding: 0px 20px 20px 20px">
         <div class="row">
-            <img id="Foto-perfil" class="col-4 img-fluid img-responsive" [src]="persona.profilepicture" alt="Profile picture">
-            <button class="btn" id="img-btn"><i class="fas fa-tools edit-btn"></i></button>
+            <img id="Foto-perfil" class="col-4 img-fluid img-responsive" [src]="persona.profilepicture"
+                alt={{persona.profilepicture}}>
             <div class="col-8">
                 <h1 id="Fullname" style="font-size: 55px;">{{persona.fullname}}</h1>
                 <h2 id="Person-title" style="font-size: 35px;">{{persona.title}}</h2>
                 <h5>{{persona.position}} viviendo en Capital Federal</h5>
+            </div>
+        </div>
+    </div>
+    <div id="acerca-de" style="padding: 20px;">
+        <i class="fas fa-user"></i>
+        <h2 class="section-header">Acerca de</h2>
+        <div class="table">
+            <tr>
+                {{persona.aboutpersona}}
+            </tr>
+        </div>
+        <button class="btn" style="float: right;">
+            <a class="btn-right"><i (click)="actualizarPersona(persona)" (click)=toggleDisplay()
+                    class="fas fa-tools edit-btn"></i></a>
+        </button>
+        <h3>Editar persona</h3>
+        <div *ngIf="!isShow">
+            <div class="col-lg-11">
+                <div class="card">
+                    <div class="card-body">
+                        <form [formGroup]="form" (ngSubmit)="editarPersona()">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Nombre completo</span>
+                                <input formControlName="fullname" type="text" class="form-control"
+                                    placeholder="Nombre completo">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Título</span>
+                                <input formControlName="title" type="text" class="form-control" placeholder="Título">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Foto de perfil</span>
+                                <input formControlName="profilepicture" type="text" class="form-control"
+                                    placeholder="URL de la foto de perfil (tiene que estar previamente en alguna página)">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Banner</span>
+                                <input formControlName="bannerpicture" type="text" class="form-control"
+                                    placeholder="URL del banner (tiene que estar previamente en alguna página)">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Posición</span>
+                                <input formControlName="position" type="text" class="form-control"
+                                    placeholder="Posición">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Acerca de</span>
+                                <input formControlName="aboutpersona" type="text" class="form-control"
+                                    placeholder="Acerca de">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Nombre (no mostrado)</span>
+                                <input formControlName="name" type="text" class="form-control"
+                                    placeholder="Nombre (no mostrado)">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Apellido (no mostrado)</span>
+                                <input formControlName="surname" type="text" class="form-control"
+                                    placeholder="Apellido (no mostrado)">
+                            </div>
+                            <div class="d-grip gap-2">
+                                <button type="submit" class="btn btn-success btn-lg" (click)="editarPersona()">Aceptar</button>
+                                <button class="btn btn-danger btn-lg"
+                                    (click)="cancelar()">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

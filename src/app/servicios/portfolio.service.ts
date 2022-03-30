@@ -27,4 +27,8 @@ export class PortfolioService {
     return this.http.get<Persona>(this.URL+'individuo/'+1);
   }
 
+  actualizarPersona(persona: any): Observable<any> {
+    return this.http.put(this.URL+'actualizar/'+1, persona)
+  }
+
 }

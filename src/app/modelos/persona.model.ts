@@ -6,4 +6,6 @@ export interface Persona {
     profilepicture: string;
     title: string;
     position: string;
+    bannerpicture: string;
+    aboutpersona: string
 }
