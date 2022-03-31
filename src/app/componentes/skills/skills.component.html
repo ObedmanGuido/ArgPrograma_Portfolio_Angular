@@ -1,22 +1,52 @@
 <div class="card mat-card" class="section1" id="skills">
     <div id="work-experience" style="padding: 20px;">
         <div id="skills-header">
-            <i class="fas fa-briefcase"></i>
+            <i class="fas fa-solid fa-at"></i>
             <h2 class="section-header">Skills</h2>
-            <button class="btn" style="float: right;">
-                <a href="#" class="btn-right"><i class="fas fa-tools edit-btn"></i></a>
-            </button>
         </div>
+
+        <h3>Agregar o editar skill
+            <i (click) = toggleDisplay() class="fa-solid fa-plus add-btn"></i>
+            <br>Modo: {{accion}}
+          </h3>
+          <div *ngIf = "!isShow">
+            <div class="col-lg-11">
+              <div class="card">
+                <div class="card-body">
+                  <p>Cada skill que se agrega, queda último en la lista.</p>
+                  <form [formGroup]="form" (ngSubmit)="crearSkill()">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Nombre del skill</span>
+                      <input formControlName="skillname" type="text" class="form-control" placeholder="Nombre del skill">
+                    </div>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Nivel del skill en palabras</span>
+                      <input formControlName="levelname" type="text" class="form-control" placeholder="Nada, principiante, intermedio, avanzado, experto">
+                    </div>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Nivel del skill en números</span>
+                      <input formControlName="levelnumber" type="number" class="form-control" placeholder="Entre 0 y 100">
+                    </div>
+                    <div class="d-grip gap-2">
+                      <button type="submit" class="btn btn-success btn-lg">Aceptar</button>
+                      <button type="reset" class="btn btn-danger btn-lg" (click)="cancelar()">Cancelar</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
         <div>
-            <ul class="items-list">
-                <li *ngFor="let skill of skillsList">
+            <ul class="items-list" style="padding: 0px;">
+                <li *ngFor="let skill of skillLista">
                     <div class="data-container" style="border-style: double; margin-bottom: 10px;">
                         <div class="list-info">
                             <div class="table">
                                 <tr>
                                     <h3>{{skill.skillname}}</h3>
-                                    <td><i class="fa-regular fa-pen-to-square text-info"></i></td>
-                                    <td><i class="fa-regular fa-trash-can text-danger"></i></td>
+                                    <td><i (click)="actualizarSkill(skill)" (click) = setDisplay() class="fa-regular fa-pen-to-square text-info"></i></td>
+                                    <td><i (click)="borrarSkill(skill.id)" class="fa-regular fa-trash-can text-danger"></i></td>
                                 </tr>
                                 <p>Nivel: {{skill.levelname}}</p>
                             </div>
