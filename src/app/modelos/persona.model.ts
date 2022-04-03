@@ -7,5 +7,9 @@ export interface Persona {
     title: string;
     position: string;
     bannerpicture: string;
-    aboutpersona: string
+    aboutpersona: string;
+    username?: string;
+    skills?: Array<any>;
+    educacion?: Array<any>;
+    experiencia_laboral?: Array<any>;
 }

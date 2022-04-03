@@ -30,8 +30,8 @@ export class EducacionComponent implements OnInit {
       schoolname: [''],
       title:[''],
       logo: [''],
-      startyear: [''],
-      endyear: [''],
+      startyear: 0,
+      endyear: 0,
       typeofschool: [''],
       studiesstatus: ['']
     })
@@ -66,7 +66,7 @@ export class EducacionComponent implements OnInit {
       startyear: this.form.get('startyear')?.value,
       endyear: this.form.get('endyear')?.value,
       typeofschool: this.form.get('typeofschool')?.value,
-      status: this.form.get('studiesstatus')?.value,
+      studiesstatus: this.form.get('studiesstatus')?.value,
     }
 
     if(this.id == undefined) {
@@ -107,7 +107,7 @@ export class EducacionComponent implements OnInit {
       startyear: educacion.startyear,
       endyear: educacion.endyear,
       typeofschool: educacion.typeofschool,
-      status: educacion.studiesstatus
+      studiesstatus: educacion.studiesstatus
     })
   }
 

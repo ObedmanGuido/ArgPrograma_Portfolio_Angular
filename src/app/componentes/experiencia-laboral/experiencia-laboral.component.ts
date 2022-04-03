@@ -31,9 +31,9 @@ export class ExperienciaLaboralComponent implements OnInit {
       position:[''],
       logo: [''],
       startmonth: [''],
-      startyear: [''],
+      startyear: 0,
       endmonth: [''],
-      endyear: ['']
+      endyear: 0
     })
   }
 

@@ -9,7 +9,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./persona.component.css']
 })
 export class PersonaComponent implements OnInit {
-  persona:Persona = { id: 0, fullname: '', name: '', surname: '', profilepicture: '', title:'', position:'', bannerpicture:'', aboutpersona:'' };
+  persona:Persona = { id: 0, fullname: '', name: '', surname: '', profilepicture: '', title:'', position:'', bannerpicture:'', aboutpersona:'', username:'', skills: [],
+  educacion: [], experiencia_laboral: [] };
   isShow = true;
   form: FormGroup;
   id: number | undefined;
