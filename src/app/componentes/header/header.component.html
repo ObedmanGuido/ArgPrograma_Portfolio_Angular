@@ -1,8 +1,55 @@
-<mat-toolbar-row class="fixed-header">
+<!--<mat-toolbar-row class="fixed-header">
     <span><a routerLink="/iniciar-sesion" routerLinkActive="active">Login</a></span>
     <span style="font-family: Verdana;">Redes sociales:</span>
     <span class="fa-stack fa-2x social linkedin">
         <i class="fa fa-square fa-stack-1x"></i>
         <a href="https://www.linkedin.com/in/guido-obedman-b19251103/" title="Perfil de LinkedIn"><i class="fa-brands fa-linkedin fa-stack-1x"></i></a>
     </span>
-</mat-toolbar-row>
+</mat-toolbar-row>-->
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-dark bg-dark argentina-programa-logo-y-texto" style="padding-left: 10px;">
+        <a class="navbar-brand" routerLink="/porfolio">
+            <img src="https://argentinaprograma.inti.gob.ar/pluginfile.php/1/theme_moove/logo/1648503444/APLogo-20-20.png"
+                width="100" class="d-inline-block align-top" alt="Logo Argentina Programa">
+        </a>
+        <a routerLink="/porfolio" style="color: red; text-decoration: none;">
+            Argentina Programa
+            <br>
+            #YoProgramo
+        </a>
+    </nav>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!--Para que lo otro esté al final-->
+    </div>
+    <span style="color: red; text-decoration: none;">Redes sociales:</span>
+    <span class="fa-stack fa-2x social linkedin">
+        <i class="fa fa-square fa-stack-1x"></i>
+        <a href="https://www.linkedin.com/in/guido-obedman-b19251103/" title="Perfil de LinkedIn"><i
+                class="fa-brands fa-linkedin fa-stack-1x"></i></a>
+    </span>
+    <div class="collapse navbar-collapse justify-content-end" style="padding-right: 20px;">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item" *ngIf="!isLoggedIn">
+                <a class="nav-link" routerLink="/nuevo-usuario" style="color: red; text-decoration: none;">
+                    <i class="fa-solid fa-user-plus"></i> Registrarse
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="!isLoggedIn">
+                <a class="nav-link" routerLink="/iniciar-sesion" style="color: red; text-decoration: none;">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i> Iniciar Sesión
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="isLoggedIn" style="cursor:pointer;">
+                <a class="nav-link" routerLink="/perfil-usuario" style="cursor: pointer;" style="color: red; text-decoration: none;">
+                    <i class="fa-solid fa-hand"></i> Ir al perfil de {{username}}
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="isLoggedIn" (click)="onLogout()" style="cursor:pointer;">
+                <a class="nav-link" style="cursor: pointer;" style="color: red; text-decoration: none;">
+                    <i class="fa-solid fa-person-walking-arrow-right"></i> Cerrar Sesión
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

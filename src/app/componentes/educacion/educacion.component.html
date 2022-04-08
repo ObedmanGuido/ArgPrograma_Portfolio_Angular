@@ -1,15 +1,15 @@
-  <div class="card mat-card" class="section1" id="education">
-    <div id="education-experience" style="padding: 20px;">
-      <div id="education-experience-header">
-        <i class="fas fa-book-open"></i>
-        <h2 class="section-header">Educación</h2>
-      </div>
-
+<div class="card mat-card" class="section1" id="education">
+  <div id="education-experience" style="padding: 20px;">
+    <div id="education-experience-header">
+      <i class="fas fa-book-open"></i>
+      <h2 class="section-header">Educación</h2>
+    </div>
+    <div *ngIf="isAdmin">
       <h3>Agregar o editar educación
-        <i (click) = toggleDisplay() class="fa-solid fa-plus add-btn"></i>
+        <i (click)=toggleDisplay() class="fa-solid fa-plus add-btn"></i>
         <br>Modo: {{accion}}
       </h3>
-      <div *ngIf = "!isShow">
+      <div *ngIf="!isShow">
         <div class="col-lg-11">
           <div class="card">
             <div class="card-body">
@@ -17,7 +17,8 @@
               <form [formGroup]="form" (ngSubmit)="crearEducacion()">
                 <div class="input-group mb-3">
                   <span class="input-group-text">Institución</span>
-                  <input formControlName="schoolname" type="text" class="form-control" placeholder="Nombre de la institución">
+                  <input formControlName="schoolname" type="text" class="form-control"
+                    placeholder="Nombre de la institución">
                 </div>
                 <div class="input-group mb-3">
                   <span class="input-group-text">Título</span>
@@ -25,7 +26,8 @@
                 </div>
                 <div class="input-group mb-3">
                   <span class="input-group-text">Logo</span>
-                  <input formControlName="logo" type="text" class="form-control" placeholder="URL del logo (tiene que estar previamente en alguna página)">
+                  <input formControlName="logo" type="text" class="form-control"
+                    placeholder="URL del logo (tiene que estar previamente en alguna página)">
                 </div>
                 <div class="row">
                   <div class="col-lg-5">
@@ -43,11 +45,13 @@
                 </div>
                 <div class="input-group mb-3">
                   <span class="input-group-text">Tipo de institución</span>
-                  <input formControlName="typeofschool" type="text" class="form-control" placeholder="Tipo de institución">
+                  <input formControlName="typeofschool" type="text" class="form-control"
+                    placeholder="Tipo de institución">
                 </div>
                 <div class="input-group mb-3">
                   <span class="input-group-text">Estado</span>
-                  <input formControlName="studiesstatus" type="text" class="form-control" placeholder="Estado de estudios">
+                  <input formControlName="studiesstatus" type="text" class="form-control"
+                    placeholder="Estado de estudios">
                 </div>
                 <div class="d-grip gap-2">
                   <button type="submit" class="btn btn-success btn-lg">Aceptar</button>
@@ -58,27 +62,28 @@
           </div>
         </div>
       </div>
-
-      <div>
-        <ul class="items-list">
-          <li *ngFor="let educacion of educacionLista">
-            <div class="data-container" style="border-style: double; margin-bottom: 10px;">
-              <div class="logo-image-container">
-                <img class="logo-image" [src]="educacion.logo">
-              </div>
-              <div class="list-info">
-                <div class="table">
-                  <tr>
-                    <h3>{{educacion.title}}</h3>
-                    <td><i (click)="actualizarEducacion(educacion)" (click) = setDisplay() class="fa-regular fa-pen-to-square text-info"></i></td>
-                    <td><i (click)="borrarEducacion(educacion.id)" class="fa-regular fa-trash-can text-danger"></i></td>
-                  </tr>
-                  <h3>{{educacion.schoolname}}</h3>
-                  <tr>
-                    <col>Desde <time>{{educacion.startyear}}</time> - hasta <time>{{educacion.endyear}}</time>
-                    <br>
-                    <col>{{educacion.typeofschool}} - {{educacion.studiesstatus}}
-                  </tr>
+    </div>
+    <div>
+      <ul class="items-list">
+        <li *ngFor="let educacion of educacionLista">
+          <div class="data-container" style="border-style: double; margin-bottom: 10px;">
+            <div class="logo-image-container">
+              <img class="logo-image" [src]="educacion.logo">
+            </div>
+            <div class="list-info">
+              <div class="table">
+                <tr>
+                  <h3>{{educacion.title}}</h3>
+                  <td *ngIf="isAdmin"><i (click)="actualizarEducacion(educacion)" (click)=setDisplay()
+                      class="fa-regular fa-pen-to-square text-info"></i></td>
+                  <td *ngIf="isAdmin"><i (click)="borrarEducacion(educacion.id)" class="fa-regular fa-trash-can text-danger"></i></td>
+                </tr>
+                <h3>{{educacion.schoolname}}</h3>
+                <tr>
+                  <col>Desde <time>{{educacion.startyear}}</time> - hasta <time>{{educacion.endyear}}</time>
+                  <br>
+                  <col>{{educacion.typeofschool}} - {{educacion.studiesstatus}}
+                </tr>
               </div>
             </div>
           </div>

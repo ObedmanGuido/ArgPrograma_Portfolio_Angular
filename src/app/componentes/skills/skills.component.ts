@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SkillsService } from 'src/app/servicios/skills.service';
+import { TokenService } from 'src/app/servicios/token.service';
 
 @Component({
   selector: 'app-skills',
@@ -22,7 +23,11 @@ import { SkillsService } from 'src/app/servicios/skills.service';
     accion = 'Agregar';
     form: FormGroup;
     id: number | undefined;
-    constructor(private skillsService:SkillsService, private fb:FormBuilder) {
+    roles!: string[];
+    authority!:string;
+    isAdmin = false;
+
+    constructor(private skillsService:SkillsService, private fb:FormBuilder, private tokenService: TokenService) {
       this.form = this.fb.group({
         skillname: [''],
         levelname:[''],
@@ -32,6 +37,12 @@ import { SkillsService } from 'src/app/servicios/skills.service';
   
     ngOnInit(): void {
       this.obtenerSkill();
+      this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach( rol => {
+      if(rol === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+    })
     }
   
     toggleDisplay() {

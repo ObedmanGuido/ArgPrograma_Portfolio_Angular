@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ExperienciaLaboralService } from 'src/app/servicios/experiencia-laboral.service';
+import { TokenService } from 'src/app/servicios/token.service';
 
 @Component({
   selector: 'app-experiencia-laboral',
@@ -25,7 +26,11 @@ export class ExperienciaLaboralComponent implements OnInit {
   accion = 'Agregar';
   form: FormGroup;
   id: number | undefined;
-  constructor(private experiencialaboralService:ExperienciaLaboralService, private fb:FormBuilder) {
+  roles!: string[];
+  authority!:string;
+  isAdmin = false;
+  
+  constructor(private experiencialaboralService:ExperienciaLaboralService, private fb:FormBuilder, private tokenService: TokenService) {
     this.form = this.fb.group({
       company: [''],
       position:[''],
@@ -39,6 +44,12 @@ export class ExperienciaLaboralComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerExperienciaLaboral();
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach( rol => {
+      if(rol === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+    })
   }
 
   toggleDisplay() {

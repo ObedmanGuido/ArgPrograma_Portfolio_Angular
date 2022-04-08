@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EducacionService } from 'src/app/servicios/educacion.service';
+import { TokenService } from 'src/app/servicios/token.service';
 
 @Component({
   selector: 'app-educacion',
@@ -25,7 +26,11 @@ export class EducacionComponent implements OnInit {
   accion = 'Agregar';
   form: FormGroup;
   id: number | undefined;
-  constructor(private educacionService:EducacionService, private fb:FormBuilder) {
+  roles!: string[];
+  authority!:string;
+  isAdmin = false;
+
+  constructor(private educacionService:EducacionService, private fb:FormBuilder, private tokenService: TokenService) {
     this.form = this.fb.group({
       schoolname: [''],
       title:[''],
@@ -39,6 +44,12 @@ export class EducacionComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerEducacion();
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach( rol => {
+      if(rol === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+    })
   }
 
   toggleDisplay() {

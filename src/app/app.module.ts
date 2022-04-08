@@ -19,6 +19,12 @@ import { PortfolioComponent } from './componentes/portfolio/portfolio.component'
 import { SkillsComponent } from './componentes/skills/skills.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PersonaComponent } from './componentes/persona/persona.component';
+import { NuevoUsuarioComponent } from './componentes/nuevo-usuario/nuevo-usuario.component';
+import { FormsModule } from '@angular/forms';
+import { interceptorProvider } from './servicios/interceptor.service';
+import { PerfilUsuarioComponent } from './componentes/perfil-usuario/perfil-usuario.component';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +36,9 @@ import { PersonaComponent } from './componentes/persona/persona.component';
     IniciarSesionComponent,
     PortfolioComponent,
     SkillsComponent,
-    PersonaComponent
+    PersonaComponent,
+    NuevoUsuarioComponent,
+    PerfilUsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +48,11 @@ import { PersonaComponent } from './componentes/persona/persona.component';
     MatToolbarModule,
     MatIconModule,
     MatProgressBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

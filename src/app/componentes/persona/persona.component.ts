@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Persona } from 'src/app/modelos/persona.model';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { TokenService } from 'src/app/servicios/token.service';
 
 @Component({
   selector: 'app-persona',
@@ -9,12 +10,16 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./persona.component.css']
 })
 export class PersonaComponent implements OnInit {
-  persona:Persona = { id: 0, fullname: '', name: '', surname: '', profilepicture: '', title:'', position:'', bannerpicture:'', aboutpersona:'', username:'', skills: [],
-  educacion: [], experiencia_laboral: [] };
+  persona:Persona = { id: 0, fullname: '', name: '', surname: '', profilepicture: '', title:'', position:'', bannerpicture:'', aboutpersona:'', skills: [],
+  educacion: [], experiencia_laboral: [], usuario: 0 };
   isShow = true;
   form: FormGroup;
   id: number | undefined;
-  constructor(private portfolioService:PortfolioService, private fb:FormBuilder) {
+  roles!: string[];
+  authority!:string;
+  isAdmin = false;
+
+  constructor(private portfolioService:PortfolioService, private fb:FormBuilder, private tokenService: TokenService) {
     this.form = this.fb.group({
       fullname: [''],
       name: [''],
@@ -29,6 +34,12 @@ export class PersonaComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerPersona();
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach( rol => {
+      if(rol === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+    })
   }
 
   toggleDisplay() {

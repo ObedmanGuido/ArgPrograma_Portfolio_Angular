@@ -115,3 +115,6 @@ ul {
 .card-body {
     background-color: gray;
 }
+.argentina-programa-logo-y-texto:hover {
+    cursor: pointer;
+}
