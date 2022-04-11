@@ -15,7 +15,6 @@ export class PersonaComponent implements OnInit {
   isShow = true;
   form: FormGroup;
   id: number | undefined;
-  roles!: string[];
   authority!:string;
   isAdmin = false;
 
@@ -34,12 +33,7 @@ export class PersonaComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerPersona();
-    this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach( rol => {
-      if(rol === 'ROLE_ADMIN') {
-        this.isAdmin = true;
-      }
-    })
+    this.isAdmin = this.tokenService.isAdmin();
   }
 
   toggleDisplay() {

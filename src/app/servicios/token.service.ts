@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 const TOKEN_KEY = 'AuthToken';
-const USERNAME_KEY = 'AuthUsername';
-const AUTHORITIES_KEY = 'AuthAuthorities';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ export class TokenService {
 
   roles: Array<string> = [];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   public setToken(token: string): void {
     window.sessionStorage.removeItem(TOKEN_KEY);
@@ -23,32 +22,41 @@ export class TokenService {
     //Sin signo de exclamación hay error.
   }
 
-  public setUsername(username: string): void {
-    window.sessionStorage.removeItem(USERNAME_KEY);
-    window.sessionStorage.setItem(USERNAME_KEY, username);
+  public isLoggedIn(): boolean {
+    if (this.getToken()) {
+      return true;
+    }
+    return false;
   }
 
   public getUsername(): string {
-    return sessionStorage.getItem(USERNAME_KEY)!;
-    //Sin signo de exclamación hay error.
-  }
-
-  public setAuthorities(authorities: string[]): void {
-    window.sessionStorage.removeItem(AUTHORITIES_KEY);
-    window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
-  }
-
-  public getAuthorities(): string[] {
-    this.roles = [];
-    if (sessionStorage.getItem(AUTHORITIES_KEY)) {
-      JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)!).forEach((authority:any) => {
-        this.roles.push(authority.authority);
-      });
+    if (!this.isLoggedIn()){
+      return "No loggeado.";
     }
-    return this.roles;
+    const payload = this.getToken().split('.')[1];
+    const payloadDecrypted = atob(payload);
+    const payloadValues = JSON.parse(payloadDecrypted);
+    const username = payloadValues.sub;
+    return username
+  }
+
+  public isAdmin(): boolean {
+    if (!this.isLoggedIn()){
+      return false;
+    }
+    const payload = this.getToken().split('.')[1];
+    const payloadDecrypted = atob(payload);
+    const payloadValues = JSON.parse(payloadDecrypted);
+    const roles = payloadValues.roles;
+    if (roles.indexOf('ROLE_ADMIN') < 0) {
+      return false;
+    }
+    return true;
   }
 
   public logout(): void {
     window.sessionStorage.clear();
+    this.router.navigate(['/portfolio']);
+    window.location.reload();
   }
 }

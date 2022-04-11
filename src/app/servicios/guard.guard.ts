@@ -16,20 +16,11 @@ export class GuardGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const rolesEsperados = route.data['rolesEsperados'];
-    const roles = this.tokenService.getAuthorities();
-    this.rolDelUsuario = '';
-    roles.forEach(rol => {
-      if (rol === 'ROLE_ADMIN') {
-        this.rolDelUsuario = 'admin';
-      } else if(rol === 'ROLE_USER') {
-        this.rolDelUsuario = 'user';
-      }
-    });
-    if (!this.tokenService.getToken() || rolesEsperados.indexOf(this.rolDelUsuario) === -1) {
+    this.rolDelUsuario = this.tokenService.isAdmin() ? 'admin' : 'user';
+    if (!this.tokenService.isLoggedIn() || rolesEsperados.indexOf(this.rolDelUsuario) === -1) {
       this.router.navigate(['/iniciar-sesion']);
       return false;
     }
     return true;
   }
-  
 }

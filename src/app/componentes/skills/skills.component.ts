@@ -23,7 +23,6 @@ import { TokenService } from 'src/app/servicios/token.service';
     accion = 'Agregar';
     form: FormGroup;
     id: number | undefined;
-    roles!: string[];
     authority!:string;
     isAdmin = false;
 
@@ -37,12 +36,7 @@ import { TokenService } from 'src/app/servicios/token.service';
   
     ngOnInit(): void {
       this.obtenerSkill();
-      this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach( rol => {
-      if(rol === 'ROLE_ADMIN') {
-        this.isAdmin = true;
-      }
-    })
+      this.isAdmin = this.tokenService.isAdmin();
     }
   
     toggleDisplay() {

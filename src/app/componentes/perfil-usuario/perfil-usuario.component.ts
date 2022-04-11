@@ -12,9 +12,7 @@ export class PerfilUsuarioComponent implements OnInit {
   constructor(private tokenService: TokenService) { }
 
   ngOnInit(): void {
-    this.tokenService.getToken(); {
-      this.username = this.tokenService.getUsername();
-    }
+    this.tokenService.getToken();
+    this.username = this.tokenService.getUsername();
   }
-
 }

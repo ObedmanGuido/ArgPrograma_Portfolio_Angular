@@ -23,9 +23,6 @@ export class NuevoUsuarioComponent implements OnInit {
   constructor(private tokenService: TokenService, private authenticationService: AuthenticationService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    if (this.tokenService.getToken()) {
-      this.isLoggedIn = true;
-    }
   }
 
   onRegister(): void {
@@ -36,7 +33,6 @@ export class NuevoUsuarioComponent implements OnInit {
     }, error => {
       this.messageError = error.error.message;
       this.toastr.error('Nombre de usuario o email duplicado, o contraseña incorrecta', 'Fail', {timeOut: 5000, positionClass: 'toast-top-center'});
-      //console.log(error.error.message);
     });
   }
 }

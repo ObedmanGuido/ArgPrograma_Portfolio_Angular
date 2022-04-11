@@ -118,3 +118,7 @@ ul {
 .argentina-programa-logo-y-texto:hover {
     cursor: pointer;
 }
+.navbar {
+    min-height: 50px;
+    max-height: 75px;
+}

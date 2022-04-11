@@ -26,7 +26,6 @@ export class EducacionComponent implements OnInit {
   accion = 'Agregar';
   form: FormGroup;
   id: number | undefined;
-  roles!: string[];
   authority!:string;
   isAdmin = false;
 
@@ -44,12 +43,7 @@ export class EducacionComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerEducacion();
-    this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach( rol => {
-      if(rol === 'ROLE_ADMIN') {
-        this.isAdmin = true;
-      }
-    })
+    this.isAdmin = this.tokenService.isAdmin();
   }
 
   toggleDisplay() {

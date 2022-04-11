@@ -1,24 +1,19 @@
 <app-header></app-header>
-<div class="m-5" *ngIf="isLoggedIn; else isLoggedOut">
-    <h1>Ya iniciaste sesión.</h1>
+<h1 class="m-5" #loggedOut>Iniciar sesión</h1>
+<div class="m-5">
+    <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
+        <div class="mb-3 form-group">
+            <label for="username" class="form-label">Nombre de usuario</label>
+            <input type="text" name="username" class="form-control" id="username" [(ngModel)]="username" required>
+        </div>
+        <div class="mb-3 form-group">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" name="password" class="form-control" id="password" [(ngModel)]="password" required>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary btn-block" [disabled]="!f.valid">Iniciar sesión</button>
+        </div>
+        <button class="btn btn-outline-secondary mr-1" routerLink="/nuevo-usuario" routerLinkActive="active">Si no tiene
+            usuario, acá podría registrarse.</button>
+    </form>
 </div>
-
-<ng-template #isLoggedOut>
-    <h1 class="m-5" #loggedOut>Iniciar sesión</h1>
-    <div class="m-5">
-        <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
-            <div class="mb-3 form-group">
-                <label for="username" class="form-label">Nombre de usuario</label>
-                <input type="text" name="username" class="form-control" id="username" [(ngModel)]="username" required>
-            </div>
-            <div class="mb-3 form-group">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="password" name="password" class="form-control" id="password" [(ngModel)]="password" required>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary btn-block" [disabled]="!f.valid">Iniciar sesión</button>
-            </div>
-            <button class="btn btn-outline-secondary mr-1" routerLink="/nuevo-usuario" routerLinkActive="active">Si no tiene usuario, acá podría registrarse.</button>
-        </form>
-    </div>
-</ng-template>
