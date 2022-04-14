@@ -30,7 +30,9 @@ import { TokenService } from 'src/app/servicios/token.service';
       this.form = this.fb.group({
         skillname: [''],
         levelname:[''],
-        levelnumber: 0
+        levelnumber: 0,
+        skilltype: [''],
+        skilldescription: ['']
       })
     }
   
@@ -61,6 +63,8 @@ import { TokenService } from 'src/app/servicios/token.service';
         skillname: this.form.get('skillname')?.value,
         levelname: this.form.get('levelname')?.value,
         levelnumber: this.form.get('levelnumber')?.value,
+        skilltype: this.form.get('skilltype')?.value,
+        skilldescription: this.form.get('skilldescription')?.value
       }
   
       if(this.id == undefined) {
@@ -97,7 +101,9 @@ import { TokenService } from 'src/app/servicios/token.service';
       this.form.patchValue({
         skillname: skill.skillname,
         levelname: skill.levelname,
-        levelnumber: skill.levelnumber
+        levelnumber: skill.levelnumber,
+        skilltype: skill.skilltype,
+        skilldescription: skill.skilldescription
       })
     }
   

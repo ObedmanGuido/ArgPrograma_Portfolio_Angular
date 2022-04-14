@@ -57,6 +57,11 @@
                     </div>
                   </div>
                 </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Descripción</span>
+                  <input formControlName="workdescription" type="text" class="form-control"
+                    placeholder="Descripción">
+                </div>
                 <div class="d-grip gap-2">
                   <button type="submit" class="btn btn-success btn-lg">Aceptar</button>
                   <button type="reset" class="btn btn-danger btn-lg" (click)="cancelar()">Cancelar</button>
@@ -88,6 +93,7 @@
                   <col>{{experiencialaboral.startmonth}} <time>{{experiencialaboral.startyear}}</time> -
                   {{experiencialaboral.endmonth}} <time
                     *ngIf="experiencialaboral.endmonth !== 'Actualidad'">{{experiencialaboral.endyear}}</time>
+                  <col>{{experiencialaboral.workdescription}}
                 </tr>
               </div>
             </div>

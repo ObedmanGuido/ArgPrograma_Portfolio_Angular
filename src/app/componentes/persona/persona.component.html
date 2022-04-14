@@ -8,11 +8,14 @@
             <div class="col-8">
                 <h1 id="Fullname" style="font-size: 55px;">{{persona.fullname}}</h1>
                 <h2 id="Person-title" style="font-size: 35px;">{{persona.title}}</h2>
-                <h5>{{persona.position}} viviendo en Capital Federal</h5>
+            </div>
+            <div style="padding: 10px;">
+                <h5>{{persona.position}} viviendo en {{persona.address}}</h5>
+                <h5>Fecha de nacimiento {{persona.dayofbirth}} de {{persona.monthofbirth}} de {{persona.yearofbirth}}</h5>
             </div>
         </div>
     </div>
-    <div id="acerca-de" style="padding: 20px;">
+    <div id="acerca-de" style="padding-left: 20px;">
         <i class="fas fa-user"></i>
         <h2 class="section-header">Acerca de</h2>
         <div class="table">
@@ -20,6 +23,8 @@
                 {{persona.aboutpersona}}
             </tr>
         </div>
+    </div>
+    <div style="padding-left: 20px; padding-bottom: 10px;">
         <div *ngIf="isAdmin">
             <button class="btn" style="float: right;">
                 <a class="btn-right"><i (click)="actualizarPersona(persona)" (click)=toggleDisplay()
@@ -69,6 +74,26 @@
                                     <span class="input-group-text">Apellido (no mostrado)</span>
                                     <input formControlName="surname" type="text" class="form-control"
                                         placeholder="Apellido (no mostrado)">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Dirección</span>
+                                    <input formControlName="address" type="text" class="form-control"
+                                        placeholder="Dirección">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Día de nacimiento</span>
+                                    <input formControlName="dayofbirth" type="number" class="form-control"
+                                        placeholder="Día de nacimiento, entre 1 y 31">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Mes de nacimiento</span>
+                                    <input formControlName="monthofbirth" type="text" class="form-control"
+                                        placeholder="Mes de nacimiento">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Año de nacimiento</span>
+                                    <input formControlName="yearofbirth" type="number" class="form-control"
+                                        placeholder="Año de nacimiento, entre 1900 y 2050">
                                 </div>
                                 <div class="d-grip gap-2">
                                     <button type="submit" class="btn btn-success btn-lg" (click)="editarPersona()">Aceptar</button>

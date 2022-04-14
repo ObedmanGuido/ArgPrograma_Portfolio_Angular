@@ -8,8 +8,13 @@ export interface Persona {
     position: string;
     bannerpicture: string;
     aboutpersona: string;
+    address: string;
+    dayofbirth: number;
+    monthofbirth: string;
+    yearofbirth: number;
     skills?: Array<any>;
     educacion?: Array<any>;
     experiencia_laboral?: Array<any>;
+    proyecto?: Array<any>;
     usuario?: number;
 }

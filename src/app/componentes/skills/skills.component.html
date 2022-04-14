@@ -28,6 +28,14 @@
                   <span class="input-group-text">Nivel del skill en números</span>
                   <input formControlName="levelnumber" type="number" class="form-control" placeholder="Entre 0 y 100">
                 </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Tipo de skill</span>
+                  <input formControlName="skilltype" type="text" class="form-control" placeholder="Tipo de skill">
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Descripción del skill</span>
+                  <input formControlName="skilldescription" type="text" class="form-control" placeholder="Descripción del skill">
+                </div>
                 <div class="d-grip gap-2">
                   <button type="submit" class="btn btn-success btn-lg">Aceptar</button>
                   <button type="reset" class="btn btn-danger btn-lg" (click)="cancelar()">Cancelar</button>
@@ -58,6 +66,8 @@
                 </mat-progress-bar>
                 <div style="position: absolute; color: white;">{{skill.levelnumber}}%</div>
               </div>
+              <col>{{skill.skilltype}}
+              <col>{{skill.skilldescription}}
             </div>
           </div>
         </li>

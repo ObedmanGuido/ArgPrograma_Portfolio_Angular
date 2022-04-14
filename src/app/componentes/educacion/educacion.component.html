@@ -53,6 +53,11 @@
                   <input formControlName="studiesstatus" type="text" class="form-control"
                     placeholder="Estado de estudios">
                 </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Descripción</span>
+                  <input formControlName="educationdescription" type="text" class="form-control"
+                    placeholder="Descripción">
+                </div>
                 <div class="d-grip gap-2">
                   <button type="submit" class="btn btn-success btn-lg">Aceptar</button>
                   <button type="reset" class="btn btn-danger btn-lg" (click)="cancelar()">Cancelar</button>
@@ -83,6 +88,8 @@
                   <col>Desde <time>{{educacion.startyear}}</time> - hasta <time>{{educacion.endyear}}</time>
                   <br>
                   <col>{{educacion.typeofschool}} - {{educacion.studiesstatus}}
+                  <br>
+                  <col>{{educacion.educationdescription}}
                 </tr>
               </div>
             </div>

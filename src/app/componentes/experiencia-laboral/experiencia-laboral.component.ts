@@ -37,7 +37,8 @@ export class ExperienciaLaboralComponent implements OnInit {
       startmonth: [''],
       startyear: 0,
       endmonth: [''],
-      endyear: 0
+      endyear: 0,
+      workdescription: ['']
     })
   }
 
@@ -72,6 +73,7 @@ export class ExperienciaLaboralComponent implements OnInit {
       startyear: this.form.get('startyear')?.value,
       endmonth: this.form.get('endmonth')?.value,
       endyear: this.form.get('endyear')?.value,
+      workdescription: this.form.get('workdescription')?.value
     }
 
     if(this.id == undefined) {
@@ -113,6 +115,7 @@ export class ExperienciaLaboralComponent implements OnInit {
       startyear: experiencialaboral.startyear,
       endmonth: experiencialaboral.endmonth,
       endyear: experiencialaboral.endyear,
+      workdescription: experiencialaboral.workdescription
     })
   }
 
