@@ -1,0 +1,114 @@
+<div class="card mat-card" class="section1" id="proyecto">
+    <div id="proyecto-experience" style="padding: 20px;">
+        <div id="proyecto-header">
+            <i class="fas fa-solid fa-industry"></i>
+            <h2 class="section-header">Proyectos</h2>
+        </div>
+        <div *ngIf="isAdmin">
+            <h3>Agregar o editar proyecto
+                <i (click)=toggleDisplay() class="fa-solid fa-plus add-btn"></i>
+                <br>Modo: {{accion}}
+            </h3>
+            <div *ngIf="!isShow">
+                <div class="col-lg-11">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>Cada proyecto que se agrega, queda primero en la lista.</p>
+                            <form [formGroup]="form" (ngSubmit)="crearProyecto()">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Nombre del proyecto</span>
+                                    <input formControlName="projectname" type="text" class="form-control"
+                                        placeholder="Nombre del proyecto">
+                                </div>
+                                <div class="input-group mb-3 date">
+                                    <span class="input-group-text">Día de creación</span>
+                                    <input formControlName="creationdate" type="date" class="form-control"
+                                        placeholder="YYYY/MM/DD">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Descripción del proyecto</span>
+                                    <input formControlName="projectdescription" type="text" class="form-control"
+                                        placeholder="Descripción del proyecto">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Link del proyecto</span>
+                                    <input formControlName="projectlink" type="text" class="form-control"
+                                        placeholder="Link del proyecto">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Imagen 1</span>
+                                    <input formControlName="image1" type="text" class="form-control"
+                                        placeholder="URL de la imagen, tiene que estar previamente en una página">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Imagen 2</span>
+                                    <input formControlName="image2" type="text" class="form-control"
+                                        placeholder="URL de la imagen, tiene que estar previamente en una página">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Imagen 3</span>
+                                    <input formControlName="image3" type="text" class="form-control"
+                                        placeholder="URL de la imagen, tiene que estar previamente en una página">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Video</span>
+                                    <input formControlName="video" type="text" class="form-control"
+                                        placeholder="ID del video en Youtube">
+                                </div>
+                                <div class="d-grip gap-2">
+                                    <button type="submit" class="btn btn-success btn-lg">Aceptar</button>
+                                    <button type="reset" class="btn btn-danger btn-lg"
+                                        (click)="cancelar()">Cancelar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <ul class="items-list" style="padding: 0px;">
+                <li *ngFor="let proyecto of proyectoLista">
+                    <div class="data-container" style="border-style: double; margin-bottom: 10px;">
+                        <div class="list-info">
+                            <div class="table">
+                                <tr>
+                                    <h3>{{proyecto.projectname}}</h3>
+                                    <td *ngIf="isAdmin"><i (click)="actualizarProyecto(proyecto)"
+                                            (click)=setDisplay() class="fa-regular fa-pen-to-square text-info"></i></td>
+                                    <td *ngIf="isAdmin"><i (click)="borrarProyecto(proyecto.id)"
+                                            class="fa-regular fa-trash-can text-danger"></i></td>
+                                </tr>
+                                <tr>
+                                    <col>Descripción: {{proyecto.projectdescription}}
+                                    <br>
+                                    <col>URL: <a href={{proyecto.projectlink}}>{{proyecto.projectlink}}</a>
+                                    <br>
+                                    <div>Fecha de creación: {{proyecto.creationdate}}</div>
+                                </tr>
+                            </div>
+                        </div>
+                        <div *ngIf="proyecto.image1 !== null || proyecto.image2 !== null || proyecto.image3 !==null">
+                            <h5>Imágenes:</h5>
+                            <img id="image1" [src]="proyecto.image1">
+                            <img id="image2" [src]="proyecto.image2">
+                            <img id="image3" [src]="proyecto.image3">
+                        </div>
+                        <br>
+                        <div *ngIf="proyecto.video !== null">
+                            <h5>Video:</h5>
+                            <youtube-player 
+                                videoId={{proyecto.video}} 
+                                suggestedQuality="highres"
+                                [height]="250" 
+                                [width]="500" 
+                                [startSeconds]="0"
+                                [endSeconds]="0">
+                            </youtube-player>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -24,6 +24,8 @@ import { FormsModule } from '@angular/forms';
 import { interceptorProvider } from './servicios/interceptor.service';
 import { PerfilUsuarioComponent } from './componentes/perfil-usuario/perfil-usuario.component';
 import { ToastrModule } from 'ngx-toastr';
+import { ProyectoComponent } from './componentes/proyecto/proyecto.component';
+import { YouTubePlayerModule } from "@angular/youtube-player";
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { ToastrModule } from 'ngx-toastr';
     SkillsComponent,
     PersonaComponent,
     NuevoUsuarioComponent,
-    PerfilUsuarioComponent
+    PerfilUsuarioComponent,
+    ProyectoComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import { ToastrModule } from 'ngx-toastr';
     MatProgressBarModule,
     ReactiveFormsModule,
     FormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    YouTubePlayerModule
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]
