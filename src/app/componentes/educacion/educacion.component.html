@@ -32,14 +32,14 @@
                 <div class="row">
                   <div class="col-lg-5">
                     <div class="input-group mb-3">
-                      <span class="input-group-text">Año de inicio</span>
-                      <input formControlName="startyear" type="number" class="form-control" placeholder="Año de inicio">
+                      <span class="input-group-text">Fecha de inicio</span>
+                      <input formControlName="startdate" type="date" class="form-control" placeholder="Fecha de inicio">
                     </div>
                   </div>
                   <div class="col-lg-5">
                     <div class="input-group mb-3">
-                      <span class="input-group-text">Año de fin</span>
-                      <input formControlName="endyear" type="number" class="form-control" placeholder="Año de fin">
+                      <span class="input-group-text">Fecha de fin</span>
+                      <input formControlName="enddate" type="date" class="form-control" placeholder="Fecha de fin">
                     </div>
                   </div>
                 </div>
@@ -85,11 +85,9 @@
                 </tr>
                 <h3>{{educacion.schoolname}}</h3>
                 <tr>
-                  <col>Desde <time>{{educacion.startyear}}</time> - hasta <time>{{educacion.endyear}}</time>
-                  <br>
-                  <col>{{educacion.typeofschool}} - {{educacion.studiesstatus}}
-                  <br>
-                  <col>{{educacion.educationdescription}}
+                    <col><h5>Desde {{educacion.startdate}} hasta {{educacion.enddate}}</h5>
+                    <col><h5>{{educacion.typeofschool}} - {{educacion.studiesstatus}}</h5>
+                    <col><p>{{educacion.educationdescription}}</p>
                 </tr>
               </div>
             </div>

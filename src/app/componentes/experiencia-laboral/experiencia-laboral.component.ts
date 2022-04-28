@@ -34,11 +34,10 @@ export class ExperienciaLaboralComponent implements OnInit {
       company: [''],
       position:[''],
       logo: [''],
-      startmonth: [''],
-      startyear: 0,
-      endmonth: [''],
-      endyear: 0,
-      workdescription: ['']
+      startdate: 0,
+      enddate: 0,
+      workdescription: [''],
+      currentjob: false
     })
   }
 
@@ -69,11 +68,10 @@ export class ExperienciaLaboralComponent implements OnInit {
       company: this.form.get('company')?.value,
       position: this.form.get('position')?.value,
       logo: this.form.get('logo')?.value,
-      startmonth: this.form.get('startmonth')?.value,
-      startyear: this.form.get('startyear')?.value,
-      endmonth: this.form.get('endmonth')?.value,
-      endyear: this.form.get('endyear')?.value,
-      workdescription: this.form.get('workdescription')?.value
+      startdate: this.form.get('startdate')?.value,
+      enddate: this.form.get('enddate')?.value,
+      workdescription: this.form.get('workdescription')?.value,
+      currentjob: this.form.get('currentjob')?.value
     }
 
     if(this.id == undefined) {
@@ -111,11 +109,10 @@ export class ExperienciaLaboralComponent implements OnInit {
       company: experiencialaboral.company,
       position: experiencialaboral.position,
       logo: experiencialaboral.logo,
-      startmonth: experiencialaboral.startmonth,
-      startyear: experiencialaboral.startyear,
-      endmonth: experiencialaboral.endmonth,
-      endyear: experiencialaboral.endyear,
-      workdescription: experiencialaboral.workdescription
+      startdate: experiencialaboral.startdate,
+      enddate: experiencialaboral.enddate,
+      workdescription: experiencialaboral.workdescription,
+      currentjob: experiencialaboral.currentjob
     })
   }
 

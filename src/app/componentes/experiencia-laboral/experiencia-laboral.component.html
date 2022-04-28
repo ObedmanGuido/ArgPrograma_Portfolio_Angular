@@ -31,36 +31,35 @@
                 <div class="row">
                   <div class="col-lg-5">
                     <div class="input-group mb-3">
-                      <span class="input-group-text">Mes de inicio</span>
-                      <input formControlName="startmonth" type="text" class="form-control" placeholder="Mes de inicio">
-                    </div>
-                  </div>
-                  <div class="col-lg-5">
-                    <div class="input-group mb-3">
-                      <span class="input-group-text">Año de inicio</span>
-                      <input formControlName="startyear" type="number" class="form-control" placeholder="Año de inicio">
+                      <span class="input-group-text">Fecha de inicio</span>
+                      <input formControlName="startdate" type="date" class="form-control" placeholder="Fecha de inicio">
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-lg-5">
                     <div class="input-group mb-3">
-                      <span class="input-group-text">Mes de fin</span>
-                      <input formControlName="endmonth" type="text" class="form-control"
-                        placeholder="Mes de fin, si está trabajando actualmente ponga Actualidad">
+                      <span class="input-group-text">Fecha de fin</span>
+                      <input formControlName="enddate" type="date" class="form-control" placeholder="Fecha de fin">
                     </div>
                   </div>
+                </div>
+                <div class="row">
                   <div class="col-lg-5">
                     <div class="input-group mb-3">
-                      <span class="input-group-text">Año de fin</span>
-                      <input formControlName="endyear" type="number" class="form-control" placeholder="Año de fin">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          Trabajo actual (poner cualquier fecha en fecha de fin y marcar el checkbox)
+                          <input formControlName="currentjob" type="checkbox" class="form-check-input"
+                            placeholder="Trabajo actual">
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="input-group mb-3">
                   <span class="input-group-text">Descripción</span>
-                  <input formControlName="workdescription" type="text" class="form-control"
-                    placeholder="Descripción">
+                  <input formControlName="workdescription" type="text" class="form-control" placeholder="Descripción">
                 </div>
                 <div class="d-grip gap-2">
                   <button type="submit" class="btn btn-success btn-lg">Aceptar</button>
@@ -90,10 +89,14 @@
                 </tr>
                 <h3>{{experiencialaboral.company}}</h3>
                 <tr>
-                  <col>{{experiencialaboral.startmonth}} <time>{{experiencialaboral.startyear}}</time> -
-                  {{experiencialaboral.endmonth}} <time
-                    *ngIf="experiencialaboral.endmonth !== 'Actualidad'">{{experiencialaboral.endyear}}</time>
-                  <col>{{experiencialaboral.workdescription}}
+                  <h5 *ngIf="experiencialaboral.currentjob == false">
+                    <col>Desde {{experiencialaboral.startdate}} hasta {{experiencialaboral.enddate}}
+                  </h5>
+                  <h5 *ngIf="experiencialaboral.currentjob == true">
+                    <col>Desde {{experiencialaboral.startdate}} hasta la actualidad
+                  </h5>
+                  <col>
+                  <p>{{experiencialaboral.workdescription}}</p>
                 </tr>
               </div>
             </div>

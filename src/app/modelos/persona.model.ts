@@ -9,9 +9,7 @@ export interface Persona {
     bannerpicture: string;
     aboutpersona: string;
     address: string;
-    dayofbirth: number;
-    monthofbirth: string;
-    yearofbirth: number;
+    dateofbirth: Date;
     skills?: Array<any>;
     educacion?: Array<any>;
     experiencia_laboral?: Array<any>;

@@ -11,7 +11,7 @@
             </div>
             <div style="padding: 10px;">
                 <h5>{{persona.position}} viviendo en {{persona.address}}</h5>
-                <h5>Fecha de nacimiento {{persona.dayofbirth}} de {{persona.monthofbirth}} de {{persona.yearofbirth}}</h5>
+                <h5>Fecha de nacimiento: {{persona.dateofbirth}}</h5>
             </div>
         </div>
     </div>
@@ -81,19 +81,9 @@
                                         placeholder="Dirección">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Día de nacimiento</span>
-                                    <input formControlName="dayofbirth" type="number" class="form-control"
-                                        placeholder="Día de nacimiento, entre 1 y 31">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text">Mes de nacimiento</span>
-                                    <input formControlName="monthofbirth" type="text" class="form-control"
-                                        placeholder="Mes de nacimiento">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text">Año de nacimiento</span>
-                                    <input formControlName="yearofbirth" type="number" class="form-control"
-                                        placeholder="Año de nacimiento, entre 1900 y 2050">
+                                    <span class="input-group-text">Fecha de nacimiento</span>
+                                    <input formControlName="dateofbirth" type="date" class="form-control"
+                                        placeholder="Fecha de nacimiento">
                                 </div>
                                 <div class="d-grip gap-2">
                                     <button type="submit" class="btn btn-success btn-lg" (click)="editarPersona()">Aceptar</button>

@@ -11,7 +11,7 @@ import { TokenService } from 'src/app/servicios/token.service';
 })
 export class PersonaComponent implements OnInit {
   persona:Persona = { id: 0, fullname: '', name: '', surname: '', profilepicture: '', title:'', position:'', bannerpicture:'', aboutpersona:'',
-  address:'', dayofbirth: 0, monthofbirth:'', yearofbirth: 0, skills: [], educacion: [], experiencia_laboral: [], proyecto: [], usuario: 0 };
+  address:'', dateofbirth: new(Date) , skills: [], educacion: [], experiencia_laboral: [], proyecto: [], usuario: 0 };
   isShow = true;
   form: FormGroup;
   id: number | undefined;
@@ -29,9 +29,7 @@ export class PersonaComponent implements OnInit {
       bannerpicture: [''],
       aboutpersona: [''],
       address: [''],
-      dayofbirth: 0,
-      monthofbirth: [''],
-      yearofbirth: ['']
+      dateofbirth: 0
     })
   }
 
@@ -64,9 +62,7 @@ export class PersonaComponent implements OnInit {
       name: this.form.get('name')?.value,
       surname: this.form.get('surname')?.value,
       address: this.form.get('address')?.value,
-      dayofbirth: this.form.get('dayofbirth')?.value,
-      monthofbirth: this.form.get('monthofbirth')?.value,
-      yearofbirth: this.form.get('yearofbirth')?.value
+      dateofbirth: this.form.get('dateofbirth')?.value
     }
 
     persona.id = this.id;
@@ -89,9 +85,7 @@ export class PersonaComponent implements OnInit {
       bannerpicture: persona.bannerpicture,
       aboutpersona: persona.aboutpersona,
       address: persona.address,
-      dayofbirth: persona.dayofbirth,
-      monthofbirth: persona.monthofbirth,
-      yearofbirth: persona.yearofbirth
+      dateofbirth: persona.dateofbirth
     })
   }
 
