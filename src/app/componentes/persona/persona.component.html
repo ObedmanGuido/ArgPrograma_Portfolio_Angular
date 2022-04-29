@@ -6,12 +6,14 @@
             <img id="Foto-perfil" class="col-4 img-fluid img-responsive" [src]="persona.profilepicture"
                 alt={{persona.profilepicture}}>
             <div class="col-8">
-                <h1 id="Fullname" style="font-size: 55px;">{{persona.fullname}}</h1>
+                <h1 id="Fullname" style="font-size: 55px;">{{persona.name}} {{persona.surname}}</h1>
                 <h2 id="Person-title" style="font-size: 35px;">{{persona.title}}</h2>
             </div>
             <div style="padding: 10px;">
                 <h5>{{persona.position}} viviendo en {{persona.address}}</h5>
                 <h5>Fecha de nacimiento: {{persona.dateofbirth}}</h5>
+                <h5>Teléfono: {{persona.telephone}}</h5>
+                <h5>Email: {{persona.email}}</h5>
             </div>
         </div>
     </div>
@@ -37,9 +39,14 @@
                         <div class="card-body">
                             <form [formGroup]="form" (ngSubmit)="editarPersona()">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Nombre completo</span>
-                                    <input formControlName="fullname" type="text" class="form-control"
-                                        placeholder="Nombre completo">
+                                    <span class="input-group-text">Nombre</span>
+                                    <input formControlName="name" type="text" class="form-control"
+                                        placeholder="Nombre">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Apellido</span>
+                                    <input formControlName="surname" type="text" class="form-control"
+                                        placeholder="Apellido">
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">Título</span>
@@ -66,16 +73,6 @@
                                         placeholder="Acerca de">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Nombre (no mostrado)</span>
-                                    <input formControlName="name" type="text" class="form-control"
-                                        placeholder="Nombre (no mostrado)">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text">Apellido (no mostrado)</span>
-                                    <input formControlName="surname" type="text" class="form-control"
-                                        placeholder="Apellido (no mostrado)">
-                                </div>
-                                <div class="input-group mb-3">
                                     <span class="input-group-text">Dirección</span>
                                     <input formControlName="address" type="text" class="form-control"
                                         placeholder="Dirección">
@@ -84,6 +81,16 @@
                                     <span class="input-group-text">Fecha de nacimiento</span>
                                     <input formControlName="dateofbirth" type="date" class="form-control"
                                         placeholder="Fecha de nacimiento">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Teléfono</span>
+                                    <input formControlName="telephone" type="text" class="form-control"
+                                        placeholder="Teléfono">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Email</span>
+                                    <input formControlName="email" type="text" class="form-control"
+                                        placeholder="Email">
                                 </div>
                                 <div class="d-grip gap-2">
                                     <button type="submit" class="btn btn-success btn-lg" (click)="editarPersona()">Aceptar</button>

@@ -1,6 +1,5 @@
 export interface Persona {
     id?: number;
-    fullname: string;
     name: string;
     surname: string;
     profilepicture: string;
@@ -10,6 +9,8 @@ export interface Persona {
     aboutpersona: string;
     address: string;
     dateofbirth: Date;
+    telephone: string;
+    email: string;
     skills?: Array<any>;
     educacion?: Array<any>;
     experiencia_laboral?: Array<any>;

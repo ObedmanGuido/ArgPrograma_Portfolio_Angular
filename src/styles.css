@@ -122,3 +122,9 @@ ul {
     min-height: 50px;
     max-height: 75px;
 }
+.data-container {
+    border-style: double;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

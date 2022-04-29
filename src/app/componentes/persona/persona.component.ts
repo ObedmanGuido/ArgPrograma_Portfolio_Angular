@@ -10,8 +10,8 @@ import { TokenService } from 'src/app/servicios/token.service';
   styleUrls: ['./persona.component.css']
 })
 export class PersonaComponent implements OnInit {
-  persona:Persona = { id: 0, fullname: '', name: '', surname: '', profilepicture: '', title:'', position:'', bannerpicture:'', aboutpersona:'',
-  address:'', dateofbirth: new(Date) , skills: [], educacion: [], experiencia_laboral: [], proyecto: [], usuario: 0 };
+  persona:Persona = { id: 0, name: '', surname: '', profilepicture: '', title:'', position:'', bannerpicture:'', aboutpersona:'',
+  address:'', dateofbirth: new(Date), telephone: '', email: '', skills: [], educacion: [], experiencia_laboral: [], proyecto: [], usuario: 0 };
   isShow = true;
   form: FormGroup;
   id: number | undefined;
@@ -20,7 +20,6 @@ export class PersonaComponent implements OnInit {
 
   constructor(private portfolioService:PortfolioService, private fb:FormBuilder, private tokenService: TokenService) {
     this.form = this.fb.group({
-      fullname: [''],
       name: [''],
       surname: [''],
       profilepicture: [''],
@@ -29,7 +28,9 @@ export class PersonaComponent implements OnInit {
       bannerpicture: [''],
       aboutpersona: [''],
       address: [''],
-      dateofbirth: 0
+      dateofbirth: 0,
+      telephone: [''],
+      email:['']
     })
   }
 
@@ -53,7 +54,6 @@ export class PersonaComponent implements OnInit {
 
   editarPersona() {
     const persona: Persona = {
-      fullname: this.form.get('fullname')?.value,
       title: this.form.get('title')?.value,
       profilepicture: this.form.get('profilepicture')?.value,
       bannerpicture: this.form.get('bannerpicture')?.value,
@@ -62,7 +62,9 @@ export class PersonaComponent implements OnInit {
       name: this.form.get('name')?.value,
       surname: this.form.get('surname')?.value,
       address: this.form.get('address')?.value,
-      dateofbirth: this.form.get('dateofbirth')?.value
+      dateofbirth: this.form.get('dateofbirth')?.value,
+      telephone: this.form.get('telephone')?.value,
+      email: this.form.get('email')?.value
     }
 
     persona.id = this.id;
@@ -76,7 +78,6 @@ export class PersonaComponent implements OnInit {
   actualizarPersona(persona: any) {
     this.id = persona.id;
     this.form.patchValue({
-      fullname: persona.fullname,
       name: persona.name,
       surname: persona.surname,
       profilepicture: persona.profilepicture,
@@ -85,7 +86,9 @@ export class PersonaComponent implements OnInit {
       bannerpicture: persona.bannerpicture,
       aboutpersona: persona.aboutpersona,
       address: persona.address,
-      dateofbirth: persona.dateofbirth
+      dateofbirth: persona.dateofbirth,
+      telephone: persona.telephone,
+      email: persona.email
     })
   }
 
