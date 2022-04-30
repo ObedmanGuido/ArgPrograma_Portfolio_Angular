@@ -85,7 +85,7 @@
                 </tr>
                 <h3>{{educacion.schoolname}}</h3>
                 <tr>
-                    <col><h5>Desde {{educacion.startdate}} hasta {{educacion.enddate}}</h5>
+                    <col><h5>Desde {{educacion.startdate | date:"MMMM yyyy"}} hasta {{educacion.enddate | date:"MMMM yyyy"}}</h5>
                     <col><h5>{{educacion.typeofschool}} - {{educacion.studiesstatus}}</h5>
                     <col><p>{{educacion.educationdescription}}</p>
                 </tr>

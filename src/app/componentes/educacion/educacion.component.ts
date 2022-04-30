@@ -68,7 +68,7 @@ export class EducacionComponent implements OnInit {
   }
 
   crearEducacion() {
-    const educacion: any = {
+    const educacion: Educacion = {
       schoolname: this.form.get('schoolname')?.value,
       title: this.form.get('title')?.value,
       logo: this.form.get('logo')?.value,
@@ -80,7 +80,7 @@ export class EducacionComponent implements OnInit {
     }
 
     if(this.id == undefined) {
-      this.educacionService.crearEducacion(educacion).subscribe(data => {
+      this.educacionService.crearEducacion(educacion).subscribe(educacion => {
         this.obtenerEducacion();
         this.form.reset();
       }, error => {
@@ -88,7 +88,7 @@ export class EducacionComponent implements OnInit {
       })
     } else {
       educacion.id = this.id;
-      this.educacionService.actualizarEducacion(this.id, educacion).subscribe(data => {
+      this.educacionService.actualizarEducacion(this.id, educacion).subscribe(educacion => {
         this.form.reset();
         this.accion = 'Agregar';
         this.id = undefined;
@@ -107,7 +107,7 @@ export class EducacionComponent implements OnInit {
     })
   }
 
-  actualizarEducacion(educacion: any) {
+  actualizarEducacion(educacion: Educacion) {
     this.accion = 'Editar educación: ' + educacion.title + ' en ' + educacion.schoolname;
     this.id = educacion.id;
     this.form.patchValue({
