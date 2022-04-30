@@ -75,7 +75,7 @@ export class PersonaComponent implements OnInit {
     })
   }
 
-  actualizarPersona(persona: any) {
+  actualizarPersona(persona: Persona) {
     this.id = persona.id;
     this.form.patchValue({
       name: persona.name,

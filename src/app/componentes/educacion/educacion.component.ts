@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Educacion } from 'src/app/modelos/educacion.model';
 import { EducacionService } from 'src/app/servicios/educacion.service';
 import { TokenService } from 'src/app/servicios/token.service';
 
@@ -21,7 +22,9 @@ import { TokenService } from 'src/app/servicios/token.service';
 } Versión previa con JSON.*/
 
 export class EducacionComponent implements OnInit {
-  educacionLista:any[] = [{}];
+  educacionLista?:Educacion[];
+  educacion:Educacion = { id: 0, schoolname: '', title: '', logo: '', startdate: new(Date), enddate: new(Date), typeofschool: '',
+    studiesstatus: '', educationdescription: '', persona: 0 };
   isShow = true;
   accion = 'Agregar';
   form: FormGroup;
@@ -56,9 +59,9 @@ export class EducacionComponent implements OnInit {
   }
 
   obtenerEducacion(){
-    this.educacionService.obtenerEducacion().subscribe(data => {
-      console.log(data);
-      this.educacionLista=data;
+    this.educacionService.obtenerEducacion().subscribe(educacion => {
+      console.log(educacion);
+      this.educacionLista=educacion;
     }, error => {
       console.log(error)
     })

@@ -81,7 +81,7 @@
                   <h3>{{educacion.title}}</h3>
                   <td *ngIf="isAdmin"><i (click)="actualizarEducacion(educacion)" (click)=setDisplay()
                       class="fa-regular fa-pen-to-square text-info"></i></td>
-                  <td *ngIf="isAdmin"><i (click)="borrarEducacion(educacion.id)" class="fa-regular fa-trash-can text-danger"></i></td>
+                  <td *ngIf="isAdmin"><i (click)="borrarEducacion(educacion.id!)" class="fa-regular fa-trash-can text-danger"></i></td>
                 </tr>
                 <h3>{{educacion.schoolname}}</h3>
                 <tr>

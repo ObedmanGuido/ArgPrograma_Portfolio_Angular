@@ -1,3 +1,5 @@
+import { Educacion } from "./educacion.model";
+
 export interface Persona {
     id?: number;
     name: string;
@@ -12,7 +14,7 @@ export interface Persona {
     telephone: string;
     email: string;
     skills?: Array<any>;
-    educacion?: Array<any>;
+    educacion?: Educacion[];
     experiencia_laboral?: Array<any>;
     proyecto?: Array<any>;
     usuario?: number;
