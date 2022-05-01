@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 //Angular Material
@@ -26,6 +26,9 @@ import { PerfilUsuarioComponent } from './componentes/perfil-usuario/perfil-usua
 import { ToastrModule } from 'ngx-toastr';
 import { ProyectoComponent } from './componentes/proyecto/proyecto.component';
 import { YouTubePlayerModule } from "@angular/youtube-player";
+import localeEsAr from '@angular/common/locales/es-AR';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeEsAr, 'es-Ar');
 
 
 @NgModule({
@@ -56,7 +59,7 @@ import { YouTubePlayerModule } from "@angular/youtube-player";
     ToastrModule.forRoot(),
     YouTubePlayerModule
   ],
-  providers: [interceptorProvider],
+  providers: [interceptorProvider, { provide: LOCALE_ID, useValue: 'es-Ar' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
