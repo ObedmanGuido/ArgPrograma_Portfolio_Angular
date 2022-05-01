@@ -1,5 +1,7 @@
 import { Educacion } from "./educacion.model";
 import { ExperienciaLaboral } from "./experiencia-laboral.model";
+import { Proyecto } from "./proyecto.model";
+import { Skill } from "./skill.model";
 
 export interface Persona {
     id?: number;
@@ -14,9 +16,9 @@ export interface Persona {
     dateofbirth: Date;
     telephone: string;
     email: string;
-    skills?: Array<any>;
+    skills?: Skill[];
     educacion?: Educacion[];
     experiencia_laboral?: ExperienciaLaboral[];
-    proyecto?: Array<any>;
+    proyecto?: Proyecto[];
     usuario?: number;
 }
