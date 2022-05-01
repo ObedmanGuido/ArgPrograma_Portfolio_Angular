@@ -8,5 +8,6 @@ export interface Educacion {
     typeofschool: string;
     studiesstatus: string;
     educationdescription: string;
+    currenteducation: Boolean;
     persona?: number;
 }

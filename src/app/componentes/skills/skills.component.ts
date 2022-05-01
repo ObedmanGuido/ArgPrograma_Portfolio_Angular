@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Skill } from 'src/app/modelos/skill.model';
 import { SkillsService } from 'src/app/servicios/skills.service';
 import { TokenService } from 'src/app/servicios/token.service';
 
@@ -18,7 +19,8 @@ import { TokenService } from 'src/app/servicios/token.service';
     })
   } Versión previa usando un JSON.*/
   export class SkillsComponent implements OnInit {
-    skillLista:any[] = [{}];
+    skillLista?:Skill[];
+    skill:Skill = { id: 0, skillname: '', levelname: '', levelnumber: 0, skilltype: '', skilldescription: '', persona: 0 }
     isShow = true;
     accion = 'Agregar';
     form: FormGroup;
@@ -50,16 +52,16 @@ import { TokenService } from 'src/app/servicios/token.service';
     }
   
     obtenerSkill(){
-      this.skillsService.obtenerSkill().subscribe(data => {
-        console.log(data);
-        this.skillLista=data;
+      this.skillsService.obtenerSkill().subscribe(skill => {
+        console.log(skill);
+        this.skillLista=skill;
       }, error => {
         console.log(error)
       })
     }
   
     crearSkill() {
-      const skill: any = {
+      const skill: Skill = {
         skillname: this.form.get('skillname')?.value,
         levelname: this.form.get('levelname')?.value,
         levelnumber: this.form.get('levelnumber')?.value,
@@ -68,7 +70,7 @@ import { TokenService } from 'src/app/servicios/token.service';
       }
   
       if(this.id == undefined) {
-        this.skillsService.crearSkill(skill).subscribe(data => {
+        this.skillsService.crearSkill(skill).subscribe(skill => {
           this.obtenerSkill();
           this.form.reset();
         }, error => {
@@ -76,7 +78,7 @@ import { TokenService } from 'src/app/servicios/token.service';
         })
       } else {
         skill.id = this.id;
-        this.skillsService.actualizarSkill(this.id, skill).subscribe(data => {
+        this.skillsService.actualizarSkill(this.id, skill).subscribe(skill => {
           this.form.reset();
           this.accion = 'Agregar';
           this.id = undefined;
@@ -88,14 +90,14 @@ import { TokenService } from 'src/app/servicios/token.service';
     }
   
     borrarSkill(id: number) {
-      this.skillsService.borrarSkill(id).subscribe(data =>{
+      this.skillsService.borrarSkill(id).subscribe(skill =>{
         this.obtenerSkill()
       }, error => {
         console.log(error);
       })
     }
   
-    actualizarSkill(skill: any) {
+    actualizarSkill(skill: Skill) {
       this.accion = 'Editar skill: ' + skill.skillname;
       this.id = skill.id;
       this.form.patchValue({

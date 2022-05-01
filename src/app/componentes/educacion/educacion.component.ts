@@ -24,7 +24,7 @@ import { TokenService } from 'src/app/servicios/token.service';
 export class EducacionComponent implements OnInit {
   educacionLista?:Educacion[];
   educacion:Educacion = { id: 0, schoolname: '', title: '', logo: '', startdate: new(Date), enddate: new(Date), typeofschool: '',
-    studiesstatus: '', educationdescription: '', persona: 0 };
+    studiesstatus: '', educationdescription: '', currenteducation: false, persona: 0 };
   isShow = true;
   accion = 'Agregar';
   form: FormGroup;
@@ -41,7 +41,8 @@ export class EducacionComponent implements OnInit {
       enddate: 0,
       typeofschool: [''],
       studiesstatus: [''],
-      educationdescription: ['']
+      educationdescription: [''],
+      currenteducation: false
     })
   }
 
@@ -76,7 +77,8 @@ export class EducacionComponent implements OnInit {
       enddate: this.form.get('enddate')?.value,
       typeofschool: this.form.get('typeofschool')?.value,
       studiesstatus: this.form.get('studiesstatus')?.value,
-      educationdescription: this.form.get('educationdescription')?.value
+      educationdescription: this.form.get('educationdescription')?.value,
+      currenteducation: this.form.get('currenteducation')?.value
     }
 
     if(this.id == undefined) {
@@ -100,7 +102,7 @@ export class EducacionComponent implements OnInit {
   }
 
   borrarEducacion(id: number) {
-    this.educacionService.borrarEducacion(id).subscribe(data =>{
+    this.educacionService.borrarEducacion(id).subscribe(educacion =>{
       this.obtenerEducacion()
     }, error => {
       console.log(error);
@@ -118,7 +120,8 @@ export class EducacionComponent implements OnInit {
       enddate: educacion.enddate,
       typeofschool: educacion.typeofschool,
       studiesstatus: educacion.studiesstatus,
-      educationdescription: educacion.educationdescription
+      educationdescription: educacion.educationdescription,
+      currenteducation: educacion.currenteducation
     })
   }
 

@@ -4,9 +4,11 @@
     font-family: Verdana;
 }
 #Foto-perfil { 
-    width: 10%;
+    width: 100%;
+    height: auto;
     position: relative;
     display: inline-block;
+    border-radius: 50%;
  }
 img {
     max-width: 100%;

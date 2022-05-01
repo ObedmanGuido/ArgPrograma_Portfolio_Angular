@@ -19,18 +19,26 @@
                   <span class="input-group-text">Nombre del skill</span>
                   <input formControlName="skillname" type="text" class="form-control" placeholder="Nombre del skill">
                 </div>
-                <div class="input-group mb-3">
-                  <span class="input-group-text">Nivel del skill en palabras</span>
-                  <input formControlName="levelname" type="text" class="form-control"
-                    placeholder="Nada, principiante, intermedio, avanzado, experto">
-                </div>
-                <div class="input-group mb-3">
-                  <span class="input-group-text">Nivel del skill en números</span>
-                  <input formControlName="levelnumber" type="number" class="form-control" placeholder="Entre 0 y 100">
-                </div>
-                <div class="input-group mb-3">
-                  <span class="input-group-text">Tipo de skill</span>
-                  <input formControlName="skilltype" type="text" class="form-control" placeholder="Tipo de skill">
+                <div class="row">
+                  <div class="col-lg 3">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Nivel del skill en palabras</span>
+                      <input formControlName="levelname" type="text" class="form-control"
+                        placeholder="Nada, principiante, intermedio, avanzado, experto">
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Nivel del skill en números</span>
+                      <input formControlName="levelnumber" type="number" class="form-control" placeholder="Entre 0 y 100">
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Tipo de skill</span>
+                      <input formControlName="skilltype" type="text" class="form-control" placeholder="Tipo de skill">
+                    </div>
+                  </div>
                 </div>
                 <div class="input-group mb-3">
                   <span class="input-group-text">Descripción del skill</span>
@@ -56,7 +64,7 @@
                   <h3>{{skill.skillname}}</h3>
                   <td *ngIf="isAdmin"><i (click)="actualizarSkill(skill)" (click)=setDisplay()
                       class="fa-regular fa-pen-to-square text-info"></i></td>
-                  <td *ngIf="isAdmin"><i (click)="borrarSkill(skill.id)" class="fa-regular fa-trash-can text-danger"></i></td>
+                  <td *ngIf="isAdmin"><i (click)="borrarSkill(skill.id!)" class="fa-regular fa-trash-can text-danger"></i></td>
                 </tr>
                 <p>Nivel: {{skill.levelname}}</p>
               </div>

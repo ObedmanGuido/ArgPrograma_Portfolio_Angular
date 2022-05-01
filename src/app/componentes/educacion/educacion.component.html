@@ -30,28 +30,45 @@
                     placeholder="URL del logo (tiene que estar previamente en alguna página)">
                 </div>
                 <div class="row">
-                  <div class="col-lg-5">
+                  <div class="col-lg-3">
                     <div class="input-group mb-3">
                       <span class="input-group-text">Fecha de inicio</span>
                       <input formControlName="startdate" type="date" class="form-control" placeholder="Fecha de inicio">
                     </div>
                   </div>
-                  <div class="col-lg-5">
+                  <div class="col-lg-3">
                     <div class="input-group mb-3">
                       <span class="input-group-text">Fecha de fin</span>
                       <input formControlName="enddate" type="date" class="form-control" placeholder="Fecha de fin">
                     </div>
                   </div>
+                  <div class="col-lg-5">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          Educación actual (poner cualquier fecha en fecha de fin y marcar el checkbox)
+                          <input formControlName="currenteducation" type="checkbox" class="form-check-input"
+                            placeholder="Educación actual">
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="input-group mb-3">
-                  <span class="input-group-text">Tipo de institución</span>
-                  <input formControlName="typeofschool" type="text" class="form-control"
-                    placeholder="Tipo de institución">
-                </div>
-                <div class="input-group mb-3">
-                  <span class="input-group-text">Estado</span>
-                  <input formControlName="studiesstatus" type="text" class="form-control"
-                    placeholder="Estado de estudios">
+                <div class="row">
+                  <div class="col-lg-5">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Tipo de institución</span>
+                      <input formControlName="typeofschool" type="text" class="form-control"
+                        placeholder="Tipo de institución">
+                    </div>
+                  </div>
+                  <div class="col-lg-5">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Estado</span>
+                      <input formControlName="studiesstatus" type="text" class="form-control"
+                        placeholder="Estado de estudios">
+                    </div>
+                  </div>
                 </div>
                 <div class="input-group mb-3">
                   <span class="input-group-text">Descripción</span>
@@ -85,9 +102,16 @@
                 </tr>
                 <h3>{{educacion.schoolname}}</h3>
                 <tr>
-                    <col><h5>Desde {{educacion.startdate | date:"MMMM yyyy"}} hasta {{educacion.enddate | date:"MMMM yyyy"}}</h5>
-                    <col><h5>{{educacion.typeofschool}} - {{educacion.studiesstatus}}</h5>
-                    <col><p>{{educacion.educationdescription}}</p>
+                  <h5 *ngIf="educacion.currenteducation == false">
+                    <col>Desde {{educacion.startdate | date:"MMMM 'de' yyyy"}} hasta {{educacion.enddate | date:"MMMM 'de' yyyy"}}
+                  </h5>
+                  <h5 *ngIf="educacion.currenteducation == true">
+                    <col>Desde {{educacion.startdate | date:"MMMM 'de' yyyy"}} hasta la actualidad
+                  </h5>
+                  <h5>
+                    <col>{{educacion.typeofschool}} - {{educacion.studiesstatus}}
+                  </h5>
+                  <col><p>{{educacion.educationdescription}}</p>
                 </tr>
               </div>
             </div>

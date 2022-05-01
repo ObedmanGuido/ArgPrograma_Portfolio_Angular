@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Proyecto } from 'src/app/modelos/proyecto.model';
 import { ProyectoService } from 'src/app/servicios/proyecto.service';
 import { TokenService } from 'src/app/servicios/token.service';
 
@@ -9,7 +10,9 @@ import { TokenService } from 'src/app/servicios/token.service';
   styleUrls: ['./proyecto.component.css']
 })
 export class ProyectoComponent implements OnInit {
-  proyectoLista:any[] = [{}];
+  proyectoLista?:Proyecto[];
+  proyecto:Proyecto = { id: 0, projectname: '', creationdate: new(Date), projectdescription: '',
+    projectlink: '', image1: '', image2: '', image3: '', video: '', persona: 0 };
   isShow = true;
   accion = 'Agregar';
   form: FormGroup;
@@ -47,16 +50,16 @@ export class ProyectoComponent implements OnInit {
   }
 
   obtenerProyecto(){
-    this.proyectoService.obtenerProyecto().subscribe(data => {
-      console.log(data);
-      this.proyectoLista=data;
+    this.proyectoService.obtenerProyecto().subscribe(proyecto => {
+      console.log(proyecto);
+      this.proyectoLista=proyecto;
     }, error => {
       console.log(error)
     })
   }
 
   crearProyecto() {
-    const proyecto: any = {
+    const proyecto: Proyecto = {
       projectname: this.form.get('projectname')?.value,
       creationdate: this.form.get('creationdate')?.value,
       projectdescription: this.form.get('projectdescription')?.value,
@@ -68,7 +71,7 @@ export class ProyectoComponent implements OnInit {
     }
 
     if(this.id == undefined) {
-      this.proyectoService.crearProyecto(proyecto).subscribe(data => {
+      this.proyectoService.crearProyecto(proyecto).subscribe(proyecto => {
         this.obtenerProyecto();
         this.form.reset();
       }, error => {
@@ -76,7 +79,7 @@ export class ProyectoComponent implements OnInit {
       })
     } else {
       proyecto.id = this.id;
-      this.proyectoService.actualizarProyecto(this.id, proyecto).subscribe(data => {
+      this.proyectoService.actualizarProyecto(this.id, proyecto).subscribe(proyecto => {
         this.form.reset();
         this.accion = 'Agregar';
         this.id = undefined;
@@ -88,14 +91,14 @@ export class ProyectoComponent implements OnInit {
   }
 
   borrarProyecto(id: number) {
-    this.proyectoService.borrarProyecto(id).subscribe(data =>{
+    this.proyectoService.borrarProyecto(id).subscribe(proyecto =>{
       this.obtenerProyecto()
     }, error => {
       console.log(error);
     })
   }
 
-  actualizarProyecto(proyecto: any) {
+  actualizarProyecto(proyecto: Proyecto) {
     this.accion = 'Editar proyecto: ' + proyecto.projectname;
     this.id = proyecto.id;
     this.form.patchValue({

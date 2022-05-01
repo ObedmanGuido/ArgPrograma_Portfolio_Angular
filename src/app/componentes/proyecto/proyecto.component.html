@@ -76,7 +76,7 @@
                                     <h3>{{proyecto.projectname}}</h3>
                                     <td *ngIf="isAdmin"><i (click)="actualizarProyecto(proyecto)"
                                             (click)=setDisplay() class="fa-regular fa-pen-to-square text-info"></i></td>
-                                    <td *ngIf="isAdmin"><i (click)="borrarProyecto(proyecto.id)"
+                                    <td *ngIf="isAdmin"><i (click)="borrarProyecto(proyecto.id!)"
                                             class="fa-regular fa-trash-can text-danger"></i></td>
                                 </tr>
                                 <tr>
@@ -84,18 +84,18 @@
                                     <br>
                                     <col>URL: <a href={{proyecto.projectlink}} style="background-color: black;">{{proyecto.projectlink}}</a>
                                     <br>
-                                    <div>Fecha de creación: {{proyecto.creationdate}}</div>
+                                    <div>Fecha de creación: {{proyecto.creationdate | date:"d 'de' MMMM 'de' YYYY"}}</div>
                                 </tr>
                             </div>
                         </div>
-                        <div *ngIf="proyecto.image1 !== null || proyecto.image2 !== null || proyecto.image3 !==null">
+                        <div *ngIf="proyecto.image1 !== '' || proyecto.image2 !== '' || proyecto.image3 !== ''">
                             <h5>Imágenes:</h5>
                             <img id="image1" [src]="proyecto.image1">
                             <img id="image2" [src]="proyecto.image2">
                             <img id="image3" [src]="proyecto.image3">
                         </div>
                         <br>
-                        <div *ngIf="proyecto.video !== null">
+                        <div *ngIf="proyecto.video !== ''">
                             <h5>Video:</h5>
                             <youtube-player 
                                 videoId={{proyecto.video}} 

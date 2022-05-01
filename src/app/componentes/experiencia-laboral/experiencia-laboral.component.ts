@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ExperienciaLaboral } from 'src/app/modelos/experiencia-laboral.model';
 import { ExperienciaLaboralService } from 'src/app/servicios/experiencia-laboral.service';
 import { TokenService } from 'src/app/servicios/token.service';
 
@@ -21,7 +22,9 @@ import { TokenService } from 'src/app/servicios/token.service';
 } Versión previa con JSON.*/
 
 export class ExperienciaLaboralComponent implements OnInit {
-  experiencialaboralLista:any[] = [{}];
+  experiencialaboralLista?:ExperienciaLaboral[];
+  experiencialaboral:ExperienciaLaboral = { id: 0, company: '', position: '', logo: '', startdate: new(Date), enddate: new(Date),
+    workdescription: '', currentjob: false, persona:0 };
   isShow = true;
   accion = 'Agregar';
   form: FormGroup;
@@ -55,16 +58,16 @@ export class ExperienciaLaboralComponent implements OnInit {
   }
 
   obtenerExperienciaLaboral(){
-    this.experiencialaboralService.obtenerExperienciaLaboral().subscribe(data => {
-      console.log(data);
-      this.experiencialaboralLista=data;
+    this.experiencialaboralService.obtenerExperienciaLaboral().subscribe(experiencialaboral => {
+      console.log(experiencialaboral);
+      this.experiencialaboralLista=experiencialaboral;
     }, error => {
       console.log(error)
     })
   }
 
   crearExperienciaLaboral() {
-    const experiencialaboral: any = {
+    const experiencialaboral: ExperienciaLaboral = {
       company: this.form.get('company')?.value,
       position: this.form.get('position')?.value,
       logo: this.form.get('logo')?.value,
@@ -75,7 +78,7 @@ export class ExperienciaLaboralComponent implements OnInit {
     }
 
     if(this.id == undefined) {
-      this.experiencialaboralService.crearExperienciaLaboral(experiencialaboral).subscribe(data => {
+      this.experiencialaboralService.crearExperienciaLaboral(experiencialaboral).subscribe(experiencialaboral => {
         this.obtenerExperienciaLaboral();
         this.form.reset();
       }, error => {
@@ -83,7 +86,7 @@ export class ExperienciaLaboralComponent implements OnInit {
       })
     } else {
       experiencialaboral.id = this.id;
-      this.experiencialaboralService.actualizarExperienciaLaboral(this.id, experiencialaboral).subscribe(data => {
+      this.experiencialaboralService.actualizarExperienciaLaboral(this.id, experiencialaboral).subscribe(experiencialaboral => {
         this.form.reset();
         this.accion = 'Agregar';
         this.id = undefined;
@@ -95,14 +98,14 @@ export class ExperienciaLaboralComponent implements OnInit {
   }
 
   borrarExperienciaLaboral(id: number) {
-    this.experiencialaboralService.borrarExperienciaLaboral(id).subscribe(data =>{
+    this.experiencialaboralService.borrarExperienciaLaboral(id).subscribe(experiencialaboral =>{
       this.obtenerExperienciaLaboral()
     }, error => {
       console.log(error);
     })
   }
 
-  actualizarExperienciaLaboral(experiencialaboral: any) {
+  actualizarExperienciaLaboral(experiencialaboral: ExperienciaLaboral) {
     this.accion = 'Editar experiencia laboral: ' + experiencialaboral.position + ' en ' + experiencialaboral.company;
     this.id = experiencialaboral.id;
     this.form.patchValue({

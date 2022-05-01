@@ -29,22 +29,18 @@
                     placeholder="URL del logo (tiene que estar previamente en alguna página)">
                 </div>
                 <div class="row">
-                  <div class="col-lg-5">
+                  <div class="col-lg-3">
                     <div class="input-group mb-3">
                       <span class="input-group-text">Fecha de inicio</span>
                       <input formControlName="startdate" type="date" class="form-control" placeholder="Fecha de inicio">
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-5">
+                  <div class="col-lg-3">
                     <div class="input-group mb-3">
                       <span class="input-group-text">Fecha de fin</span>
                       <input formControlName="enddate" type="date" class="form-control" placeholder="Fecha de fin">
                     </div>
                   </div>
-                </div>
-                <div class="row">
                   <div class="col-lg-5">
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
@@ -84,19 +80,18 @@
                   <h3>{{experiencialaboral.position}}</h3>
                   <td *ngIf="isAdmin"><i (click)="actualizarExperienciaLaboral(experiencialaboral)" (click)=setDisplay()
                       class="fa-regular fa-pen-to-square text-info"></i></td>
-                  <td *ngIf="isAdmin"><i (click)="borrarExperienciaLaboral(experiencialaboral.id)"
+                  <td *ngIf="isAdmin"><i (click)="borrarExperienciaLaboral(experiencialaboral.id!)"
                       class="fa-regular fa-trash-can text-danger"></i></td>
                 </tr>
                 <h3>{{experiencialaboral.company}}</h3>
                 <tr>
                   <h5 *ngIf="experiencialaboral.currentjob == false">
-                    <col>Desde {{experiencialaboral.startdate}} hasta {{experiencialaboral.enddate}}
+                    <col>Desde el {{experiencialaboral.startdate | date:"d 'de' MMMM 'de' YYYY"}} hasta el {{experiencialaboral.enddate | date:"d 'de' MMMM 'de' YYYY"}}
                   </h5>
                   <h5 *ngIf="experiencialaboral.currentjob == true">
-                    <col>Desde {{experiencialaboral.startdate}} hasta la actualidad
+                    <col>Desde el {{experiencialaboral.startdate | date:"d 'de' MMMM 'de' YYYY"}} hasta la actualidad
                   </h5>
-                  <col>
-                  <p>{{experiencialaboral.workdescription}}</p>
+                  <col><p>{{experiencialaboral.workdescription}}</p>
                 </tr>
               </div>
             </div>

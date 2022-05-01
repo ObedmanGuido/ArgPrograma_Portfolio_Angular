@@ -3,11 +3,12 @@
             width="3000"></div>
     <div id="info" style="padding: 0px 20px 20px 20px">
         <div class="row">
-            <img id="Foto-perfil" class="col-4 img-fluid img-responsive" [src]="persona.profilepicture"
-                alt={{persona.profilepicture}}>
-            <div class="col-8">
-                <h1 id="Fullname" style="font-size: 55px;">{{persona.name}} {{persona.surname}}</h1>
-                <h2 id="Person-title" style="font-size: 25px;">{{persona.title}}</h2>
+            <div class="col-2 container">
+                <img id="Foto-perfil" class="image-fluid" [src]="persona.profilepicture" alt={{persona.profilepicture}}>
+            </div>
+            <div class="col-10 container">
+                <h1 id="fullname" style="font-size: 55px;">{{persona.name}} {{persona.surname}}</h1>
+                <h2 id="person-title" style="font-size: 35px;">{{persona.title}}</h2>
             </div>
         </div>
     </div>
@@ -16,7 +17,7 @@
         <h2 class="section-header">Acerca de</h2>
         <div class="table">
             <tr><strong>{{persona.position}} viviendo en {{persona.address}}</strong></tr>
-            <tr><strong>Fecha de nacimiento: {{persona.dateofbirth}}</strong></tr>
+            <tr><strong>Fecha de nacimiento: {{persona.dateofbirth | date:"dd 'de' MMMM 'de' yyyy"}}</strong></tr>
             <tr><strong>Teléfono: {{persona.telephone}}</strong></tr>
             <tr><strong>Email: {{persona.email}}</strong></tr>
             <tr><strong>{{persona.aboutpersona}}</strong></tr>
