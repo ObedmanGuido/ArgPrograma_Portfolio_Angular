@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Proyecto } from 'src/app/modelos/proyecto.model';
 import { ProyectoService } from 'src/app/servicios/proyecto.service';
 import { TokenService } from 'src/app/servicios/token.service';
@@ -22,10 +22,10 @@ export class ProyectoComponent implements OnInit {
 
   constructor(private proyectoService:ProyectoService, private fb:FormBuilder, private tokenService: TokenService) {
     this.form = this.fb.group({
-      projectname: [''],
-      creationdate: [''],
-      projectdescription: [''],
-      projectlink: [''],
+      projectname: ['',[Validators.required]],
+      creationdate: ['',[Validators.required]],
+      projectdescription: ['',[Validators.required]],
+      projectlink: ['',[Validators.required]],
       image1: [''],
       image2: [''],
       image3: [''],
@@ -118,5 +118,21 @@ export class ProyectoComponent implements OnInit {
         this.accion = 'Agregar';
         this.id = undefined;
         this.obtenerProyecto();
+  }
+
+  get Projectname(){
+    return this.form.get('projectname');
+  }
+
+  get Creationdate(){
+    return this.form.get('creationdate');
+  }
+
+  get Projectdescription(){
+    return this.form.get('projectdescription');
+  }
+
+  get Projectlink(){
+    return this.form.get('projectlink');
   }
 }

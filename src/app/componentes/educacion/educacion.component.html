@@ -16,40 +16,63 @@
               <p>Cada educación que se agrega, queda primera en la lista.</p>
               <form [formGroup]="form" (ngSubmit)="crearEducacion()">
                 <div class="input-group mb-3">
-                  <span class="input-group-text">Institución</span>
-                  <input formControlName="schoolname" type="text" class="form-control"
-                    placeholder="Nombre de la institución">
+                  <label class="input-group-text">Institución</label>
+                  <input formControlName="schoolname" type="text" class="form-control" placeholder="Nombre de la institución"
+                    [ngClass]="{'is-invalid':Schoolname?.errors && Schoolname?.touched, 'is-valid':!Schoolname?.errors && Schoolname?.touched}">
+                  <div *ngIf="Schoolname?.errors && Schoolname?.touched">
+                      <p *ngIf="Schoolname?.hasError('required')" class="text-danger" style="background-color: black;">
+                        Ponga la institución.
+                      </p>
+                  </div>
                 </div>
                 <div class="input-group mb-3">
-                  <span class="input-group-text">Título</span>
-                  <input formControlName="title" type="text" class="form-control" placeholder="Título">
+                  <label class="input-group-text">Título</label>
+                  <input formControlName="title" type="text" class="form-control" placeholder="Título"
+                    [ngClass]="{'is-invalid':Title?.errors && Title?.touched, 'is-valid':!Title?.errors && Title?.touched}">
+                  <div *ngIf="Title?.errors && Title?.touched">
+                      <p *ngIf="Title?.hasError('required')" class="text-danger" style="background-color: black;">
+                        Ponga el título.
+                      </p>
+                  </div>
                 </div>
                 <div class="input-group mb-3">
-                  <span class="input-group-text">Logo</span>
+                  <label class="input-group-text">Logo</label>
                   <input formControlName="logo" type="text" class="form-control"
                     placeholder="URL del logo (tiene que estar previamente en alguna página)">
                 </div>
                 <div class="row">
                   <div class="col-lg-3">
                     <div class="input-group mb-3">
-                      <span class="input-group-text">Fecha de inicio</span>
-                      <input formControlName="startdate" type="date" class="form-control" placeholder="Fecha de inicio">
+                      <label class="input-group-text">Fecha de inicio</label>
+                      <input formControlName="startdate" type="date" class="form-control" placeholder="Fecha de inicio"
+                        [ngClass]="{'is-invalid':Startdate?.errors && Startdate?.touched, 'is-valid':!Startdate?.errors && Startdate?.touched}">
+                      <div *ngIf="Startdate?.errors && Startdate?.touched">
+                          <p *ngIf="Startdate?.hasError('required')" class="text-danger" style="background-color: black;">
+                            Ponga la fecha de inicio.
+                          </p>
+                      </div>
                     </div>
                   </div>
                   <div class="col-lg-3">
                     <div class="input-group mb-3">
-                      <span class="input-group-text">Fecha de fin</span>
-                      <input formControlName="enddate" type="date" class="form-control" placeholder="Fecha de fin">
+                      <label class="input-group-text">Fecha de fin</label>
+                      <input formControlName="enddate" type="date" class="form-control" placeholder="Fecha de fin"
+                        [ngClass]="{'is-invalid':Enddate?.errors && Enddate?.touched, 'is-valid':!Enddate?.errors && Enddate?.touched}">
+                      <div *ngIf="Enddate?.errors && Enddate?.touched">
+                          <p *ngIf="Enddate?.hasError('required')" class="text-danger" style="background-color: black;">
+                            Ponga la fecha de fin.
+                          </p>
+                      </div>
                     </div>
                   </div>
                   <div class="col-lg-5">
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
-                        <span class="input-group-text">
+                        <label class="input-group-text">
                           Educación actual (poner cualquier fecha en fecha de fin y marcar el checkbox)
                           <input formControlName="currenteducation" type="checkbox" class="form-check-input"
                             placeholder="Educación actual">
-                        </span>
+                        </label>
                       </div>
                     </div>
                   </div>
@@ -57,23 +80,39 @@
                 <div class="row">
                   <div class="col-lg-5">
                     <div class="input-group mb-3">
-                      <span class="input-group-text">Tipo de institución</span>
-                      <input formControlName="typeofschool" type="text" class="form-control"
-                        placeholder="Tipo de institución">
+                      <label class="input-group-text">Tipo de institución</label>
+                      <input formControlName="typeofschool" type="text" class="form-control" placeholder="Tipo de institución"
+                          [ngClass]="{'is-invalid':Typeofschool?.errors && Typeofschool?.touched, 'is-valid':!Typeofschool?.errors && Typeofschool?.touched}">
+                      <div *ngIf="Typeofschool?.errors && Typeofschool?.touched">
+                          <p *ngIf="Typeofschool?.hasError('required')" class="text-danger" style="background-color: black;">
+                            Ponga el tipo de institución.
+                          </p>
+                      </div>
                     </div>
                   </div>
                   <div class="col-lg-5">
                     <div class="input-group mb-3">
-                      <span class="input-group-text">Estado</span>
-                      <input formControlName="studiesstatus" type="text" class="form-control"
-                        placeholder="Estado de estudios">
+                      <label class="input-group-text">Estado</label>
+                      <input formControlName="studiesstatus" type="text" class="form-control" placeholder="Estado de estudios"
+                        [ngClass]="{'is-invalid':Studiesstatus?.errors && Studiesstatus?.touched, 'is-valid':!Studiesstatus?.errors && Studiesstatus?.touched}">
+                      <div *ngIf="Studiesstatus?.errors && Studiesstatus?.touched">
+                          <p *ngIf="Studiesstatus?.hasError('required')" class="text-danger" style="background-color: black;">
+                            Ponga el estado.
+                          </p>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="input-group mb-3">
-                  <span class="input-group-text">Descripción</span>
-                  <input formControlName="educationdescription" type="text" class="form-control"
-                    placeholder="Descripción">
+                  <label class="input-group-text">Descripción</label>
+                  <input formControlName="educationdescription" type="text" class="form-control" placeholder="Descripción"
+                    [ngClass]="{'is-invalid':Educationdescription?.errors && Educationdescription?.touched,
+                    'is-valid':!Educationdescription?.errors && Educationdescription?.touched}">
+                  <div *ngIf="Educationdescription?.errors && Educationdescription?.touched">
+                      <p *ngIf="Educationdescription?.hasError('required')" class="text-danger" style="background-color: black;">
+                        Ponga la descripción.
+                      </p>
+                  </div>
                 </div>
                 <div class="d-grip gap-2">
                   <button type="submit" class="btn btn-success btn-lg">Aceptar</button>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Persona } from 'src/app/modelos/persona.model';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { TokenService } from 'src/app/servicios/token.service';
 
 @Component({
@@ -20,17 +20,17 @@ export class PersonaComponent implements OnInit {
 
   constructor(private portfolioService:PortfolioService, private fb:FormBuilder, private tokenService: TokenService) {
     this.form = this.fb.group({
-      name: [''],
-      surname: [''],
+      name: ['',[Validators.required]],
+      surname: ['',[Validators.required]],
       profilepicture: [''],
-      title:[''],
-      position: [''],
+      title:['',[Validators.required]],
+      position: ['',[Validators.required]],
       bannerpicture: [''],
-      aboutpersona: [''],
-      address: [''],
-      dateofbirth: 0,
-      telephone: [''],
-      email:['']
+      aboutpersona: ['',[Validators.required]],
+      address: ['',[Validators.required]],
+      dateofbirth: [0,[Validators.required]],
+      telephone: ['',[Validators.required]],
+      email:['',[Validators.required,Validators.email]]
     })
   }
 
@@ -97,5 +97,41 @@ export class PersonaComponent implements OnInit {
         this.id = 1;
         this.obtenerPersona();
         this.isShow = !this.isShow
+  }
+
+  get Name(){
+    return this.form.get('name');
+  }
+
+  get Surname(){
+    return this.form.get('surname');
+  }
+
+  get Title(){
+    return this.form.get('title');
+  }
+
+  get Position(){
+    return this.form.get('position');
+  }
+
+  get Aboutpersona(){
+    return this.form.get('aboutpersona');
+  }
+
+  get Address(){
+    return this.form.get('address');
+  }
+  
+  get Dateofbirth(){
+    return this.form.get('dateofbirth');
+  }
+  
+  get Telephone(){
+    return this.form.get('telephone');
+  }
+  
+  get Email(){
+    return this.form.get('email');
   }
 }

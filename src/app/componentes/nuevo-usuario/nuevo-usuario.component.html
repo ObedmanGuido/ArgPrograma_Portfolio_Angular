@@ -1,22 +1,46 @@
 <app-header></app-header>
 <h1 class="m-5">Registrarse</h1>
 <div class="m-5">
-    <form #f="ngForm" (ngSubmit)="onRegister()" novalidate>
+    <form [formGroup]="form" #f="ngForm" (ngSubmit)="onRegister()" novalidate>
         <div class="mb-3 form-group">
             <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" name="nombre" class="form-control" id="nombre" [(ngModel)]="nombre" required>
+            <input type="text" name="nombre" class="form-control" id="nombre" formControlName="nombre" [(ngModel)]="nombre" required
+            [ngClass]="{'is-invalid':Nombre?.errors && Nombre?.touched, 'is-valid':!Nombre?.errors && Nombre?.touched}">
+            <div *ngIf="Nombre?.errors && Nombre?.touched">
+                <p *ngIf="Nombre?.hasError('required')" class="text-danger">
+                    Ponga un nombre.
+                </p>
+            </div>
         </div>
         <div class="mb-3 form-group">
             <label for="username" class="form-label">Nombre de usuario</label>
-            <input type="text" name="username" class="form-control" id="username" [(ngModel)]="username" required>
+            <input type="text" name="username" class="form-control" id="username" formControlName="username" [(ngModel)]="username" required
+            [ngClass]="{'is-invalid':Username?.errors && Username?.touched, 'is-valid':!Username?.errors && Username?.touched}">
+            <div *ngIf="Username?.errors && Username?.touched">
+                <p *ngIf="Username?.hasError('required')" class="text-danger">
+                    Ponga un nombre de usuario.
+                </p>
+            </div>
         </div>
         <div class="mb-3 form-group">
             <label for="password" class="form-label">Contraseña</label>
-            <input type="password" name="password" class="form-control" id="password" [(ngModel)]="password" required>
+            <input type="password" name="password" class="form-control" id="password" formControlName="password" [(ngModel)]="password" required
+            [ngClass]="{'is-invalid':Password?.errors && Password?.touched, 'is-valid':!Password?.errors && Password?.touched}">
+            <div *ngIf="Password?.errors && Password?.touched">
+                <p *ngIf="Password?.hasError('required') || Password?.hasError('minlength') || Password?.hasError('maxlength')" class="text-danger">
+                    Ponga una contraseña con entre 8 y 20 caracteres.
+                </p>
+            </div>
         </div>
         <div class="mb-3 form-group">
             <label for="email" class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" id="email" [(ngModel)]="email" required>
+            <input type="email" name="email" class="form-control" id="email" formControlName="email" [(ngModel)]="email" required
+            [ngClass]="{'is-invalid':Email?.errors && Email?.touched, 'is-valid':!Email?.errors && Email?.touched}">
+            <div *ngIf="Email?.errors && Email?.touched">
+                <p *ngIf="Email?.hasError('required') || Email?.hasError('email')" class="text-danger">
+                    Ponga un email.
+                </p>
+            </div>
         </div>
         <div class="form-group">
             <button class="btn btn-primary btn-block" [disabled]="!f.valid">Registrarse</button>

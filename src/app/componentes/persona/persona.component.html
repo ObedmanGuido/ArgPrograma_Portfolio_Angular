@@ -36,58 +36,104 @@
                         <div class="card-body">
                             <form [formGroup]="form" (ngSubmit)="editarPersona()">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Nombre</span>
-                                    <input formControlName="name" type="text" class="form-control"
-                                        placeholder="Nombre">
+                                    <label class="input-group-text">Nombre</label>
+                                    <input formControlName="name" type="text" class="form-control" placeholder="Nombre"
+                                        [ngClass]="{'is-invalid':Name?.errors && Name?.touched, 'is-valid':!Name?.errors && Name?.touched}">
+                                    <div *ngIf="Name?.errors && Name?.touched">
+                                        <p *ngIf="Name?.hasError('required')" class="text-danger" style="background-color: black;">
+                                            Ponga el nombre.
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Apellido</span>
-                                    <input formControlName="surname" type="text" class="form-control"
-                                        placeholder="Apellido">
+                                    <label class="input-group-text">Apellido</label>
+                                    <input formControlName="surname" type="text" class="form-control" placeholder="Apellido"
+                                        [ngClass]="{'is-invalid':Surname?.errors && Surname?.touched, 'is-valid':!Surname?.errors && Surname?.touched}">
+                                    <div *ngIf="Surname?.errors && Surname?.touched">
+                                        <p *ngIf="Surname?.hasError('required')" class="text-danger" style="background-color: black;">
+                                            Ponga el apellido.
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Título</span>
-                                    <input formControlName="title" type="text" class="form-control" placeholder="Título">
+                                    <label class="input-group-text">Título</label>
+                                    <input formControlName="title" type="text" class="form-control" placeholder="Título"
+                                        [ngClass]="{'is-invalid':Title?.errors && Title?.touched, 'is-valid':!Title?.errors && Title?.touched}">
+                                    <div *ngIf="Title?.errors && Title?.touched">
+                                        <p *ngIf="Title?.hasError('required')" class="text-danger" style="background-color: black;">
+                                            Ponga el título.
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Foto de perfil</span>
+                                    <label class="input-group-text">Foto de perfil</label>
                                     <input formControlName="profilepicture" type="text" class="form-control"
                                         placeholder="URL de la foto de perfil (tiene que estar previamente en alguna página)">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Banner</span>
+                                    <label class="input-group-text">Banner</label>
                                     <input formControlName="bannerpicture" type="text" class="form-control"
                                         placeholder="URL del banner (tiene que estar previamente en alguna página)">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Posición</span>
-                                    <input formControlName="position" type="text" class="form-control"
-                                        placeholder="Posición">
+                                    <label class="input-group-text">Posición</label>
+                                    <input formControlName="position" type="text" class="form-control" placeholder="Posición"
+                                        [ngClass]="{'is-invalid':Position?.errors && Position?.touched, 'is-valid':!Position?.errors && Position?.touched}">
+                                    <div *ngIf="Position?.errors && Position?.touched">
+                                        <p *ngIf="Position?.hasError('required')" class="text-danger" style="background-color: black;">
+                                            Ponga la posición.
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Acerca de</span>
-                                    <input formControlName="aboutpersona" type="text" class="form-control"
-                                        placeholder="Acerca de">
+                                    <label class="input-group-text">Acerca de</label>
+                                    <input formControlName="aboutpersona" type="text" class="form-control" placeholder="Acerca de"
+                                        [ngClass]="{'is-invalid':Aboutpersona?.errors && Aboutpersona?.touched, 'is-valid':!Aboutpersona?.errors && Aboutpersona?.touched}">
+                                    <div *ngIf="Aboutpersona?.errors && Aboutpersona?.touched">
+                                        <p *ngIf="Aboutpersona?.hasError('required')" class="text-danger" style="background-color: black;">
+                                            Ponga algo de la persona.
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Dirección</span>
-                                    <input formControlName="address" type="text" class="form-control"
-                                        placeholder="Dirección">
+                                    <label class="input-group-text">Dirección</label>
+                                    <input formControlName="address" type="text" class="form-control" placeholder="Dirección"
+                                        [ngClass]="{'is-invalid':Address?.errors && Address?.touched, 'is-valid':!Address?.errors && Address?.touched}">
+                                    <div *ngIf="Address?.errors && Address?.touched">
+                                        <p *ngIf="Address?.hasError('required')" class="text-danger" style="background-color: black;">
+                                            Ponga una dirección, un barrio, una ciudad, una provincia o un país.
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Fecha de nacimiento</span>
-                                    <input formControlName="dateofbirth" type="date" class="form-control"
-                                        placeholder="Fecha de nacimiento">
+                                    <label class="input-group-text">Fecha de nacimiento</label>
+                                    <input formControlName="dateofbirth" type="date" class="form-control" placeholder="Fecha de nacimiento"
+                                        [ngClass]="{'is-invalid':Dateofbirth?.errors && Dateofbirth?.touched, 'is-valid':!Dateofbirth?.errors && Dateofbirth?.touched}">
+                                    <div *ngIf="Dateofbirth?.errors && Dateofbirth?.touched">
+                                        <p *ngIf="Dateofbirth?.hasError('required')" class="text-danger" style="background-color: black;">
+                                            Ponga la fecha de nacimiento.
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Teléfono</span>
-                                    <input formControlName="telephone" type="text" class="form-control"
-                                        placeholder="Teléfono">
+                                    <label class="input-group-text">Teléfono</label>
+                                    <input formControlName="telephone" type="text" class="form-control" placeholder="Teléfono"
+                                        [ngClass]="{'is-invalid':Telephone?.errors && Telephone?.touched, 'is-valid':!Telephone?.errors && Telephone?.touched}">
+                                    <div *ngIf="Telephone?.errors && Telephone?.touched">
+                                        <p *ngIf="Telephone?.hasError('required')" class="text-danger" style="background-color: black;">
+                                            Ponga el teléfono.
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Email</span>
-                                    <input formControlName="email" type="text" class="form-control"
-                                        placeholder="Email">
+                                    <label class="input-group-text">Email</label>
+                                    <input formControlName="email" type="text" class="form-control" placeholder="Email"
+                                        [ngClass]="{'is-invalid':Email?.errors && Email?.touched, 'is-valid':!Email?.errors && Email?.touched}">
+                                    <div *ngIf="Email?.errors && Email?.touched">
+                                        <p *ngIf="Email?.hasError('required') || Email?.hasError('email')" class="text-danger" style="background-color: black;">
+                                            Ponga un email.
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="d-grip gap-2">
                                     <button type="submit" class="btn btn-success btn-lg" (click)="editarPersona()">Aceptar</button>

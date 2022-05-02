@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NuevoUsuario } from 'src/app/modelos/nuevo-usuario';
 import { AuthenticationService } from 'src/app/servicios/authentication.service';
 import { TokenService } from 'src/app/servicios/token.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-nuevo-usuario',
@@ -19,8 +20,19 @@ export class NuevoUsuarioComponent implements OnInit {
   password!: string;
   messageError!: string;
   isLoggedIn = false;
+  form:FormGroup;
 
-  constructor(private tokenService: TokenService, private authenticationService: AuthenticationService, private router: Router, private toastr: ToastrService) { }
+  constructor(private tokenService: TokenService, private authenticationService: AuthenticationService,
+    private router: Router, private toastr: ToastrService, private formBuilder: FormBuilder) { 
+      this.form = this.formBuilder.group(
+        {
+          nombre:['',[Validators.required]],
+          username:['',[Validators.required]],
+          email:['',[Validators.required,Validators.email]],
+          password:['',[Validators.required,Validators.minLength(8),Validators.maxLength(20)]]
+        }
+      )
+    }
 
   ngOnInit(): void {
   }
@@ -34,5 +46,21 @@ export class NuevoUsuarioComponent implements OnInit {
       this.messageError = error.error.message;
       this.toastr.error('Nombre de usuario o email duplicado, o contraseña incorrecta', 'Fail', {timeOut: 5000, positionClass: 'toast-top-center'});
     });
+  }
+
+  get Nombre(){
+    return this.form.get('nombre');
+  }
+
+  get Username(){
+    return this.form.get('username');
+  }
+
+  get Email(){
+    return this.form.get('email');
+  }
+
+  get Password(){
+    return this.form.get('password');
   }
 }

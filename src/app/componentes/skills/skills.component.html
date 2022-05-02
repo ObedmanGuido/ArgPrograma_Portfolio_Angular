@@ -16,32 +16,56 @@
               <p>Cada skill que se agrega, queda último en la lista.</p>
               <form [formGroup]="form" (ngSubmit)="crearSkill()">
                 <div class="input-group mb-3">
-                  <span class="input-group-text">Nombre del skill</span>
-                  <input formControlName="skillname" type="text" class="form-control" placeholder="Nombre del skill">
+                  <label class="input-group-text">Nombre del skill</label>
+                  <input formControlName="skillname" type="text" class="form-control" placeholder="Nombre del skill"
+                    [ngClass]="{'is-invalid':Skillname?.errors && Skillname?.touched, 'is-valid':!Skillname?.errors && Skillname?.touched}">
+                  <div *ngIf="Skillname?.errors && Skillname?.touched">
+                      <p *ngIf="Skillname?.hasError('required')" class="text-danger" style="background-color: black;">
+                        Ponga el nombre del skill.
+                      </p>
+                  </div>
                 </div>
                 <div class="row">
                   <div class="col-lg 3">
                     <div class="input-group mb-3">
-                      <span class="input-group-text">Nivel del skill en palabras</span>
-                      <input formControlName="levelname" type="text" class="form-control"
-                        placeholder="Nada, principiante, intermedio, avanzado, experto">
+                      <label class="input-group-text">Nivel del skill en palabras</label>
+                      <input formControlName="levelname" type="text" class="form-control" placeholder="Nada, principiante, intermedio, avanzado, experto"
+                        [ngClass]="{'is-invalid':Levelname?.errors && Levelname?.touched, 'is-valid':!Levelname?.errors && Levelname?.touched}">
+                      <div *ngIf="Levelname?.errors && Levelname?.touched">
+                          <p *ngIf="Levelname?.hasError('required')" class="text-danger" style="background-color: black;">
+                            Ponga el nivel del skill en palabras.
+                          </p>
+                      </div>
                     </div>
                   </div>
                   <div class="col-lg-3">
                     <div class="input-group mb-3">
-                      <span class="input-group-text">Nivel del skill en números</span>
-                      <input formControlName="levelnumber" type="number" class="form-control" placeholder="Entre 0 y 100">
+                      <label class="input-group-text">Nivel del skill en números</label>
+                      <input formControlName="levelnumber" type="number" class="form-control" placeholder="Entre 0 y 100"
+                        [ngClass]="{'is-invalid':Levelnumber?.errors && Levelnumber?.touched, 'is-valid':!Levelnumber?.errors && Levelnumber?.touched}">
+                      <div *ngIf="Levelnumber?.errors && Levelnumber?.touched">
+                          <p *ngIf="Levelnumber?.hasError('required') || Levelnumber?.hasError('min') || Levelnumber?.hasError('max')"
+                            class="text-danger" style="background-color: black;">
+                            Ponga el nivel del skill en números entre 0 y 100.
+                          </p>
+                      </div>
                     </div>
                   </div>
                   <div class="col-lg-3">
                     <div class="input-group mb-3">
-                      <span class="input-group-text">Tipo de skill</span>
-                      <input formControlName="skilltype" type="text" class="form-control" placeholder="Tipo de skill">
+                      <label class="input-group-text">Tipo de skill</label>
+                      <input formControlName="skilltype" type="text" class="form-control" placeholder="Tipo de skill"
+                        [ngClass]="{'is-invalid':Skilltype?.errors && Skilltype?.touched, 'is-valid':!Skilltype?.errors && Skilltype?.touched}">
+                      <div *ngIf="Skilltype?.errors && Skilltype?.touched">
+                          <p *ngIf="Skilltype?.hasError('required')" class="text-danger" style="background-color: black;">
+                            Ponga el tipo de skill.
+                          </p>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="input-group mb-3">
-                  <span class="input-group-text">Descripción del skill</span>
+                  <label class="input-group-text">Descripción del skill</label>
                   <input formControlName="skilldescription" type="text" class="form-control" placeholder="Descripción del skill">
                 </div>
                 <div class="d-grip gap-2">

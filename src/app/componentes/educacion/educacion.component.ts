@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Educacion } from 'src/app/modelos/educacion.model';
 import { EducacionService } from 'src/app/servicios/educacion.service';
 import { TokenService } from 'src/app/servicios/token.service';
@@ -34,14 +34,14 @@ export class EducacionComponent implements OnInit {
 
   constructor(private educacionService:EducacionService, private fb:FormBuilder, private tokenService: TokenService) {
     this.form = this.fb.group({
-      schoolname: [''],
-      title:[''],
+      schoolname: ['',[Validators.required]],
+      title:['',[Validators.required]],
       logo: [''],
-      startdate: 0,
-      enddate: 0,
-      typeofschool: [''],
-      studiesstatus: [''],
-      educationdescription: [''],
+      startdate: [0,[Validators.required]],
+      enddate: [0,[Validators.required]],
+      typeofschool: ['',[Validators.required]],
+      studiesstatus: ['',[Validators.required]],
+      educationdescription: ['',[Validators.required]],
       currenteducation: false
     })
   }
@@ -130,5 +130,33 @@ export class EducacionComponent implements OnInit {
         this.accion = 'Agregar';
         this.id = undefined;
         this.obtenerEducacion();
+  }
+
+  get Schoolname(){
+    return this.form.get('schoolname');
+  }
+
+  get Title(){
+    return this.form.get('title');
+  }
+
+  get Startdate(){
+    return this.form.get('startdate');
+  }
+
+  get Enddate(){
+    return this.form.get('enddate');
+  }
+
+  get Typeofschool(){
+    return this.form.get('typeofschool');
+  }
+  
+  get Studiesstatus(){
+    return this.form.get('studiesstatus');
+  }
+  
+  get Educationdescription(){
+    return this.form.get('educationdescription');
   }
 }

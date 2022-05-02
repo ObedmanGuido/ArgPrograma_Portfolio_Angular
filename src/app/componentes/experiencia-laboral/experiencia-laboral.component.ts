@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ExperienciaLaboral } from 'src/app/modelos/experiencia-laboral.model';
 import { ExperienciaLaboralService } from 'src/app/servicios/experiencia-laboral.service';
 import { TokenService } from 'src/app/servicios/token.service';
@@ -34,12 +34,12 @@ export class ExperienciaLaboralComponent implements OnInit {
   
   constructor(private experiencialaboralService:ExperienciaLaboralService, private fb:FormBuilder, private tokenService: TokenService) {
     this.form = this.fb.group({
-      company: [''],
-      position:[''],
+      company: ['',[Validators.required]],
+      position:['',[Validators.required]],
       logo: [''],
-      startdate: 0,
-      enddate: 0,
-      workdescription: [''],
+      startdate: [0,[Validators.required]],
+      enddate: [0,[Validators.required]],
+      workdescription: ['',[Validators.required]],
       currentjob: false
     })
   }
@@ -124,5 +124,25 @@ export class ExperienciaLaboralComponent implements OnInit {
         this.accion = 'Agregar';
         this.id = undefined;
         this.obtenerExperienciaLaboral();
+  }
+
+  get Company(){
+    return this.form.get('company');
+  }
+
+  get Position(){
+    return this.form.get('position');
+  }
+
+  get Startdate(){
+    return this.form.get('startdate');
+  }
+
+  get Enddate(){
+    return this.form.get('enddate');
+  }
+  
+  get Workdescription(){
+    return this.form.get('workdescription');
   }
 }

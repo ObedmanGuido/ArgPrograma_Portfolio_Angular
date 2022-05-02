@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Skill } from 'src/app/modelos/skill.model';
 import { SkillsService } from 'src/app/servicios/skills.service';
 import { TokenService } from 'src/app/servicios/token.service';
@@ -30,10 +30,10 @@ import { TokenService } from 'src/app/servicios/token.service';
 
     constructor(private skillsService:SkillsService, private fb:FormBuilder, private tokenService: TokenService) {
       this.form = this.fb.group({
-        skillname: [''],
-        levelname:[''],
-        levelnumber: 0,
-        skilltype: [''],
+        skillname: ['',[Validators.required]],
+        levelname:['',[Validators.required]],
+        levelnumber: [0,[Validators.required,Validators.min(0),Validators.max(100)]],
+        skilltype: ['',[Validators.required]],
         skilldescription: ['']
       })
     }
@@ -114,5 +114,21 @@ import { TokenService } from 'src/app/servicios/token.service';
           this.accion = 'Agregar';
           this.id = undefined;
           this.obtenerSkill();
+    }
+
+    get Skillname(){
+      return this.form.get('skillname');
+    }
+  
+    get Levelname(){
+      return this.form.get('levelname');
+    }
+  
+    get Levelnumber(){
+      return this.form.get('levelnumber');
+    }
+  
+    get Skilltype(){
+      return this.form.get('skilltype');
     }
 }

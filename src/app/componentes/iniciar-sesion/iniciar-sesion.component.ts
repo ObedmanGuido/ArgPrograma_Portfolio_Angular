@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { LoginUsuario } from 'src/app/modelos/login-usuario';
 import { AuthenticationService } from 'src/app/servicios/authentication.service';
 import { TokenService } from 'src/app/servicios/token.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -16,8 +17,17 @@ export class IniciarSesionComponent implements OnInit {
   username!: string;
   password!: string;
   messageError!: string;
+  form:FormGroup;
 
-  constructor(private tokenService: TokenService, private authenticationService: AuthenticationService, private router: Router, private toastr: ToastrService) { }
+  constructor(private tokenService: TokenService, private authenticationService: AuthenticationService,
+    private router: Router, private toastr: ToastrService, private formBuilder: FormBuilder) {
+      this.form = this.formBuilder.group(
+        {
+          username:['',[Validators.required]],
+          password:['',[Validators.required,Validators.minLength(8),Validators.maxLength(20)]]
+        }
+      )
+    }
 
   ngOnInit(): void {
   }
@@ -34,5 +44,13 @@ export class IniciarSesionComponent implements OnInit {
       this.messageError = error.error.message;
       this.toastr.error('Nombre de usuario y/o contraseña incorrecto/s', 'Fail', {timeOut: 5000, positionClass: 'toast-top-center'});
     });
+  }
+
+  get Username(){
+    return this.form.get('username');
+  }
+
+  get Password(){
+    return this.form.get('password');
   }
 }

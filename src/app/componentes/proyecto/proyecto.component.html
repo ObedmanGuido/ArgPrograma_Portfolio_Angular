@@ -16,42 +16,63 @@
                             <p>Cada proyecto que se agrega, queda primero en la lista.</p>
                             <form [formGroup]="form" (ngSubmit)="crearProyecto()">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Nombre del proyecto</span>
-                                    <input formControlName="projectname" type="text" class="form-control"
-                                        placeholder="Nombre del proyecto">
+                                    <label class="input-group-text">Nombre del proyecto</label>
+                                    <input formControlName="projectname" type="text" class="form-control" placeholder="Nombre del proyecto"
+                                        [ngClass]="{'is-invalid':Projectname?.errors && Projectname?.touched, 'is-valid':!Projectname?.errors && Projectname?.touched}">
+                                    <div *ngIf="Projectname?.errors && Projectname?.touched">
+                                        <p *ngIf="Projectname?.hasError('required')" class="text-danger" style="background-color: black;">
+                                            Ponga el nombre del proyecto.
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="input-group mb-3 date">
-                                    <span class="input-group-text">Día de creación</span>
-                                    <input formControlName="creationdate" type="date" class="form-control"
-                                        placeholder="YYYY/MM/DD">
+                                    <label class="input-group-text">Fecha de creación</label>
+                                    <input formControlName="creationdate" type="date" class="form-control" placeholder="YYYY/MM/DD"
+                                        [ngClass]="{'is-invalid':Creationdate?.errors && Creationdate?.touched, 'is-valid':!Creationdate?.errors && Creationdate?.touched}">
+                                    <div *ngIf="Creationdate?.errors && Creationdate?.touched">
+                                        <p *ngIf="Creationdate?.hasError('required')" class="text-danger" style="background-color: black;">
+                                            Ponga la fecha de creación.
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Descripción del proyecto</span>
-                                    <input formControlName="projectdescription" type="text" class="form-control"
-                                        placeholder="Descripción del proyecto">
+                                    <label class="input-group-text">Descripción del proyecto</label>
+                                    <input formControlName="projectdescription" type="text" class="form-control" placeholder="Descripción del proyecto"
+                                        [ngClass]="{'is-invalid':Projectdescription?.errors && Projectdescription?.touched,
+                                        'is-valid':!Projectdescription?.errors && Projectdescription?.touched}">
+                                    <div *ngIf="Projectdescription?.errors && Projectdescription?.touched">
+                                        <p *ngIf="Projectdescription?.hasError('required')" class="text-danger" style="background-color: black;">
+                                            Ponga la descripción del proyecto.
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Link del proyecto</span>
-                                    <input formControlName="projectlink" type="text" class="form-control"
-                                        placeholder="Link del proyecto">
+                                    <label class="input-group-text">Link del proyecto</label>
+                                    <input formControlName="projectlink" type="text" class="form-control" placeholder="Link del proyecto"
+                                        [ngClass]="{'is-invalid':Projectlink?.errors && Projectlink?.touched, 'is-valid':!Projectlink?.errors && Projectlink?.touched}">
+                                    <div *ngIf="Projectlink?.errors && Projectlink?.touched">
+                                        <p *ngIf="Projectlink?.hasError('required')" class="text-danger" style="background-color: black;">
+                                            Ponga el link del proyecto.
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Imagen 1</span>
+                                    <label class="input-group-text">Imagen 1</label>
                                     <input formControlName="image1" type="text" class="form-control"
                                         placeholder="URL de la imagen, tiene que estar previamente en una página">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Imagen 2</span>
+                                    <label class="input-group-text">Imagen 2</label>
                                     <input formControlName="image2" type="text" class="form-control"
                                         placeholder="URL de la imagen, tiene que estar previamente en una página">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Imagen 3</span>
+                                    <label class="input-group-text">Imagen 3</label>
                                     <input formControlName="image3" type="text" class="form-control"
                                         placeholder="URL de la imagen, tiene que estar previamente en una página">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Video</span>
+                                    <label class="input-group-text">Video</label>
                                     <input formControlName="video" type="text" class="form-control"
                                         placeholder="ID del video en Youtube">
                                 </div>
