@@ -8,52 +8,56 @@
 </mat-toolbar-row>-->
 
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-    <nav class="navbar navbar-dark bg-dark argentina-programa-logo-y-texto" style="padding-left: 10px;">
-        <a class="navbar-brand py-0" routerLink="/porfolio">
-            <img src="https://argentinaprograma.inti.gob.ar/pluginfile.php/1/theme_moove/logo/1648503444/APLogo-20-20.png"
-                width="100" class="d-inline-block align-top" alt="Logo Argentina Programa">
-        </a>
-        <a routerLink="/porfolio" style="color: red; text-decoration: none;">
-            Argentina Programa
-            <br>
-            #YoProgramo
-        </a>
-    </nav>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!--Para que lo otro esté separado-->
-    </div>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <span style="color: red; text-decoration: none;">Redes sociales: &nbsp; </span>
-        <a href="https://www.linkedin.com/in/guido-obedman-b19251103/" title="Perfil de LinkedIn">
-            <i class="fa-brands fa-linkedin fa-2xl"></i>
-        </a>
-        &nbsp; &nbsp;
-        <a href="https://github.com/ObedmanGuido" title="Perfil de GitHub">
-            <i class="fa-brands fa-github fa-inverse fa-2xl"></i>
-        </a>
-    </div>
-    <div class="justify-content-end" style="padding-right: 20px;">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item" *ngIf="!isLoggedIn">
-                <a class="nav-link py-0" routerLink="/nuevo-usuario" style="color: red; text-decoration: none;">
-                    <i class="fa-solid fa-user-plus"></i> Registrarse
-                </a>
-            </li>
-            <li class="nav-item" *ngIf="!isLoggedIn">
-                <a class="nav-link py-0" routerLink="/iniciar-sesion" style="color: red; text-decoration: none;">
-                    <i class="fa-solid fa-arrow-right-to-bracket"></i> Iniciar Sesión
-                </a>
-            </li>
-            <li class="nav-item" *ngIf="isLoggedIn" style="cursor:pointer;">
-                <a class="nav-link py-0" routerLink="/perfil-usuario" style="cursor: pointer;" style="color: red; text-decoration: none;">
-                    <i class="fa-solid fa-hand"></i> Ir al perfil de {{username}}
-                </a>
-            </li>
-            <li class="nav-item" *ngIf="isLoggedIn" (click)="onLogout()" style="cursor:pointer;">
-                <a class="nav-link py-0" style="cursor: pointer;" style="color: red; text-decoration: none;">
-                    <i class="fa-solid fa-person-walking-arrow-right"></i> Cerrar Sesión
-                </a>
-            </li>
-        </ul>
+    <a class="navbar-brand py-0" routerLink="/porfolio" style="padding-left: 10px;">
+        <img src="https://argentinaprograma.inti.gob.ar/pluginfile.php/1/theme_moove/logo/1648503444/APLogo-20-20.png"
+            width="100" class="d-inline-block align-top" alt="Logo Argentina Programa">
+    </a>
+    <a routerLink="/porfolio" style="color: red; text-decoration: none;">
+        Argentina Programa
+        <br>
+        #YoProgramo
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggleNavbar" aria-controls="toggleNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse navbar-dark bg-dark" id="toggleNavbar">
+        <div class="collapse navbar-collapse">
+            <!--Para que lo otro esté separado-->
+        </div>
+        <div class="navbar-collapse" id="navbarSupportedContent">
+            <span style="color: red; text-decoration: none;">Redes sociales: &nbsp; </span>
+            <a href="https://www.linkedin.com/in/guido-obedman-b19251103/" title="Perfil de LinkedIn">
+                <i class="fa-brands fa-linkedin fa-2xl"></i>
+            </a>
+            &nbsp; &nbsp;
+            <a href="https://github.com/ObedmanGuido" title="Perfil de GitHub">
+                <i class="fa-brands fa-github fa-inverse fa-2xl"></i>
+            </a>
+        </div>
+        <div class="justify-content-end" style="padding-right: 20px;">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" *ngIf="!isLoggedIn">
+                    <a class="nav-link py-0" routerLink="/nuevo-usuario" style="color: red; text-decoration: none;">
+                        <i class="fa-solid fa-user-plus"></i> Registrarse
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="!isLoggedIn">
+                    <a class="nav-link py-0" routerLink="/iniciar-sesion" style="color: red; text-decoration: none;">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> Iniciar Sesión
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="isLoggedIn" style="cursor:pointer;">
+                    <a class="nav-link py-0" routerLink="/perfil-usuario" style="cursor: pointer;" style="color: red; text-decoration: none;">
+                        <i class="fa-solid fa-hand"></i> Ir al perfil de {{username}}
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="isLoggedIn" (click)="onLogout()" style="cursor:pointer;">
+                    <a class="nav-link py-0" style="cursor: pointer;" style="color: red; text-decoration: none;">
+                        <i class="fa-solid fa-person-walking-arrow-right"></i> Cerrar Sesión
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
