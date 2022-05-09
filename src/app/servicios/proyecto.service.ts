@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, timeout } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class ProyectoService {
   constructor(private http:HttpClient) { }
 
   obtenerProyecto():Observable<any>{
-    return this.http.get(this.URL+1+'/proyecto/lista');
+    return this.http.get(this.URL+1+'/proyecto/lista').pipe(timeout(1800000));
   }
 
   crearProyecto(proyecto: any):Observable<any> {

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, timeout } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class ExperienciaLaboralService {
   constructor(private http:HttpClient) { }
 
   obtenerExperienciaLaboral():Observable<any>{
-    return this.http.get(this.URL+1+'/experiencia-laboral/lista');
+    return this.http.get(this.URL+1+'/experiencia-laboral/lista').pipe(timeout(1800000));
   }
 
   crearExperienciaLaboral(experiencialaboral: any):Observable<any> {

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, timeout } from 'rxjs';
 import { Persona } from '../modelos/persona.model';
 
 /*@Injectable({
@@ -24,7 +24,7 @@ export class PortfolioService {
   constructor(private http:HttpClient) { }
 
   obtenerPersona():Observable<Persona>{
-    return this.http.get<Persona>(this.URL+'individuo/'+1);
+    return this.http.get<Persona>(this.URL+'individuo/'+1).pipe(timeout(1800000));
   }
 
   actualizarPersona(persona: any): Observable<any> {

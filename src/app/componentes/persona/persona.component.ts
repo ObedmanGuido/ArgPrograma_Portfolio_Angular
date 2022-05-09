@@ -3,6 +3,7 @@ import { Persona } from 'src/app/modelos/persona.model';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { TokenService } from 'src/app/servicios/token.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-persona',
@@ -18,7 +19,7 @@ export class PersonaComponent implements OnInit {
   authority!:string;
   isAdmin = false;
 
-  constructor(private portfolioService:PortfolioService, private fb:FormBuilder, private tokenService: TokenService) {
+  constructor(private portfolioService:PortfolioService, private fb:FormBuilder, private tokenService: TokenService, private toastr: ToastrService) {
     this.form = this.fb.group({
       name: ['',[Validators.required]],
       surname: ['',[Validators.required]],
@@ -48,7 +49,8 @@ export class PersonaComponent implements OnInit {
       console.log(persona);
       this.persona=persona;
     }, error => {
-      console.log(error)
+      console.log(error);
+      this.toastr.error('El server no se inicializó a tiempo, refresque la página. El error según consola sería: ' + error, 'Fail', {timeOut: 1800000, positionClass: 'toast-top-center'});
     })
   }
 
