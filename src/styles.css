@@ -10,6 +10,12 @@
     display: inline-block;
     border-radius: 50%;
  }
+ #banner {
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: inline-block;
+ }
 img {
     max-width: 100%;
 }
