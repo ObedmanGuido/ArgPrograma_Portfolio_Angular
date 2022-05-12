@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ExperienciaLaboralComponent } from './componentes/experiencia-laboral/experiencia-laboral.component';
 import { EducacionComponent } from './componentes/educacion/educacion.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderComponent } from './componentes/header/header.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,6 +28,8 @@ import { ProyectoComponent } from './componentes/proyecto/proyecto.component';
 import { YouTubePlayerModule } from "@angular/youtube-player";
 import localeEsAr from '@angular/common/locales/es-AR';
 import { registerLocaleData } from '@angular/common';
+import { LoadingComponent } from './componentes/loading/loading.component';
+import { LoadingInterceptorService } from './servicios/loading-interceptor.service';
 registerLocaleData(localeEsAr, 'es-Ar');
 
 
@@ -44,7 +46,8 @@ registerLocaleData(localeEsAr, 'es-Ar');
     PersonaComponent,
     NuevoUsuarioComponent,
     PerfilUsuarioComponent,
-    ProyectoComponent
+    ProyectoComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,7 @@ registerLocaleData(localeEsAr, 'es-Ar');
     ToastrModule.forRoot(),
     YouTubePlayerModule
   ],
-  providers: [interceptorProvider, { provide: LOCALE_ID, useValue: 'es-Ar' }],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptorService, multi: true }, interceptorProvider, { provide: LOCALE_ID, useValue: 'es-Ar' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
