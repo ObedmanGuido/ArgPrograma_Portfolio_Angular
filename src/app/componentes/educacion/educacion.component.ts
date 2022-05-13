@@ -25,7 +25,6 @@ export class EducacionComponent implements OnInit {
   educacionLista?:Educacion[];
   educacion:Educacion = { id: 0, schoolname: '', title: '', logo: '', startdate: new(Date), enddate: new(Date), typeofschool: '',
     studiesstatus: '', educationdescription: '', currenteducation: false, persona: 0 };
-  isShow = true;
   accion = 'Agregar';
   form: FormGroup;
   id: number | undefined;
@@ -49,14 +48,6 @@ export class EducacionComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerEducacion();
     this.isAdmin = this.tokenService.isAdmin();
-  }
-
-  toggleDisplay() {
-    this.isShow = !this.isShow;
-  }
-
-  setDisplay() {
-    this.isShow = false;
   }
 
   obtenerEducacion(){

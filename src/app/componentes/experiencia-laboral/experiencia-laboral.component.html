@@ -6,7 +6,7 @@
     </div>
     <div *ngIf="isAdmin">
       <h3>Agregar experiencia laboral
-        <i (click)=toggleDisplay() class="fa-solid fa-plus add-btn" data-bs-toggle="modal" data-bs-target="#experiencialaboralModal"></i>
+        <i class="fa-solid fa-plus add-btn" data-bs-toggle="modal" data-bs-target="#experiencialaboralModal"></i>
         <br>Modo: {{accion}}
         <br>Resetear modo <i class="fa-solid fa-rotate-left" (click)="cancelar()" type="reset"></i>
       </h3>
@@ -115,7 +115,7 @@
               <div class="table">
                 <tr>
                   <h3>{{experiencialaboral.position}}</h3>
-                  <td *ngIf="isAdmin"><i (click)="actualizarExperienciaLaboral(experiencialaboral)" (click)=setDisplay()
+                  <td *ngIf="isAdmin"><i (click)="actualizarExperienciaLaboral(experiencialaboral)"
                       class="fa-regular fa-pen-to-square text-info" data-bs-toggle="modal" data-bs-target="#experiencialaboralModal"></i></td>
                   <td *ngIf="isAdmin"><i (click)="borrarExperienciaLaboral(experiencialaboral.id!)"
                       class="fa-regular fa-trash-can text-danger"></i></td>

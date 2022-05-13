@@ -21,7 +21,6 @@ import { TokenService } from 'src/app/servicios/token.service';
   export class SkillsComponent implements OnInit {
     skillLista?:Skill[];
     skill:Skill = { id: 0, skillname: '', levelname: '', levelnumber: 0, skilltype: '', skilldescription: '', persona: 0 }
-    isShow = true;
     accion = 'Agregar';
     form: FormGroup;
     id: number | undefined;
@@ -42,15 +41,7 @@ import { TokenService } from 'src/app/servicios/token.service';
       this.obtenerSkill();
       this.isAdmin = this.tokenService.isAdmin();
     }
-  
-    toggleDisplay() {
-      this.isShow = !this.isShow;
-    }
-  
-    setDisplay() {
-      this.isShow = false;
-    }
-  
+
     obtenerSkill(){
       this.skillsService.obtenerSkill().subscribe(skill => {
         console.log(skill);

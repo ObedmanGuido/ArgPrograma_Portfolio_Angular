@@ -13,7 +13,6 @@ import { ToastrService } from 'ngx-toastr';
 export class PersonaComponent implements OnInit {
   persona:Persona = { id: 0, name: '', surname: '', profilepicture: '', title:'', position:'', bannerpicture:'', aboutpersona:'',
   address:'', dateofbirth: new(Date), telephone: '', email: '', skills: [], educacion: [], experiencia_laboral: [], proyecto: [], usuario: 0 };
-  isShow = true;
   form: FormGroup;
   id: number | undefined;
   authority!:string;
@@ -38,10 +37,6 @@ export class PersonaComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerPersona();
     this.isAdmin = this.tokenService.isAdmin();
-  }
-
-  toggleDisplay() {
-    this.isShow = !this.isShow;
   }
 
   obtenerPersona(){
@@ -98,7 +93,6 @@ export class PersonaComponent implements OnInit {
     this.form.reset();
         this.id = 1;
         this.obtenerPersona();
-        this.isShow = !this.isShow
   }
 
   get Name(){

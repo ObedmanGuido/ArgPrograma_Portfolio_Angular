@@ -13,7 +13,6 @@ export class ProyectoComponent implements OnInit {
   proyectoLista?:Proyecto[];
   proyecto:Proyecto = { id: 0, projectname: '', creationdate: new(Date), projectdescription: '',
     projectlink: '', image1: '', image2: '', image3: '', video: '', persona: 0 };
-  isShow = true;
   accion = 'Agregar';
   form: FormGroup;
   id: number | undefined;
@@ -39,14 +38,6 @@ export class ProyectoComponent implements OnInit {
     const tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     document.body.appendChild(tag);
-  }
-
-  toggleDisplay() {
-    this.isShow = !this.isShow;
-  }
-
-  setDisplay() {
-    this.isShow = false;
   }
 
   obtenerProyecto(){

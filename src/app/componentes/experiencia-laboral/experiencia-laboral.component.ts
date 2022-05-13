@@ -25,7 +25,6 @@ export class ExperienciaLaboralComponent implements OnInit {
   experiencialaboralLista?:ExperienciaLaboral[];
   experiencialaboral:ExperienciaLaboral = { id: 0, company: '', position: '', logo: '', startdate: new(Date), enddate: new(Date),
     workdescription: '', currentjob: false, persona:0 };
-  isShow = true;
   accion = 'Agregar';
   form: FormGroup;
   id: number | undefined;
@@ -47,14 +46,6 @@ export class ExperienciaLaboralComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerExperienciaLaboral();
     this.isAdmin = this.tokenService.isAdmin();
-  }
-
-  toggleDisplay() {
-    this.isShow = !this.isShow;
-  }
-
-  setDisplay() {
-    this.isShow = false;
   }
 
   obtenerExperienciaLaboral(){
