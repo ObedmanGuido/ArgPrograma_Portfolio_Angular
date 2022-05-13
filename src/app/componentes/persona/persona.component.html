@@ -27,13 +27,18 @@
         <div *ngIf="isAdmin">
             <button class="btn" style="float: right;">
                 <a class="btn-right"><i (click)="actualizarPersona(persona)" (click)=toggleDisplay()
-                        class="fas fa-tools edit-btn"></i></a>
+                        class="fas fa-tools edit-btn" data-bs-toggle="modal" data-bs-target="#personaModal"></i></a>
             </button>
             <h3>Editar persona</h3>
-            <div *ngIf="!isShow">
-                <div class="col-lg-11">
-                    <div class="card">
-                        <div class="card-body">
+            <div class="modal fade" id="personaModal" tabindex="-1" role="dialog" aria-labelledby="personaModalLabel">
+                <div class="modal-dialog modal-xl" role="document" style="width: 100%; max-width: 1500px">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div style="flex-direction: column-start;">
+                                <h3 class="modal-title" id="personaModalLabel">Editando persona</h3>
+                            </div>
+                        </div>
+                        <div class="modal-body">
                             <form [formGroup]="form" (ngSubmit)="editarPersona()">
                                 <div class="input-group mb-3">
                                     <label class="input-group-text">Nombre</label>
@@ -136,9 +141,9 @@
                                     </div>
                                 </div>
                                 <div class="d-grip gap-2">
-                                    <button type="submit" class="btn btn-success btn-lg" (click)="editarPersona()">Aceptar</button>
-                                    <button class="btn btn-danger btn-lg"
-                                        (click)="cancelar()">Cancelar</button>
+                                    <button type="submit" class="btn btn-success btn-lg" [disabled]="!form.valid" data-bs-dismiss="modal">Aceptar</button>
+                                    &nbsp;
+                                    <button type="reset" class="btn btn-danger btn-lg" (click)="cancelar()" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
                                 </div>
                             </form>
                         </div>

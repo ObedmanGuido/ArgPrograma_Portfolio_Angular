@@ -6,14 +6,20 @@
     </div>
     <div *ngIf="isAdmin">
       <h3>Agregar experiencia laboral
-        <i (click)=toggleDisplay() class="fa-solid fa-plus add-btn"></i>
+        <i (click)=toggleDisplay() class="fa-solid fa-plus add-btn" data-bs-toggle="modal" data-bs-target="#experiencialaboralModal"></i>
         <br>Modo: {{accion}}
+        <br>Resetear modo <i class="fa-solid fa-rotate-left" (click)="cancelar()" type="reset"></i>
       </h3>
-      <div *ngIf="!isShow">
-        <div class="col-lg-11">
-          <div class="card">
-            <div class="card-body">
-              <p>Cada experiencia laboral que se agrega, queda primera en la lista.</p>
+      <div class="modal fade" id="experiencialaboralModal" tabindex="-1" role="dialog" aria-labelledby="experiencialaboralModalLabel">
+        <div class="modal-dialog modal-xl" role="document" style="width: 100%; max-width: 1500px">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div style="flex-direction: column-start;">
+                <h3 class="modal-title" id="experiencialaboralModalLabel">Modo: {{accion}}</h3>
+                <p class="modal-subtitle">Cada experiencia laboral que se agrega, queda primera en la lista.</p>
+              </div>
+            </div>
+            <div class="modal-body">
               <form [formGroup]="form" (ngSubmit)="crearExperienciaLaboral()">
                 <div class="input-group mb-3">
                   <label class="input-group-text">Empresa</label>
@@ -88,8 +94,9 @@
                   </div>
                 </div>
                 <div class="d-grip gap-2">
-                  <button type="submit" class="btn btn-success btn-lg">Aceptar</button>
-                  <button type="reset" class="btn btn-danger btn-lg" (click)="cancelar()">Cancelar</button>
+                  <button type="submit" class="btn btn-success btn-lg" [disabled]="!form.valid" data-bs-dismiss="modal">Aceptar</button>
+                  &nbsp;
+                  <button type="reset" class="btn btn-danger btn-lg" (click)="cancelar()" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
                 </div>
               </form>
             </div>
@@ -109,7 +116,7 @@
                 <tr>
                   <h3>{{experiencialaboral.position}}</h3>
                   <td *ngIf="isAdmin"><i (click)="actualizarExperienciaLaboral(experiencialaboral)" (click)=setDisplay()
-                      class="fa-regular fa-pen-to-square text-info"></i></td>
+                      class="fa-regular fa-pen-to-square text-info" data-bs-toggle="modal" data-bs-target="#experiencialaboralModal"></i></td>
                   <td *ngIf="isAdmin"><i (click)="borrarExperienciaLaboral(experiencialaboral.id!)"
                       class="fa-regular fa-trash-can text-danger"></i></td>
                 </tr>

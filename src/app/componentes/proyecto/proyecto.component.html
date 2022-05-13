@@ -6,14 +6,20 @@
         </div>
         <div *ngIf="isAdmin">
             <h3>Agregar o editar proyecto
-                <i (click)=toggleDisplay() class="fa-solid fa-plus add-btn"></i>
+                <i (click)=toggleDisplay() class="fa-solid fa-plus add-btn" data-bs-toggle="modal" data-bs-target="#proyectoModal"></i>
                 <br>Modo: {{accion}}
+                <br>Resetear modo <i class="fa-solid fa-rotate-left" (click)="cancelar()" type="reset"></i>
             </h3>
-            <div *ngIf="!isShow">
-                <div class="col-lg-11">
-                    <div class="card">
-                        <div class="card-body">
-                            <p>Cada proyecto que se agrega, queda primero en la lista.</p>
+            <div class="modal fade" id="proyectoModal" tabindex="-1" role="dialog" aria-labelledby="proyectoModalLabel">
+                <div class="modal-dialog modal-xl" role="document" style="width: 100%; max-width: 1500px">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div style="flex-direction: column-start;">
+                                <h3 class="modal-title" id="proyectoModalLabel">Modo: {{accion}}</h3>
+                                <p class="modal-subtitle">Cada proyecto que se agrega, queda primero en la lista.</p>
+                            </div>
+                        </div>
+                        <div class="modal-body">
                             <form [formGroup]="form" (ngSubmit)="crearProyecto()">
                                 <div class="input-group mb-3">
                                     <label class="input-group-text">Nombre del proyecto</label>
@@ -77,9 +83,9 @@
                                         placeholder="ID del video en Youtube">
                                 </div>
                                 <div class="d-grip gap-2">
-                                    <button type="submit" class="btn btn-success btn-lg">Aceptar</button>
-                                    <button type="reset" class="btn btn-danger btn-lg"
-                                        (click)="cancelar()">Cancelar</button>
+                                    <button type="submit" class="btn btn-success btn-lg" [disabled]="!form.valid" data-bs-dismiss="modal">Aceptar</button>
+                                    &nbsp;
+                                    <button type="reset" class="btn btn-danger btn-lg" (click)="cancelar()" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
                                 </div>
                             </form>
                         </div>
@@ -96,7 +102,7 @@
                                 <tr>
                                     <h3>{{proyecto.projectname}}</h3>
                                     <td *ngIf="isAdmin"><i (click)="actualizarProyecto(proyecto)"
-                                            (click)=setDisplay() class="fa-regular fa-pen-to-square text-info"></i></td>
+                                            (click)=setDisplay() class="fa-regular fa-pen-to-square text-info" data-bs-toggle="modal" data-bs-target="#proyectoModal"></i></td>
                                     <td *ngIf="isAdmin"><i (click)="borrarProyecto(proyecto.id!)"
                                             class="fa-regular fa-trash-can text-danger"></i></td>
                                 </tr>

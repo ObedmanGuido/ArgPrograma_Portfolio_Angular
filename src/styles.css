@@ -38,7 +38,7 @@ img {
 .fas + p {
     clear: left;
 }
-.edit-btn {
+.edit-btn, .add-btn, .fa-rotate-left {
     background-color: black;
     border: none;
     color: red;
@@ -47,19 +47,7 @@ img {
     cursor: pointer;
     border-radius: 50%;
 }
-.edit-btn:hover{
-    color: blue;
-}
-.add-btn, .fa-rotate-left {
-    background-color: black;
-    border: none;
-    color: red;
-    padding: 10px;
-    font-size: 20px;
-    cursor: pointer;
-    border-radius: 50%;
-}
-.add-btn:hover{
+.edit-btn:hover, .add-btn:hover, .fa-rotate-left:hover{
     color: blue;
 }
 .section1 {

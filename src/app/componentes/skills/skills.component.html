@@ -6,14 +6,20 @@
     </div>
     <div *ngIf="isAdmin">
       <h3>Agregar o editar skill
-        <i (click)=toggleDisplay() class="fa-solid fa-plus add-btn"></i>
+        <i (click)=toggleDisplay() class="fa-solid fa-plus add-btn" data-bs-toggle="modal" data-bs-target="#skillModal"></i>
         <br>Modo: {{accion}}
+        <br>Resetear modo <i class="fa-solid fa-rotate-left" (click)="cancelar()" type="reset"></i>
       </h3>
-      <div *ngIf="!isShow">
-        <div class="col-lg-11">
-          <div class="card">
-            <div class="card-body">
-              <p>Cada skill que se agrega, queda último en la lista.</p>
+      <div class="modal fade" id="skillModal" tabindex="-1" role="dialog" aria-labelledby="skillModalLabel">
+        <div class="modal-dialog modal-xl" role="document" style="width: 100%; max-width: 1500px">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div style="flex-direction: column-start;">
+                <h3 class="modal-title" id="skillModalLabel">Modo: {{accion}}</h3>
+                <p class="modal-subtitle">Cada skill que se agrega, queda último en la lista.</p>
+              </div>
+            </div>
+            <div class="modal-body">
               <form [formGroup]="form" (ngSubmit)="crearSkill()">
                 <div class="input-group mb-3">
                   <label class="input-group-text">Nombre del skill</label>
@@ -69,8 +75,9 @@
                   <input formControlName="skilldescription" type="text" class="form-control" placeholder="Descripción del skill">
                 </div>
                 <div class="d-grip gap-2">
-                  <button type="submit" class="btn btn-success btn-lg">Aceptar</button>
-                  <button type="reset" class="btn btn-danger btn-lg" (click)="cancelar()">Cancelar</button>
+                  <button type="submit" class="btn btn-success btn-lg" [disabled]="!form.valid" data-bs-dismiss="modal">Aceptar</button>
+                  &nbsp;
+                  <button type="reset" class="btn btn-danger btn-lg" (click)="cancelar()" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
                 </div>
               </form>
             </div>
@@ -87,7 +94,7 @@
                 <tr>
                   <h3>{{skill.skillname}}</h3>
                   <td *ngIf="isAdmin"><i (click)="actualizarSkill(skill)" (click)=setDisplay()
-                      class="fa-regular fa-pen-to-square text-info"></i></td>
+                      class="fa-regular fa-pen-to-square text-info" data-bs-toggle="modal" data-bs-target="#skillModal"></i></td>
                   <td *ngIf="isAdmin"><i (click)="borrarSkill(skill.id!)" class="fa-regular fa-trash-can text-danger"></i></td>
                 </tr>
                 <p>Nivel: {{skill.levelname}}</p>
