@@ -50,7 +50,7 @@ img {
 .edit-btn:hover{
     color: blue;
 }
-.add-btn {
+.add-btn, .fa-rotate-left {
     background-color: black;
     border: none;
     color: red;
