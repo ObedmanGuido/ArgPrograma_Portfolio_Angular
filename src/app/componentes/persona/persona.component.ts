@@ -50,7 +50,7 @@ export class PersonaComponent implements OnInit {
       this.persona=persona;
     }, error => {
       console.log(error);
-      this.toastr.error('El server no se inicializó a tiempo, refresque la página. El error según consola sería: ' + error, 'Fail', {timeOut: 1800000, positionClass: 'toast-top-center'});
+      this.toastr.error('El server no se inicializó a tiempo, refresque la página.', 'Fail', {timeOut: 1800000, positionClass: 'toast-top-center'});
     })
   }
 
