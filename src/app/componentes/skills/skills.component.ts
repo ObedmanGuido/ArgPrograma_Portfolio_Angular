@@ -20,7 +20,7 @@ import { TokenService } from 'src/app/servicios/token.service';
   } Versión previa usando un JSON.*/
   export class SkillsComponent implements OnInit {
     skillLista?:Skill[];
-    skill:Skill = { id: 0, skillname: '', levelname: '', levelnumber: 0, skilltype: '', skilldescription: '', persona: 0 }
+    skill:Skill = { id: 0, skillname: '', levelname: '', levelnumber: 0, skilltype: '', skilldescription: '', persona: 0 };
     accion = 'Agregar';
     form: FormGroup;
     id: number | undefined;
@@ -48,7 +48,7 @@ import { TokenService } from 'src/app/servicios/token.service';
         this.skillLista=skill;
       }, error => {
         console.log(error)
-      })
+      });
     }
   
     crearSkill() {

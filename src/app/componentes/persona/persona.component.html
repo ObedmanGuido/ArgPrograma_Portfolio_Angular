@@ -16,7 +16,7 @@
         <i class="fas fa-user"></i>
         <h2 class="section-header">Acerca de</h2>
         <div class="table">
-            <tr><strong>{{persona.position}} viviendo en {{persona.address}}</strong></tr>
+            <tr><strong>{{persona.position}} viviendo en {{persona.provincia?.provincename}}</strong></tr>
             <tr><strong>Fecha de nacimiento: {{persona.dateofbirth | date:"dd 'de' MMMM 'de' yyyy"}}</strong></tr>
             <tr><strong>Teléfono: {{persona.telephone}}</strong></tr>
             <tr><strong>Email: {{persona.email}}</strong></tr>
@@ -101,14 +101,9 @@
                                     </div>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <label class="input-group-text">Dirección</label>
-                                    <input formControlName="address" type="text" class="form-control" placeholder="Dirección"
-                                        [ngClass]="{'is-invalid':Address?.errors && Address?.touched, 'is-valid':!Address?.errors && Address?.touched}">
-                                    <div *ngIf="Address?.errors && Address?.touched">
-                                        <p *ngIf="Address?.hasError('required')" class="text-danger" style="background-color: black;">
-                                            Ponga una dirección, un barrio, una ciudad, una provincia o un país.
-                                        </p>
-                                    </div>
+                                    <select formControlName="provincia">
+                                        <option *ngFor="let provincia of provinciaLista" [value]="provincia.id">{{provincia.provincename}}</option>
+                                    </select>
                                 </div>
                                 <div class="input-group mb-3">
                                     <label class="input-group-text">Fecha de nacimiento</label>
@@ -141,7 +136,7 @@
                                     </div>
                                 </div>
                                 <div class="d-grip gap-2">
-                                    <button type="submit" class="btn btn-success btn-lg" [disabled]="!form.valid" data-bs-dismiss="modal">Aceptar</button>
+                                    <button type="submit" class="btn btn-success btn-lg" data-bs-dismiss="modal">Aceptar</button>
                                     &nbsp;
                                     <button type="reset" class="btn btn-danger btn-lg" (click)="cancelar()" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
                                 </div>

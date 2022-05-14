@@ -1,5 +1,6 @@
 import { Educacion } from "./educacion.model";
 import { ExperienciaLaboral } from "./experiencia-laboral.model";
+import { Provincia } from "./provincia.model";
 import { Proyecto } from "./proyecto.model";
 import { Skill } from "./skill.model";
 
@@ -12,7 +13,6 @@ export interface Persona {
     position: string;
     bannerpicture: string;
     aboutpersona: string;
-    address: string;
     dateofbirth: Date;
     telephone: string;
     email: string;
@@ -21,4 +21,5 @@ export interface Persona {
     experiencia_laboral?: ExperienciaLaboral[];
     proyecto?: Proyecto[];
     usuario?: number;
+    provincia?: Provincia;
 }

@@ -4,6 +4,7 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { TokenService } from 'src/app/servicios/token.service';
 import { ToastrService } from 'ngx-toastr';
+import { Provincia } from 'src/app/modelos/provincia.model';
 
 @Component({
   selector: 'app-persona',
@@ -12,11 +13,13 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class PersonaComponent implements OnInit {
   persona:Persona = { id: 0, name: '', surname: '', profilepicture: '', title:'', position:'', bannerpicture:'', aboutpersona:'',
-  address:'', dateofbirth: new(Date), telephone: '', email: '', skills: [], educacion: [], experiencia_laboral: [], proyecto: [], usuario: 0 };
+    dateofbirth: new(Date), telephone: '', email: '', skills: [], educacion: [], experiencia_laboral: [], proyecto: [], usuario: 0, provincia: {id: 0, provincename: ''} };
   form: FormGroup;
   id: number | undefined;
   authority!:string;
   isAdmin = false;
+  provincia:Provincia = { id: 0, provincename: '' };
+  provinciaLista?:Provincia[];
 
   constructor(private portfolioService:PortfolioService, private fb:FormBuilder, private tokenService: TokenService, private toastr: ToastrService) {
     this.form = this.fb.group({
@@ -30,12 +33,14 @@ export class PersonaComponent implements OnInit {
       address: ['',[Validators.required]],
       dateofbirth: [0,[Validators.required]],
       telephone: ['',[Validators.required]],
-      email:['',[Validators.required,Validators.email]]
+      email:['',[Validators.required,Validators.email]],
+      provincia:['']
     })
   }
 
   ngOnInit(): void {
     this.obtenerPersona();
+    this.obtenerProvincias();
     this.isAdmin = this.tokenService.isAdmin();
   }
 
@@ -49,6 +54,15 @@ export class PersonaComponent implements OnInit {
     })
   }
 
+  obtenerProvincias(){
+    this.portfolioService.obtenerProvincias().subscribe(provincia =>{
+      console.log(provincia);
+      this.provinciaLista=provincia;
+    }, error =>{
+      console.log(error)
+    });
+  }
+
   editarPersona() {
     const persona: Persona = {
       title: this.form.get('title')?.value,
@@ -58,15 +72,16 @@ export class PersonaComponent implements OnInit {
       position: this.form.get('position')?.value,
       name: this.form.get('name')?.value,
       surname: this.form.get('surname')?.value,
-      address: this.form.get('address')?.value,
       dateofbirth: this.form.get('dateofbirth')?.value,
       telephone: this.form.get('telephone')?.value,
-      email: this.form.get('email')?.value
+      email: this.form.get('email')?.value,
+      provincia: this.provinciaLista!.find(p=>p.id==this.form.get('provincia')?.value) //Mandar el objeto de provincia al backend
     }
-
+    console.log(persona)
     persona.id = this.id;
     this.portfolioService.actualizarPersona(persona).subscribe(data => {
       this.obtenerPersona();
+      console.log(data)
     }, error => {
       console.log(error);
     })
@@ -82,10 +97,10 @@ export class PersonaComponent implements OnInit {
       position: persona.position,
       bannerpicture: persona.bannerpicture,
       aboutpersona: persona.aboutpersona,
-      address: persona.address,
       dateofbirth: persona.dateofbirth,
       telephone: persona.telephone,
-      email: persona.email
+      email: persona.email,
+      provincia: persona.provincia?.id
     })
   }
 
@@ -114,10 +129,6 @@ export class PersonaComponent implements OnInit {
   get Aboutpersona(){
     return this.form.get('aboutpersona');
   }
-
-  get Address(){
-    return this.form.get('address');
-  }
   
   get Dateofbirth(){
     return this.form.get('dateofbirth');
@@ -129,5 +140,9 @@ export class PersonaComponent implements OnInit {
   
   get Email(){
     return this.form.get('email');
+  }
+
+  get Provincia(){
+    return this.form.get('provincia')
   }
 }
