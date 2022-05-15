@@ -32,18 +32,6 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-lg 3">
-                    <div class="input-group mb-3">
-                      <label class="input-group-text">Nivel del skill en palabras</label>
-                      <input formControlName="levelname" type="text" class="form-control" placeholder="Nada, principiante, intermedio, avanzado, experto"
-                        [ngClass]="{'is-invalid':Levelname?.errors && Levelname?.touched, 'is-valid':!Levelname?.errors && Levelname?.touched}">
-                      <div *ngIf="Levelname?.errors && Levelname?.touched">
-                          <p *ngIf="Levelname?.hasError('required')" class="text-danger" style="background-color: black;">
-                            Ponga el nivel del skill en palabras.
-                          </p>
-                      </div>
-                    </div>
-                  </div>
                   <div class="col-lg-3">
                     <div class="input-group mb-3">
                       <label class="input-group-text">Nivel del skill en números</label>
@@ -57,17 +45,17 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-3">
-                    <div class="input-group mb-3">
-                      <label class="input-group-text">Tipo de skill</label>
-                      <input formControlName="skilltype" type="text" class="form-control" placeholder="Tipo de skill"
-                        [ngClass]="{'is-invalid':Skilltype?.errors && Skilltype?.touched, 'is-valid':!Skilltype?.errors && Skilltype?.touched}">
-                      <div *ngIf="Skilltype?.errors && Skilltype?.touched">
-                          <p *ngIf="Skilltype?.hasError('required')" class="text-danger" style="background-color: black;">
-                            Ponga el tipo de skill.
-                          </p>
-                      </div>
-                    </div>
+                  <div class="input-group mb-3">
+                    <label class="input-group-text">Tipo de skill</label>
+                    <select formControlName="skill_tipo">
+                        <option *ngFor="let skill_tipo of skill_tipoLista" [value]="skill_tipo.id" placeholder="Tipo de skill"
+                        [ngClass]="{'is-invalid':Skill_tipo?.errors && Skill_tipo?.touched, 'is-valid':!Skill_tipo?.errors && Skill_tipo?.touched}">
+                        {{skill_tipo.typename}}
+                      </option>
+                    </select>
+                    <p *ngIf="Skill_tipo?.hasError('required')" class="text-danger" style="background-color: black;">
+                      Ponga el tipo de skill.
+                    </p>
                   </div>
                 </div>
                 <div class="input-group mb-3">
@@ -97,15 +85,14 @@
                       class="fa-regular fa-pen-to-square text-info" data-bs-toggle="modal" data-bs-target="#skillModal"></i></td>
                   <td *ngIf="isAdmin"><i (click)="borrarSkill(skill.id!)" class="fa-regular fa-trash-can text-danger"></i></td>
                 </tr>
-                <p>Nivel: {{skill.levelname}}</p>
               </div>
               <div class="progress">
                 <mat-progress-bar mode="determinate" value="{{skill.levelnumber}}" style="height: 20px;">
-                  <p>{{skill.levelname}}</p>
+                  <p>Nivel: {{skill.levelnumber}}</p>
                 </mat-progress-bar>
-                <div style="position: absolute; color: white;">{{skill.levelnumber}}%</div>
+                <div style="position: absolute; color: black;">&nbsp;{{skill.levelnumber}}%</div>
               </div>
-              <col>{{skill.skilltype}}
+              <col>{{skill.skill_tipo?.typename}}
               <col>{{skill.skilldescription}}
             </div>
           </div>

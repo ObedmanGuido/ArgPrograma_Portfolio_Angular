@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, timeout } from 'rxjs';
+import { SkillTipo } from '../modelos/skill-tipo.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,9 @@ export class SkillsService {
 
   actualizarSkill(id: number, skill: any): Observable<any> {
     return this.http.put(this.URL+'skill/actualizar/'+id, skill)
+  }
+
+  obtenerSkillTipo():Observable<SkillTipo[]>{
+    return this.http.get<SkillTipo[]>(this.URL+'skill/tipo/lista').pipe(timeout(1800000))
   }
 }

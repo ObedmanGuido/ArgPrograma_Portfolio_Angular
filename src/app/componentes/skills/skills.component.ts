@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SkillTipo } from 'src/app/modelos/skill-tipo.model';
 import { Skill } from 'src/app/modelos/skill.model';
 import { SkillsService } from 'src/app/servicios/skills.service';
 import { TokenService } from 'src/app/servicios/token.service';
@@ -20,25 +21,27 @@ import { TokenService } from 'src/app/servicios/token.service';
   } Versión previa usando un JSON.*/
   export class SkillsComponent implements OnInit {
     skillLista?:Skill[];
-    skill:Skill = { id: 0, skillname: '', levelname: '', levelnumber: 0, skilltype: '', skilldescription: '', persona: 0 };
+    skill:Skill = { id: 0, skillname: '', levelnumber: 0, skilldescription: '', skill_tipo: {id: 0, typename: ''}, persona: 0 };
     accion = 'Agregar';
     form: FormGroup;
     id: number | undefined;
     authority!:string;
     isAdmin = false;
+    skill_tipo:SkillTipo = { id: 0, typename: '' };
+    skill_tipoLista?:SkillTipo[];
 
     constructor(private skillsService:SkillsService, private fb:FormBuilder, private tokenService: TokenService) {
       this.form = this.fb.group({
         skillname: ['',[Validators.required]],
-        levelname:['',[Validators.required]],
         levelnumber: [0,[Validators.required,Validators.min(0),Validators.max(100)]],
-        skilltype: ['',[Validators.required]],
-        skilldescription: ['']
+        skilldescription: [''],
+        skill_tipo: ['',[Validators.required]]
       })
     }
   
     ngOnInit(): void {
       this.obtenerSkill();
+      this.obtenerSkillTipo();
       this.isAdmin = this.tokenService.isAdmin();
     }
 
@@ -50,14 +53,22 @@ import { TokenService } from 'src/app/servicios/token.service';
         console.log(error)
       });
     }
+
+    obtenerSkillTipo(){
+      this.skillsService.obtenerSkillTipo().subscribe(skill_tipo => {
+        console.log(skill_tipo);
+        this.skill_tipoLista=skill_tipo;
+      }, error => {
+        console.log(error)
+      });
+    }
   
     crearSkill() {
       const skill: Skill = {
         skillname: this.form.get('skillname')?.value,
-        levelname: this.form.get('levelname')?.value,
         levelnumber: this.form.get('levelnumber')?.value,
-        skilltype: this.form.get('skilltype')?.value,
-        skilldescription: this.form.get('skilldescription')?.value
+        skilldescription: this.form.get('skilldescription')?.value,
+        skill_tipo: this.skill_tipoLista!.find(st=>st.id==this.form.get('skill_tipo')?.value)
       }
   
       if(this.id == undefined) {
@@ -93,10 +104,9 @@ import { TokenService } from 'src/app/servicios/token.service';
       this.id = skill.id;
       this.form.patchValue({
         skillname: skill.skillname,
-        levelname: skill.levelname,
         levelnumber: skill.levelnumber,
-        skilltype: skill.skilltype,
-        skilldescription: skill.skilldescription
+        skilldescription: skill.skilldescription,
+        skill_tipo: skill.skill_tipo?.id
       })
     }
   
@@ -111,15 +121,15 @@ import { TokenService } from 'src/app/servicios/token.service';
       return this.form.get('skillname');
     }
   
-    get Levelname(){
-      return this.form.get('levelname');
-    }
-  
     get Levelnumber(){
       return this.form.get('levelnumber');
     }
   
-    get Skilltype(){
-      return this.form.get('skilltype');
+    get Skilldescription(){
+      return this.form.get('skilldescription');
+    }
+
+    get Skill_tipo(){
+      return this.form.get('skill_tipo')
     }
 }

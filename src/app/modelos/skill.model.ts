@@ -1,9 +1,10 @@
+import { SkillTipo } from "./skill-tipo.model";
+
 export interface Skill {
     id?: number;
     skillname: string;
-    levelname: string;
     levelnumber: number;
-    skilltype: string;
     skilldescription: string;
+    skill_tipo?: SkillTipo;
     persona?: number;
 }
