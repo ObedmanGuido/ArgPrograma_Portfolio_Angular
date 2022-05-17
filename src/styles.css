@@ -22,13 +22,6 @@ img {
 .fa-linkedin {
     color: #2867B2;
 }
-.fa-square {
-    color: white;
-    font-size: 30px;
-}
-.fa-stack {
-    font-size: 35px;
-}
 .fas {
     float: left;
     font-size: 25px;
@@ -123,4 +116,20 @@ ul {
     margin-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
+}
+@media screen and (max-width: 900px){
+    .font-fluid :is(h2){font-size: 25px !important;}
+    .font-fluid :is(h3){font-size: 20px !important;}
+    .font-fluid :is(h5){font-size: 15px !important;}
+    .font-fluid :is(.data-container){font-size: 12px !important;}
+    .font-fluid :is(.fas){font-size: 20px !important;}
+    .font-fluid :is(strong){font-size: 12px !important;}
+}
+@media screen and (max-width: 600px){
+    .font-fluid :is(h2){font-size: 20px !important;}
+    .font-fluid :is(h3){font-size: 15px !important;}
+    .font-fluid :is(h5){font-size: 12px !important;}
+    .font-fluid :is(.data-container){font-size: 10px !important;}
+    .font-fluid :is(.fas){font-size: 15px !important;}
+    .font-fluid :is(strong){font-size: 10px !important;}
 }
