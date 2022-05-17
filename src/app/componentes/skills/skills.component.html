@@ -73,150 +73,34 @@
         </div>
       </div>
     </div>
-
-    <!--Idiomas-->
     <div>
-      <h3>Idiomas:</h3>
-      <ul class="items-list row justify-content-start" style="padding: 0px;">
-        <ng-container *ngFor="let skill of skillLista">
-          <li *ngIf="skill.skill_tipo?.typename == 'Idioma'" class="col-4">
-            <div class="data-container list-info">
-              <div class="table">
-                <tr>
-                  <h5>{{skill.skillname}}</h5>
-                  <td *ngIf="isAdmin"><i (click)="actualizarSkill(skill)" class="fa-regular fa-pen-to-square text-info"
-                      data-bs-toggle="modal" data-bs-target="#skillModal"></i></td>
-                  <td *ngIf="isAdmin"><i (click)="borrarSkill(skill.id!)" class="fa-regular fa-trash-can text-danger"></i></td>
-                </tr>
+      <ng-container *ngFor="let skillTipo of skill_tipoLista">
+        <h3>{{skillTipo.typename}}</h3>
+        <ul class="items-list row justify-content-start" style="padding: 0px;">
+          <ng-container *ngFor="let skill of skillLista">
+            <li *ngIf="skill.skill_tipo?.typename == skillTipo.typename" class="col-4">
+              <div class="data-container list-info">
+                <div class="table">
+                  <tr>
+                    <h5>{{skill.skillname}}</h5>
+                    <td *ngIf="isAdmin"><i (click)="actualizarSkill(skill)" class="fa-regular fa-pen-to-square text-info"
+                        data-bs-toggle="modal" data-bs-target="#skillModal"></i></td>
+                    <td *ngIf="isAdmin"><i (click)="borrarSkill(skill.id!)" class="fa-regular fa-trash-can text-danger"></i></td>
+                  </tr>
+                </div>
+                <div class="progress">
+                  <mat-progress-bar mode="determinate" value="{{skill.levelnumber}}" style="height: 20px;">
+                    <p>Nivel: {{skill.levelnumber}}</p>
+                  </mat-progress-bar>
+                  <div style="position: absolute; color: black;">&nbsp;{{skill.levelnumber}}%</div>
+                </div>
+                <col>{{skill.skill_tipo?.typename}}
+                <col>{{skill.skilldescription}}
               </div>
-              <div class="progress">
-                <mat-progress-bar mode="determinate" value="{{skill.levelnumber}}" style="height: 20px;">
-                  <p>Nivel: {{skill.levelnumber}}</p>
-                </mat-progress-bar>
-                <div style="position: absolute; color: black;">&nbsp;{{skill.levelnumber}}%</div>
-              </div>
-              <col>{{skill.skill_tipo?.typename}}
-              <col>{{skill.skilldescription}}
-            </div>
-          </li>
-        </ng-container>
-      </ul>
-    </div>
-
-    <!--Programación y afines-->
-    <div>
-      <h3>Programación y afines</h3>
-      <ul class="items-list row justify-content-start" style="padding: 0px;">
-        <ng-container *ngFor="let skill of skillLista">
-          <li *ngIf="skill.skill_tipo?.typename == 'Programación y afines'" class="col-4">
-            <div class="data-container list-info">
-              <div class="table">
-                <tr>
-                  <h5>{{skill.skillname}}</h5>
-                  <td *ngIf="isAdmin"><i (click)="actualizarSkill(skill)" class="fa-regular fa-pen-to-square text-info"
-                      data-bs-toggle="modal" data-bs-target="#skillModal"></i></td>
-                  <td *ngIf="isAdmin"><i (click)="borrarSkill(skill.id!)" class="fa-regular fa-trash-can text-danger"></i></td>
-                </tr>
-              </div>
-              <div class="progress">
-                <mat-progress-bar mode="determinate" value="{{skill.levelnumber}}" style="height: 20px;">
-                  <p>Nivel: {{skill.levelnumber}}</p>
-                </mat-progress-bar>
-                <div style="position: absolute; color: black;">&nbsp;{{skill.levelnumber}}%</div>
-              </div>
-              <col>{{skill.skill_tipo?.typename}}
-              <col>{{skill.skilldescription}}
-            </div>
-          </li>
-        </ng-container>
-      </ul>
-    </div>
-
-    <!--Diseño-->
-    <div>
-      <h3>Diseño</h3>
-      <ul class="items-list row justify-content-start" style="padding: 0px;">
-        <ng-container *ngFor="let skill of skillLista">
-          <li *ngIf="skill.skill_tipo?.typename == 'Diseño'" class="col-4">
-            <div class="data-container list-info">
-              <div class="table">
-                <tr>
-                  <h5>{{skill.skillname}}</h5>
-                  <td *ngIf="isAdmin"><i (click)="actualizarSkill(skill)" class="fa-regular fa-pen-to-square text-info"
-                      data-bs-toggle="modal" data-bs-target="#skillModal"></i></td>
-                  <td *ngIf="isAdmin"><i (click)="borrarSkill(skill.id!)" class="fa-regular fa-trash-can text-danger"></i></td>
-                </tr>
-              </div>
-              <div class="progress">
-                <mat-progress-bar mode="determinate" value="{{skill.levelnumber}}" style="height: 20px;">
-                  <p>Nivel: {{skill.levelnumber}}</p>
-                </mat-progress-bar>
-                <div style="position: absolute; color: black;">&nbsp;{{skill.levelnumber}}%</div>
-              </div>
-              <col>{{skill.skill_tipo?.typename}}
-              <col>{{skill.skilldescription}}
-            </div>
-          </li>
-        </ng-container>
-      </ul>
-    </div>
-
-    <!--Habilidades sociales-->
-    <div>
-      <h3>Habilidades sociales</h3>
-      <ul class="items-list row justify-content-start" style="padding: 0px;">
-        <ng-container *ngFor="let skill of skillLista">
-          <li *ngIf="skill.skill_tipo?.typename == 'Habilidades sociales'" class="col-4">
-            <div class="data-container list-info">
-              <div class="table">
-                <tr>
-                  <h5>{{skill.skillname}}</h5>
-                  <td *ngIf="isAdmin"><i (click)="actualizarSkill(skill)" class="fa-regular fa-pen-to-square text-info"
-                      data-bs-toggle="modal" data-bs-target="#skillModal"></i></td>
-                  <td *ngIf="isAdmin"><i (click)="borrarSkill(skill.id!)" class="fa-regular fa-trash-can text-danger"></i></td>
-                </tr>
-              </div>
-              <div class="progress">
-                <mat-progress-bar mode="determinate" value="{{skill.levelnumber}}" style="height: 20px;">
-                  <p>Nivel: {{skill.levelnumber}}</p>
-                </mat-progress-bar>
-                <div style="position: absolute; color: black;">&nbsp;{{skill.levelnumber}}%</div>
-              </div>
-              <col>{{skill.skill_tipo?.typename}}
-              <col>{{skill.skilldescription}}
-            </div>
-          </li>
-        </ng-container>
-      </ul>
-    </div>
-
-    <!--Otros-->
-    <div>
-      <h3>Otros</h3>
-      <ul class="items-list row" style="padding: 0px;">
-        <ng-container *ngFor="let skill of skillLista">
-          <li *ngIf="skill.skill_tipo?.typename == 'Otros'" class="col-4">
-            <div class="data-container list-info">
-              <div class="table">
-                <tr>
-                  <h5>{{skill.skillname}}</h5>
-                  <td *ngIf="isAdmin"><i (click)="actualizarSkill(skill)" class="fa-regular fa-pen-to-square text-info"
-                      data-bs-toggle="modal" data-bs-target="#skillModal"></i></td>
-                  <td *ngIf="isAdmin"><i (click)="borrarSkill(skill.id!)" class="fa-regular fa-trash-can text-danger"></i></td>
-                </tr>
-              </div>
-              <div class="progress">
-                <mat-progress-bar mode="determinate" value="{{skill.levelnumber}}" style="height: 20px;">
-                  <p>Nivel: {{skill.levelnumber}}</p>
-                </mat-progress-bar>
-                <div style="position: absolute; color: black;">&nbsp;{{skill.levelnumber}}%</div>
-              </div>
-              <col>{{skill.skill_tipo?.typename}}
-              <col>{{skill.skilldescription}}
-            </div>
-          </li>
-        </ng-container>
-      </ul>
+            </li>
+          </ng-container>
+        </ul>
+      </ng-container>
     </div>
   </div>
 </div>
