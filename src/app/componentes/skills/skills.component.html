@@ -76,7 +76,7 @@
     <div>
       <ng-container *ngFor="let skillTipo of skill_tipoLista">
         <h3>{{skillTipo.typename}}</h3>
-        <ul class="items-list row justify-content-start" style="padding: 0px;">
+        <ul class="items-list row equal-cols justify-content-start" style="padding: 0px;">
           <ng-container *ngFor="let skill of skillLista">
             <li *ngIf="skill.skill_tipo?.typename == skillTipo.typename" class="col-4">
               <div class="data-container list-info">
