@@ -50,10 +50,10 @@
                   <div class="col-lg-3">
                     <div class="input-group mb-3">
                       <label class="input-group-text">Fecha de inicio</label>
-                      <input formControlName="startdate" type="date" class="form-control" placeholder="Fecha de inicio"
-                        [ngClass]="{'is-invalid':Startdate?.errors && Startdate?.touched, 'is-valid':!Startdate?.errors && Startdate?.touched}">
-                      <div *ngIf="Startdate?.errors && Startdate?.touched">
-                          <p *ngIf="Startdate?.hasError('required')" class="text-danger" style="background-color: black;">
+                      <input formControlName="startDate" type="date" class="form-control" placeholder="Fecha de inicio"
+                        [ngClass]="{'is-invalid':StartDate?.errors && StartDate?.touched, 'is-valid':!StartDate?.errors && StartDate?.touched}">
+                      <div *ngIf="StartDate?.errors && StartDate?.touched">
+                          <p *ngIf="StartDate?.hasError('required')" class="text-danger" style="background-color: black;">
                             Ponga la fecha de inicio.
                           </p>
                       </div>
@@ -62,10 +62,10 @@
                   <div class="col-lg-3">
                     <div class="input-group mb-3">
                       <label class="input-group-text">Fecha de fin</label>
-                      <input formControlName="enddate" type="date" class="form-control" placeholder="Fecha de fin"
-                        [ngClass]="{'is-invalid':Enddate?.errors && Enddate?.touched, 'is-valid':!Enddate?.errors && Enddate?.touched}">
-                      <div *ngIf="Enddate?.errors && Enddate?.touched">
-                          <p *ngIf="Enddate?.hasError('required')" class="text-danger" style="background-color: black;">
+                      <input formControlName="endDate" type="date" class="form-control" placeholder="Fecha de fin"
+                        [ngClass]="{'is-invalid':EndDate?.errors && EndDate?.touched, 'is-valid':!EndDate?.errors && EndDate?.touched}">
+                      <div *ngIf="EndDate?.errors && EndDate?.touched">
+                          <p *ngIf="EndDate?.hasError('required')" class="text-danger" style="background-color: black;">
                             Ponga la fecha de fin.
                           </p>
                       </div>
@@ -76,7 +76,7 @@
                       <div class="input-group-prepend">
                         <label class="input-group-text">
                           Trabajo actual (poner cualquier fecha en fecha de fin y marcar el checkbox)
-                          <input formControlName="currentjob" type="checkbox" class="form-check-input"
+                          <input formControlName="currentJob" type="checkbox" class="form-check-input"
                             placeholder="Trabajo actual">
                         </label>
                       </div>
@@ -85,10 +85,10 @@
                 </div>
                 <div class="input-group mb-3">
                   <label class="input-group-text">Descripción</label>
-                  <input formControlName="workdescription" type="text" class="form-control" placeholder="Descripción"
-                    [ngClass]="{'is-invalid':Workdescription?.errors && Workdescription?.touched, 'is-valid':!Workdescription?.errors && Workdescription?.touched}">
-                  <div *ngIf="Workdescription?.errors && Workdescription?.touched">
-                      <p *ngIf="Workdescription?.hasError('required')" class="text-danger" style="background-color: black;">
+                  <input formControlName="workDescription" type="text" class="form-control" placeholder="Descripción"
+                    [ngClass]="{'is-invalid':WorkDescription?.errors && WorkDescription?.touched, 'is-valid':!WorkDescription?.errors && WorkDescription?.touched}">
+                  <div *ngIf="WorkDescription?.errors && WorkDescription?.touched">
+                      <p *ngIf="WorkDescription?.hasError('required')" class="text-danger" style="background-color: black;">
                         Ponga la descripción.
                       </p>
                   </div>
@@ -122,13 +122,13 @@
                 </tr>
                 <h3>{{experiencialaboral.company}}</h3>
                 <tr>
-                  <h5 *ngIf="experiencialaboral.currentjob == false">
-                    <col>Desde el {{experiencialaboral.startdate | date:"d 'de' MMMM 'de' YYYY"}} hasta el {{experiencialaboral.enddate | date:"d 'de' MMMM 'de' YYYY"}}
+                  <h5 *ngIf="experiencialaboral.currentJob == false">
+                    <col>Desde el {{experiencialaboral.startDate | date:"d 'de' MMMM 'de' YYYY"}} hasta el {{experiencialaboral.endDate | date:"d 'de' MMMM 'de' YYYY"}}
                   </h5>
-                  <h5 *ngIf="experiencialaboral.currentjob == true">
-                    <col>Desde el {{experiencialaboral.startdate | date:"d 'de' MMMM 'de' YYYY"}} hasta la actualidad
+                  <h5 *ngIf="experiencialaboral.currentJob == true">
+                    <col>Desde el {{experiencialaboral.startDate | date:"d 'de' MMMM 'de' YYYY"}} hasta la actualidad
                   </h5>
-                  <col><p>{{experiencialaboral.workdescription}}</p>
+                  <col><p>{{experiencialaboral.workDescription}}</p>
                 </tr>
               </div>
             </div>

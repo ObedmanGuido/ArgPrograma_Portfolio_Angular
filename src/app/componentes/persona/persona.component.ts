@@ -12,26 +12,26 @@ import { Provincia } from 'src/app/modelos/provincia.model';
   styleUrls: ['./persona.component.css']
 })
 export class PersonaComponent implements OnInit {
-  persona:Persona = { id: 0, name: '', surname: '', profilepicture: '', title:'', position:'', bannerpicture:'', aboutpersona:'',
-    dateofbirth: new(Date), telephone: '', email: '', skills: [], educacion: [], experiencia_laboral: [], proyecto: [], usuario: 0, provincia: {id: 0, provincename: ''} };
+  persona:Persona = { id: 0, name: '', surname: '', profilePicture: '', title:'', position:'', bannerPicture:'', aboutPersona:'',
+    dateOfBirth: new(Date), telephone: '', email: '', skills: [], educacion: [], experiencia_laboral: [], proyecto: [], usuario: 0, provincia: {id: 0, provinceName: ''} };
   form: FormGroup;
   id: number | undefined;
   authority!:string;
   isAdmin = false;
-  provincia:Provincia = { id: 0, provincename: '' };
+  provincia:Provincia = { id: 0, provinceName: '' };
   provinciaLista?:Provincia[];
 
   constructor(private portfolioService:PortfolioService, private fb:FormBuilder, private tokenService: TokenService, private toastr: ToastrService) {
     this.form = this.fb.group({
       name: ['',[Validators.required]],
       surname: ['',[Validators.required]],
-      profilepicture: [''],
+      profilePicture: [''],
       title:['',[Validators.required]],
       position: ['',[Validators.required]],
-      bannerpicture: [''],
-      aboutpersona: ['',[Validators.required]],
+      bannerPicture: [''],
+      aboutPersona: ['',[Validators.required]],
       address: ['',[Validators.required]],
-      dateofbirth: [0,[Validators.required]],
+      dateOfBirth: [0,[Validators.required]],
       telephone: ['',[Validators.required]],
       email:['',[Validators.required,Validators.email]],
       provincia:['']
@@ -46,17 +46,15 @@ export class PersonaComponent implements OnInit {
 
   obtenerPersona(){
     this.portfolioService.obtenerPersona().subscribe(persona =>{
-      console.log(persona);
       this.persona=persona;
     }, error => {
       console.log(error);
-      this.toastr.error('El server no se inicializó a tiempo, refresque la página.', 'Fail', {timeOut: 1800000, positionClass: 'toast-top-center'});
+      this.toastr.error('El server no se inicializó a tiempo o tuvo un error, refresque la página.', 'Fail', {timeOut: 1800000, positionClass: 'toast-top-center'});
     })
   }
 
   obtenerProvincias(){
     this.portfolioService.obtenerProvincias().subscribe(provincia =>{
-      console.log(provincia);
       this.provinciaLista=provincia;
     }, error =>{
       console.log(error)
@@ -66,22 +64,20 @@ export class PersonaComponent implements OnInit {
   editarPersona() {
     const persona: Persona = {
       title: this.form.get('title')?.value,
-      profilepicture: this.form.get('profilepicture')?.value,
-      bannerpicture: this.form.get('bannerpicture')?.value,
-      aboutpersona: this.form.get('aboutpersona')?.value,
+      profilePicture: this.form.get('profilePicture')?.value,
+      bannerPicture: this.form.get('bannerPicture')?.value,
+      aboutPersona: this.form.get('aboutPersona')?.value,
       position: this.form.get('position')?.value,
       name: this.form.get('name')?.value,
       surname: this.form.get('surname')?.value,
-      dateofbirth: this.form.get('dateofbirth')?.value,
+      dateOfBirth: this.form.get('dateOfBirth')?.value,
       telephone: this.form.get('telephone')?.value,
       email: this.form.get('email')?.value,
       provincia: this.provinciaLista!.find(p=>p.id==this.form.get('provincia')?.value) //Mandar el objeto de provincia al backend
     }
-    console.log(persona)
     persona.id = this.id;
     this.portfolioService.actualizarPersona(persona).subscribe(data => {
       this.obtenerPersona();
-      console.log(data)
     }, error => {
       console.log(error);
     })
@@ -92,12 +88,12 @@ export class PersonaComponent implements OnInit {
     this.form.patchValue({
       name: persona.name,
       surname: persona.surname,
-      profilepicture: persona.profilepicture,
+      profilePicture: persona.profilePicture,
       title: persona.title,
       position: persona.position,
-      bannerpicture: persona.bannerpicture,
-      aboutpersona: persona.aboutpersona,
-      dateofbirth: persona.dateofbirth,
+      bannerPicture: persona.bannerPicture,
+      aboutPersona: persona.aboutPersona,
+      dateOfBirth: persona.dateOfBirth,
       telephone: persona.telephone,
       email: persona.email,
       provincia: persona.provincia?.id
@@ -126,12 +122,12 @@ export class PersonaComponent implements OnInit {
     return this.form.get('position');
   }
 
-  get Aboutpersona(){
-    return this.form.get('aboutpersona');
+  get AboutPersona(){
+    return this.form.get('aboutPersona');
   }
   
-  get Dateofbirth(){
-    return this.form.get('dateofbirth');
+  get DateOfBirth(){
+    return this.form.get('dateOfBirth');
   }
   
   get Telephone(){

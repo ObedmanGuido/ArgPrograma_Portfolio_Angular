@@ -1,13 +1,13 @@
 export interface Educacion {
     id?: number;
-    schoolname: string;
+    schoolName: string;
     title: string;
     logo: string;
-    startdate: Date;
-    enddate: Date;
-    typeofschool: string;
-    studiesstatus: string;
-    educationdescription: string;
-    currenteducation: Boolean;
+    startDate: Date;
+    endDate: Date;
+    typeOfSchool: string;
+    studiesStatus: string;
+    educationDescription: string;
+    currentEducation: Boolean;
     persona?: number;
 }

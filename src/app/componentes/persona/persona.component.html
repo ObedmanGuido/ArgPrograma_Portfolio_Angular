@@ -1,10 +1,10 @@
 <div class="card mat-card" class="section1" id="profile">
-    <div><img [src]="persona.bannerpicture" alt="Banner from {{persona.bannerpicture}}" height="200"
+    <div><img [src]="persona.bannerPicture" alt="Banner from {{persona.bannerPicture}}" height="200"
             width="3000" class="image-fluid" id="banner"></div>
     <div id="info" style="padding: 0px 20px 20px 20px">
         <div class="row">
             <div class="col-2 container">
-                <img id="Foto-perfil" class="image-fluid" [src]="persona.profilepicture" alt={{persona.profilepicture}}>
+                <img id="Foto-perfil" class="image-fluid" [src]="persona.profilePicture" alt={{persona.profilePicture}}>
             </div>
             <div class="col-10 container">
                 <h1 id="fullname" style="font-size: 3.5vw;">{{persona.name}} {{persona.surname}}</h1>
@@ -16,11 +16,11 @@
         <i class="fas fa-user"></i>
         <h2 class="section-header">Acerca de</h2>
         <div class="table">
-            <tr><strong>{{persona.position}} viviendo en {{persona.provincia?.provincename}}</strong></tr>
-            <tr><strong>Fecha de nacimiento: {{persona.dateofbirth | date:"dd 'de' MMMM 'de' yyyy"}}</strong></tr>
+            <tr><strong>{{persona.position}} viviendo en {{persona.provincia?.provinceName}}</strong></tr>
+            <tr><strong>Fecha de nacimiento: {{persona.dateOfBirth | date:"dd 'de' MMMM 'de' yyyy"}}</strong></tr>
             <tr><strong>Teléfono: {{persona.telephone}}</strong></tr>
             <tr><strong>Email: {{persona.email}}</strong></tr>
-            <tr><strong>{{persona.aboutpersona}}</strong></tr>
+            <tr><strong>{{persona.aboutPersona}}</strong></tr>
         </div>
     </div>
     <div style="padding-left: 20px; padding-bottom: 10px;">
@@ -72,12 +72,12 @@
                                 </div>
                                 <div class="input-group mb-3">
                                     <label class="input-group-text">Foto de perfil</label>
-                                    <input formControlName="profilepicture" type="text" class="form-control"
+                                    <input formControlName="profilePicture" type="text" class="form-control"
                                         placeholder="URL de la foto de perfil (tiene que estar previamente en alguna página)">
                                 </div>
                                 <div class="input-group mb-3">
                                     <label class="input-group-text">Banner</label>
-                                    <input formControlName="bannerpicture" type="text" class="form-control"
+                                    <input formControlName="bannerPicture" type="text" class="form-control"
                                         placeholder="URL del banner (tiene que estar previamente en alguna página)">
                                 </div>
                                 <div class="input-group mb-3">
@@ -92,10 +92,10 @@
                                 </div>
                                 <div class="input-group mb-3">
                                     <label class="input-group-text">Acerca de</label>
-                                    <input formControlName="aboutpersona" type="text" class="form-control" placeholder="Acerca de"
-                                        [ngClass]="{'is-invalid':Aboutpersona?.errors && Aboutpersona?.touched, 'is-valid':!Aboutpersona?.errors && Aboutpersona?.touched}">
-                                    <div *ngIf="Aboutpersona?.errors && Aboutpersona?.touched">
-                                        <p *ngIf="Aboutpersona?.hasError('required')" class="text-danger" style="background-color: black;">
+                                    <input formControlName="aboutPersona" type="text" class="form-control" placeholder="Acerca de"
+                                        [ngClass]="{'is-invalid':AboutPersona?.errors && AboutPersona?.touched, 'is-valid':!AboutPersona?.errors && AboutPersona?.touched}">
+                                    <div *ngIf="AboutPersona?.errors && AboutPersona?.touched">
+                                        <p *ngIf="AboutPersona?.hasError('required')" class="text-danger" style="background-color: black;">
                                             Ponga algo de la persona.
                                         </p>
                                     </div>
@@ -103,15 +103,15 @@
                                 <div class="input-group mb-3">
                                     <label class="input-group-text">Provincia</label>
                                     <select formControlName="provincia">
-                                        <option *ngFor="let provincia of provinciaLista" [value]="provincia.id">{{provincia.provincename}}</option>
+                                        <option *ngFor="let provincia of provinciaLista" [value]="provincia.id">{{provincia.provinceName}}</option>
                                     </select>
                                 </div>
                                 <div class="input-group mb-3">
                                     <label class="input-group-text">Fecha de nacimiento</label>
-                                    <input formControlName="dateofbirth" type="date" class="form-control" placeholder="Fecha de nacimiento"
-                                        [ngClass]="{'is-invalid':Dateofbirth?.errors && Dateofbirth?.touched, 'is-valid':!Dateofbirth?.errors && Dateofbirth?.touched}">
-                                    <div *ngIf="Dateofbirth?.errors && Dateofbirth?.touched">
-                                        <p *ngIf="Dateofbirth?.hasError('required')" class="text-danger" style="background-color: black;">
+                                    <input formControlName="dateOfBirth" type="date" class="form-control" placeholder="Fecha de nacimiento"
+                                        [ngClass]="{'is-invalid':DateOfBirth?.errors && DateOfBirth?.touched, 'is-valid':!DateOfBirth?.errors && DateOfBirth?.touched}">
+                                    <div *ngIf="DateOfBirth?.errors && DateOfBirth?.touched">
+                                        <p *ngIf="DateOfBirth?.hasError('required')" class="text-danger" style="background-color: black;">
                                             Ponga la fecha de nacimiento.
                                         </p>
                                     </div>

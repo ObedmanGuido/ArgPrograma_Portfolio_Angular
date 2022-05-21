@@ -23,8 +23,8 @@ import { TokenService } from 'src/app/servicios/token.service';
 
 export class EducacionComponent implements OnInit {
   educacionLista?:Educacion[];
-  educacion:Educacion = { id: 0, schoolname: '', title: '', logo: '', startdate: new(Date), enddate: new(Date), typeofschool: '',
-    studiesstatus: '', educationdescription: '', currenteducation: false, persona: 0 };
+  educacion:Educacion = { id: 0, schoolName: '', title: '', logo: '', startDate: new(Date), endDate: new(Date), typeOfSchool: '',
+    studiesStatus: '', educationDescription: '', currentEducation: false, persona: 0 };
   accion = 'Agregar';
   form: FormGroup;
   id: number | undefined;
@@ -33,15 +33,15 @@ export class EducacionComponent implements OnInit {
 
   constructor(private educacionService:EducacionService, private fb:FormBuilder, private tokenService: TokenService) {
     this.form = this.fb.group({
-      schoolname: ['',[Validators.required]],
+      schoolName: ['',[Validators.required]],
       title:['',[Validators.required]],
       logo: [''],
-      startdate: [0,[Validators.required]],
-      enddate: [0,[Validators.required]],
-      typeofschool: ['',[Validators.required]],
-      studiesstatus: ['',[Validators.required]],
-      educationdescription: ['',[Validators.required]],
-      currenteducation: false
+      startDate: [0,[Validators.required]],
+      endDate: [0,[Validators.required]],
+      typeOfSchool: ['',[Validators.required]],
+      studiesStatus: ['',[Validators.required]],
+      educationDescription: ['',[Validators.required]],
+      currentEducation: false
     })
   }
 
@@ -52,7 +52,6 @@ export class EducacionComponent implements OnInit {
 
   obtenerEducacion(){
     this.educacionService.obtenerEducacion().subscribe(educacion => {
-      console.log(educacion);
       this.educacionLista=educacion;
     }, error => {
       console.log(error)
@@ -61,15 +60,15 @@ export class EducacionComponent implements OnInit {
 
   crearEducacion() {
     const educacion: Educacion = {
-      schoolname: this.form.get('schoolname')?.value,
+      schoolName: this.form.get('schoolName')?.value,
       title: this.form.get('title')?.value,
       logo: this.form.get('logo')?.value,
-      startdate: this.form.get('startdate')?.value,
-      enddate: this.form.get('enddate')?.value,
-      typeofschool: this.form.get('typeofschool')?.value,
-      studiesstatus: this.form.get('studiesstatus')?.value,
-      educationdescription: this.form.get('educationdescription')?.value,
-      currenteducation: this.form.get('currenteducation')?.value
+      startDate: this.form.get('startDate')?.value,
+      endDate: this.form.get('endDate')?.value,
+      typeOfSchool: this.form.get('typeOfSchool')?.value,
+      studiesStatus: this.form.get('studiesStatus')?.value,
+      educationDescription: this.form.get('educationDescription')?.value,
+      currentEducation: this.form.get('currentEducation')?.value
     }
 
     if(this.id == undefined) {
@@ -101,18 +100,18 @@ export class EducacionComponent implements OnInit {
   }
 
   actualizarEducacion(educacion: Educacion) {
-    this.accion = 'Editar educación: ' + educacion.title + ' en ' + educacion.schoolname;
+    this.accion = 'Editar educación: ' + educacion.title + ' en ' + educacion.schoolName;
     this.id = educacion.id;
     this.form.patchValue({
-      schoolname: educacion.schoolname,
+      schoolName: educacion.schoolName,
       title: educacion.title,
       logo: educacion.logo,
-      startdate: educacion.startdate,
-      enddate: educacion.enddate,
-      typeofschool: educacion.typeofschool,
-      studiesstatus: educacion.studiesstatus,
-      educationdescription: educacion.educationdescription,
-      currenteducation: educacion.currenteducation
+      startDate: educacion.startDate,
+      endDate: educacion.endDate,
+      typeOfSchool: educacion.typeOfSchool,
+      studiesStatus: educacion.studiesStatus,
+      educationDescription: educacion.educationDescription,
+      currentEducation: educacion.currentEducation
     })
   }
 
@@ -123,31 +122,31 @@ export class EducacionComponent implements OnInit {
         this.obtenerEducacion();
   }
 
-  get Schoolname(){
-    return this.form.get('schoolname');
+  get SchoolName(){
+    return this.form.get('schoolName');
   }
 
   get Title(){
     return this.form.get('title');
   }
 
-  get Startdate(){
-    return this.form.get('startdate');
+  get StartDate(){
+    return this.form.get('startDate');
   }
 
-  get Enddate(){
-    return this.form.get('enddate');
+  get EndDate(){
+    return this.form.get('endDate');
   }
 
-  get Typeofschool(){
-    return this.form.get('typeofschool');
+  get TypeOfSchool(){
+    return this.form.get('typeOfSchool');
   }
   
-  get Studiesstatus(){
-    return this.form.get('studiesstatus');
+  get StudiesStatus(){
+    return this.form.get('studiesStatus');
   }
   
-  get Educationdescription(){
-    return this.form.get('educationdescription');
+  get EducationDescription(){
+    return this.form.get('educationDescription');
   }
 }

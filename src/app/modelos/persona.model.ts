@@ -8,12 +8,12 @@ export interface Persona {
     id?: number;
     name: string;
     surname: string;
-    profilepicture: string;
+    profilePicture: string;
     title: string;
     position: string;
-    bannerpicture: string;
-    aboutpersona: string;
-    dateofbirth: Date;
+    bannerPicture: string;
+    aboutPersona: string;
+    dateOfBirth: Date;
     telephone: string;
     email: string;
     skills?: Skill[];

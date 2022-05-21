@@ -23,41 +23,41 @@
                             <form [formGroup]="form" (ngSubmit)="crearProyecto()">
                                 <div class="input-group mb-3">
                                     <label class="input-group-text">Nombre del proyecto</label>
-                                    <input formControlName="projectname" type="text" class="form-control" placeholder="Nombre del proyecto"
-                                        [ngClass]="{'is-invalid':Projectname?.errors && Projectname?.touched, 'is-valid':!Projectname?.errors && Projectname?.touched}">
-                                    <div *ngIf="Projectname?.errors && Projectname?.touched">
-                                        <p *ngIf="Projectname?.hasError('required')" class="text-danger" style="background-color: black;">
+                                    <input formControlName="projectName" type="text" class="form-control" placeholder="Nombre del proyecto"
+                                        [ngClass]="{'is-invalid':ProjectName?.errors && ProjectName?.touched, 'is-valid':!ProjectName?.errors && ProjectName?.touched}">
+                                    <div *ngIf="ProjectName?.errors && ProjectName?.touched">
+                                        <p *ngIf="ProjectName?.hasError('required')" class="text-danger" style="background-color: black;">
                                             Ponga el nombre del proyecto.
                                         </p>
                                     </div>
                                 </div>
                                 <div class="input-group mb-3 date">
                                     <label class="input-group-text">Fecha de creación</label>
-                                    <input formControlName="creationdate" type="date" class="form-control" placeholder="YYYY/MM/DD"
-                                        [ngClass]="{'is-invalid':Creationdate?.errors && Creationdate?.touched, 'is-valid':!Creationdate?.errors && Creationdate?.touched}">
-                                    <div *ngIf="Creationdate?.errors && Creationdate?.touched">
-                                        <p *ngIf="Creationdate?.hasError('required')" class="text-danger" style="background-color: black;">
+                                    <input formControlName="creationDate" type="date" class="form-control" placeholder="YYYY/MM/DD"
+                                        [ngClass]="{'is-invalid':CreationDate?.errors && CreationDate?.touched, 'is-valid':!CreationDate?.errors && CreationDate?.touched}">
+                                    <div *ngIf="CreationDate?.errors && CreationDate?.touched">
+                                        <p *ngIf="CreationDate?.hasError('required')" class="text-danger" style="background-color: black;">
                                             Ponga la fecha de creación.
                                         </p>
                                     </div>
                                 </div>
                                 <div class="input-group mb-3">
                                     <label class="input-group-text">Descripción del proyecto</label>
-                                    <input formControlName="projectdescription" type="text" class="form-control" placeholder="Descripción del proyecto"
-                                        [ngClass]="{'is-invalid':Projectdescription?.errors && Projectdescription?.touched,
-                                        'is-valid':!Projectdescription?.errors && Projectdescription?.touched}">
-                                    <div *ngIf="Projectdescription?.errors && Projectdescription?.touched">
-                                        <p *ngIf="Projectdescription?.hasError('required')" class="text-danger" style="background-color: black;">
+                                    <input formControlName="projectDescription" type="text" class="form-control" placeholder="Descripción del proyecto"
+                                        [ngClass]="{'is-invalid':ProjectDescription?.errors && ProjectDescription?.touched,
+                                        'is-valid':!ProjectDescription?.errors && ProjectDescription?.touched}">
+                                    <div *ngIf="ProjectDescription?.errors && ProjectDescription?.touched">
+                                        <p *ngIf="ProjectDescription?.hasError('required')" class="text-danger" style="background-color: black;">
                                             Ponga la descripción del proyecto.
                                         </p>
                                     </div>
                                 </div>
                                 <div class="input-group mb-3">
                                     <label class="input-group-text">Link del proyecto</label>
-                                    <input formControlName="projectlink" type="text" class="form-control" placeholder="Link del proyecto"
-                                        [ngClass]="{'is-invalid':Projectlink?.errors && Projectlink?.touched, 'is-valid':!Projectlink?.errors && Projectlink?.touched}">
-                                    <div *ngIf="Projectlink?.errors && Projectlink?.touched">
-                                        <p *ngIf="Projectlink?.hasError('required')" class="text-danger" style="background-color: black;">
+                                    <input formControlName="projectLink" type="text" class="form-control" placeholder="Link del proyecto"
+                                        [ngClass]="{'is-invalid':ProjectLink?.errors && ProjectLink?.touched, 'is-valid':!ProjectLink?.errors && ProjectLink?.touched}">
+                                    <div *ngIf="ProjectLink?.errors && ProjectLink?.touched">
+                                        <p *ngIf="ProjectLink?.hasError('required')" class="text-danger" style="background-color: black;">
                                             Ponga el link del proyecto.
                                         </p>
                                     </div>
@@ -100,18 +100,18 @@
                         <div class="list-info">
                             <div class="table">
                                 <tr>
-                                    <h3>{{proyecto.projectname}}</h3>
+                                    <h3>{{proyecto.projectName}}</h3>
                                     <td *ngIf="isAdmin"><i (click)="actualizarProyecto(proyecto)"
                                         class="fa-regular fa-pen-to-square text-info" data-bs-toggle="modal" data-bs-target="#proyectoModal"></i></td>
                                     <td *ngIf="isAdmin"><i (click)="borrarProyecto(proyecto.id!)"
                                         class="fa-regular fa-trash-can text-danger"></i></td>
                                 </tr>
                                 <tr>
-                                    <col>Descripción: {{proyecto.projectdescription}}
+                                    <col>Descripción: {{proyecto.projectDescription}}
                                     <br>
-                                    <col>URL: <a href={{proyecto.projectlink}} style="background-color: black;">{{proyecto.projectlink}}</a>
+                                    <col>URL: <a href={{proyecto.projectLink}} style="background-color: black;">{{proyecto.projectLink}}</a>
                                     <br>
-                                    <div>Fecha de creación: {{proyecto.creationdate | date:"d 'de' MMMM 'de' YYYY"}}</div>
+                                    <div>Fecha de creación: {{proyecto.creationDate | date:"d 'de' MMMM 'de' YYYY"}}</div>
                                 </tr>
                             </div>
                         </div>

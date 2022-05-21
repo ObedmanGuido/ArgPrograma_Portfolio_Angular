@@ -23,8 +23,8 @@ import { TokenService } from 'src/app/servicios/token.service';
 
 export class ExperienciaLaboralComponent implements OnInit {
   experiencialaboralLista?:ExperienciaLaboral[];
-  experiencialaboral:ExperienciaLaboral = { id: 0, company: '', position: '', logo: '', startdate: new(Date), enddate: new(Date),
-    workdescription: '', currentjob: false, persona:0 };
+  experiencialaboral:ExperienciaLaboral = { id: 0, company: '', position: '', logo: '', startDate: new(Date), endDate: new(Date),
+    workDescription: '', currentJob: false, persona:0 };
   accion = 'Agregar';
   form: FormGroup;
   id: number | undefined;
@@ -36,10 +36,10 @@ export class ExperienciaLaboralComponent implements OnInit {
       company: ['',[Validators.required]],
       position:['',[Validators.required]],
       logo: [''],
-      startdate: [0,[Validators.required]],
-      enddate: [0,[Validators.required]],
-      workdescription: ['',[Validators.required]],
-      currentjob: false
+      startDate: [0,[Validators.required]],
+      endDate: [0,[Validators.required]],
+      workDescription: ['',[Validators.required]],
+      currentJob: false
     })
   }
 
@@ -50,7 +50,6 @@ export class ExperienciaLaboralComponent implements OnInit {
 
   obtenerExperienciaLaboral(){
     this.experiencialaboralService.obtenerExperienciaLaboral().subscribe(experiencialaboral => {
-      console.log(experiencialaboral);
       this.experiencialaboralLista=experiencialaboral;
     }, error => {
       console.log(error)
@@ -62,10 +61,10 @@ export class ExperienciaLaboralComponent implements OnInit {
       company: this.form.get('company')?.value,
       position: this.form.get('position')?.value,
       logo: this.form.get('logo')?.value,
-      startdate: this.form.get('startdate')?.value,
-      enddate: this.form.get('enddate')?.value,
-      workdescription: this.form.get('workdescription')?.value,
-      currentjob: this.form.get('currentjob')?.value
+      startDate: this.form.get('startDate')?.value,
+      endDate: this.form.get('endDate')?.value,
+      workDescription: this.form.get('workDescription')?.value,
+      currentJob: this.form.get('currentJob')?.value
     }
 
     if(this.id == undefined) {
@@ -103,10 +102,10 @@ export class ExperienciaLaboralComponent implements OnInit {
       company: experiencialaboral.company,
       position: experiencialaboral.position,
       logo: experiencialaboral.logo,
-      startdate: experiencialaboral.startdate,
-      enddate: experiencialaboral.enddate,
-      workdescription: experiencialaboral.workdescription,
-      currentjob: experiencialaboral.currentjob
+      startDate: experiencialaboral.startDate,
+      endDate: experiencialaboral.endDate,
+      workDescription: experiencialaboral.workDescription,
+      currentJob: experiencialaboral.currentJob
     })
   }
 
@@ -125,15 +124,15 @@ export class ExperienciaLaboralComponent implements OnInit {
     return this.form.get('position');
   }
 
-  get Startdate(){
-    return this.form.get('startdate');
+  get StartDate(){
+    return this.form.get('startDate');
   }
 
-  get Enddate(){
-    return this.form.get('enddate');
+  get EndDate(){
+    return this.form.get('endDate');
   }
   
-  get Workdescription(){
-    return this.form.get('workdescription');
+  get WorkDescription(){
+    return this.form.get('workDescription');
   }
 }

@@ -1,9 +1,9 @@
 export interface Proyecto {
     id?: number;
-    projectname: string;
-    creationdate: Date;
-    projectdescription: string;
-    projectlink: string;
+    projectName: string;
+    creationDate: Date;
+    projectDescription: string;
+    projectLink: string;
     image1: string;
     image2: string;
     image3: string;

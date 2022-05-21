@@ -3,9 +3,9 @@ export interface ExperienciaLaboral {
     company: string;
     position: string;
     logo:string;
-    startdate: Date;
-    enddate: Date;
-    workdescription: string;
-    currentjob: Boolean;
+    startDate: Date;
+    endDate: Date;
+    workDescription: string;
+    currentJob: Boolean;
     persona?:number;
 }

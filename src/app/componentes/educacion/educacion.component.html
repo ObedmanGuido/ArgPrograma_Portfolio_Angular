@@ -23,10 +23,10 @@
               <form [formGroup]="form" (ngSubmit)="crearEducacion()">
                 <div class="input-group mb-3">
                   <label class="input-group-text">Institución</label>
-                  <input formControlName="schoolname" type="text" class="form-control" placeholder="Nombre de la institución"
-                    [ngClass]="{'is-invalid':Schoolname?.errors && Schoolname?.touched, 'is-valid':!Schoolname?.errors && Schoolname?.touched}">
-                  <div *ngIf="Schoolname?.errors && Schoolname?.touched">
-                      <p *ngIf="Schoolname?.hasError('required')" class="text-danger" style="background-color: black;">
+                  <input formControlName="schoolName" type="text" class="form-control" placeholder="Nombre de la institución"
+                    [ngClass]="{'is-invalid':SchoolName?.errors && SchoolName?.touched, 'is-valid':!SchoolName?.errors && SchoolName?.touched}">
+                  <div *ngIf="SchoolName?.errors && SchoolName?.touched">
+                      <p *ngIf="SchoolName?.hasError('required')" class="text-danger" style="background-color: black;">
                         Ponga la institución.
                       </p>
                   </div>
@@ -50,10 +50,10 @@
                   <div class="col-lg-3">
                     <div class="input-group mb-3">
                       <label class="input-group-text">Fecha de inicio</label>
-                      <input formControlName="startdate" type="date" class="form-control" placeholder="Fecha de inicio"
-                        [ngClass]="{'is-invalid':Startdate?.errors && Startdate?.touched, 'is-valid':!Startdate?.errors && Startdate?.touched}">
-                      <div *ngIf="Startdate?.errors && Startdate?.touched">
-                          <p *ngIf="Startdate?.hasError('required')" class="text-danger" style="background-color: black;">
+                      <input formControlName="startDate" type="date" class="form-control" placeholder="Fecha de inicio"
+                        [ngClass]="{'is-invalid':StartDate?.errors && StartDate?.touched, 'is-valid':!StartDate?.errors && StartDate?.touched}">
+                      <div *ngIf="StartDate?.errors && StartDate?.touched">
+                          <p *ngIf="StartDate?.hasError('required')" class="text-danger" style="background-color: black;">
                             Ponga la fecha de inicio.
                           </p>
                       </div>
@@ -62,10 +62,10 @@
                   <div class="col-lg-3">
                     <div class="input-group mb-3">
                       <label class="input-group-text">Fecha de fin</label>
-                      <input formControlName="enddate" type="date" class="form-control" placeholder="Fecha de fin"
-                        [ngClass]="{'is-invalid':Enddate?.errors && Enddate?.touched, 'is-valid':!Enddate?.errors && Enddate?.touched}">
-                      <div *ngIf="Enddate?.errors && Enddate?.touched">
-                          <p *ngIf="Enddate?.hasError('required')" class="text-danger" style="background-color: black;">
+                      <input formControlName="endDate" type="date" class="form-control" placeholder="Fecha de fin"
+                        [ngClass]="{'is-invalid':EndDate?.errors && EndDate?.touched, 'is-valid':!EndDate?.errors && EndDate?.touched}">
+                      <div *ngIf="EndDate?.errors && EndDate?.touched">
+                          <p *ngIf="EndDate?.hasError('required')" class="text-danger" style="background-color: black;">
                             Ponga la fecha de fin.
                           </p>
                       </div>
@@ -76,7 +76,7 @@
                       <div class="input-group-prepend">
                         <label class="input-group-text">
                           Educación actual (poner cualquier fecha en fecha de fin y marcar el checkbox)
-                          <input formControlName="currenteducation" type="checkbox" class="form-check-input"
+                          <input formControlName="currentEducation" type="checkbox" class="form-check-input"
                             placeholder="Educación actual">
                         </label>
                       </div>
@@ -87,10 +87,10 @@
                   <div class="col-lg-5">
                     <div class="input-group mb-3">
                       <label class="input-group-text">Tipo de institución</label>
-                      <input formControlName="typeofschool" type="text" class="form-control" placeholder="Tipo de institución"
-                          [ngClass]="{'is-invalid':Typeofschool?.errors && Typeofschool?.touched, 'is-valid':!Typeofschool?.errors && Typeofschool?.touched}">
-                      <div *ngIf="Typeofschool?.errors && Typeofschool?.touched">
-                          <p *ngIf="Typeofschool?.hasError('required')" class="text-danger" style="background-color: black;">
+                      <input formControlName="typeOfSchool" type="text" class="form-control" placeholder="Tipo de institución"
+                          [ngClass]="{'is-invalid':TypeOfSchool?.errors && TypeOfSchool?.touched, 'is-valid':!TypeOfSchool?.errors && TypeOfSchool?.touched}">
+                      <div *ngIf="TypeOfSchool?.errors && TypeOfSchool?.touched">
+                          <p *ngIf="TypeOfSchool?.hasError('required')" class="text-danger" style="background-color: black;">
                             Ponga el tipo de institución.
                           </p>
                       </div>
@@ -99,10 +99,10 @@
                   <div class="col-lg-5">
                     <div class="input-group mb-3">
                       <label class="input-group-text">Estado</label>
-                      <input formControlName="studiesstatus" type="text" class="form-control" placeholder="Estado de estudios"
-                        [ngClass]="{'is-invalid':Studiesstatus?.errors && Studiesstatus?.touched, 'is-valid':!Studiesstatus?.errors && Studiesstatus?.touched}">
-                      <div *ngIf="Studiesstatus?.errors && Studiesstatus?.touched">
-                          <p *ngIf="Studiesstatus?.hasError('required')" class="text-danger" style="background-color: black;">
+                      <input formControlName="studiesStatus" type="text" class="form-control" placeholder="Estado de estudios"
+                        [ngClass]="{'is-invalid':StudiesStatus?.errors && StudiesStatus?.touched, 'is-valid':!StudiesStatus?.errors && StudiesStatus?.touched}">
+                      <div *ngIf="StudiesStatus?.errors && StudiesStatus?.touched">
+                          <p *ngIf="StudiesStatus?.hasError('required')" class="text-danger" style="background-color: black;">
                             Ponga el estado.
                           </p>
                       </div>
@@ -111,11 +111,11 @@
                 </div>
                 <div class="input-group mb-3">
                   <label class="input-group-text">Descripción</label>
-                  <input formControlName="educationdescription" type="text" class="form-control" placeholder="Descripción"
-                    [ngClass]="{'is-invalid':Educationdescription?.errors && Educationdescription?.touched,
-                    'is-valid':!Educationdescription?.errors && Educationdescription?.touched}">
-                  <div *ngIf="Educationdescription?.errors && Educationdescription?.touched">
-                      <p *ngIf="Educationdescription?.hasError('required')" class="text-danger" style="background-color: black;">
+                  <input formControlName="educationDescription" type="text" class="form-control" placeholder="Descripción"
+                    [ngClass]="{'is-invalid':EducationDescription?.errors && EducationDescription?.touched,
+                    'is-valid':!EducationDescription?.errors && EducationDescription?.touched}">
+                  <div *ngIf="EducationDescription?.errors && EducationDescription?.touched">
+                      <p *ngIf="EducationDescription?.hasError('required')" class="text-danger" style="background-color: black;">
                         Ponga la descripción.
                       </p>
                   </div>
@@ -146,18 +146,18 @@
                       class="fa-regular fa-pen-to-square text-info" data-bs-toggle="modal" data-bs-target="#educacionModal"></i></td>
                   <td *ngIf="isAdmin"><i (click)="borrarEducacion(educacion.id!)" class="fa-regular fa-trash-can text-danger"></i></td>
                 </tr>
-                <h3>{{educacion.schoolname}}</h3>
+                <h3>{{educacion.schoolName}}</h3>
                 <tr>
-                  <h5 *ngIf="educacion.currenteducation == false">
-                    <col>Desde {{educacion.startdate | date:"MMMM 'de' yyyy"}} hasta {{educacion.enddate | date:"MMMM 'de' yyyy"}}
+                  <h5 *ngIf="educacion.currentEducation == false">
+                    <col>Desde {{educacion.startDate | date:"MMMM 'de' yyyy"}} hasta {{educacion.endDate | date:"MMMM 'de' yyyy"}}
                   </h5>
-                  <h5 *ngIf="educacion.currenteducation == true">
-                    <col>Desde {{educacion.startdate | date:"MMMM 'de' yyyy"}} hasta la actualidad
+                  <h5 *ngIf="educacion.currentEducation == true">
+                    <col>Desde {{educacion.startDate | date:"MMMM 'de' yyyy"}} hasta la actualidad
                   </h5>
                   <h5>
-                    <col>{{educacion.typeofschool}} - {{educacion.studiesstatus}}
+                    <col>{{educacion.typeOfSchool}} - {{educacion.studiesStatus}}
                   </h5>
-                  <col><p>{{educacion.educationdescription}}</p>
+                  <col><p>{{educacion.educationDescription}}</p>
                 </tr>
               </div>
             </div>

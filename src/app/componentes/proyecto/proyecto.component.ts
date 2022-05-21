@@ -11,8 +11,8 @@ import { TokenService } from 'src/app/servicios/token.service';
 })
 export class ProyectoComponent implements OnInit {
   proyectoLista?:Proyecto[];
-  proyecto:Proyecto = { id: 0, projectname: '', creationdate: new(Date), projectdescription: '',
-    projectlink: '', image1: '', image2: '', image3: '', video: '', persona: 0 };
+  proyecto:Proyecto = { id: 0, projectName: '', creationDate: new(Date), projectDescription: '',
+    projectLink: '', image1: '', image2: '', image3: '', video: '', persona: 0 };
   accion = 'Agregar';
   form: FormGroup;
   id: number | undefined;
@@ -21,10 +21,10 @@ export class ProyectoComponent implements OnInit {
 
   constructor(private proyectoService:ProyectoService, private fb:FormBuilder, private tokenService: TokenService) {
     this.form = this.fb.group({
-      projectname: ['',[Validators.required]],
-      creationdate: ['',[Validators.required]],
-      projectdescription: ['',[Validators.required]],
-      projectlink: ['',[Validators.required]],
+      projectName: ['',[Validators.required]],
+      creationDate: ['',[Validators.required]],
+      projectDescription: ['',[Validators.required]],
+      projectLink: ['',[Validators.required]],
       image1: [''],
       image2: [''],
       image3: [''],
@@ -42,7 +42,6 @@ export class ProyectoComponent implements OnInit {
 
   obtenerProyecto(){
     this.proyectoService.obtenerProyecto().subscribe(proyecto => {
-      console.log(proyecto);
       this.proyectoLista=proyecto;
     }, error => {
       console.log(error)
@@ -51,10 +50,10 @@ export class ProyectoComponent implements OnInit {
 
   crearProyecto() {
     const proyecto: Proyecto = {
-      projectname: this.form.get('projectname')?.value,
-      creationdate: this.form.get('creationdate')?.value,
-      projectdescription: this.form.get('projectdescription')?.value,
-      projectlink: this.form.get('projectlink')?.value,
+      projectName: this.form.get('projectName')?.value,
+      creationDate: this.form.get('creationDate')?.value,
+      projectDescription: this.form.get('projectDescription')?.value,
+      projectLink: this.form.get('projectLink')?.value,
       image1: this.form.get('image1')?.value,
       image2: this.form.get('image2')?.value,
       image3: this.form.get('image3')?.value,
@@ -90,13 +89,13 @@ export class ProyectoComponent implements OnInit {
   }
 
   actualizarProyecto(proyecto: Proyecto) {
-    this.accion = 'Editar proyecto: ' + proyecto.projectname;
+    this.accion = 'Editar proyecto: ' + proyecto.projectName;
     this.id = proyecto.id;
     this.form.patchValue({
-      projectname: proyecto.projectname,
-      creationdate: proyecto.creationdate,
-      projectdescription: proyecto.projectdescription,
-      projectlink: proyecto.projectlink,
+      projectName: proyecto.projectName,
+      creationDate: proyecto.creationDate,
+      projectDescription: proyecto.projectDescription,
+      projectLink: proyecto.projectLink,
       image1: proyecto.image1,
       image2: proyecto.image2,
       image3: proyecto.image3,
@@ -111,19 +110,19 @@ export class ProyectoComponent implements OnInit {
         this.obtenerProyecto();
   }
 
-  get Projectname(){
-    return this.form.get('projectname');
+  get ProjectName(){
+    return this.form.get('projectName');
   }
 
-  get Creationdate(){
-    return this.form.get('creationdate');
+  get CreationDate(){
+    return this.form.get('creationDate');
   }
 
-  get Projectdescription(){
-    return this.form.get('projectdescription');
+  get ProjectDescription(){
+    return this.form.get('projectDescription');
   }
 
-  get Projectlink(){
-    return this.form.get('projectlink');
+  get ProjectLink(){
+    return this.form.get('projectLink');
   }
 }

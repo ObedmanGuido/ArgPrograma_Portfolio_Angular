@@ -23,10 +23,10 @@
               <form [formGroup]="form" (ngSubmit)="crearSkill()">
                 <div class="input-group mb-3">
                   <label class="input-group-text">Nombre del skill</label>
-                  <input formControlName="skillname" type="text" class="form-control" placeholder="Nombre del skill"
-                    [ngClass]="{'is-invalid':Skillname?.errors && Skillname?.touched, 'is-valid':!Skillname?.errors && Skillname?.touched}">
-                  <div *ngIf="Skillname?.errors && Skillname?.touched">
-                    <p *ngIf="Skillname?.hasError('required')" class="text-danger" style="background-color: black;">
+                  <input formControlName="skillName" type="text" class="form-control" placeholder="Nombre del skill"
+                    [ngClass]="{'is-invalid':SkillName?.errors && SkillName?.touched, 'is-valid':!SkillName?.errors && SkillName?.touched}">
+                  <div *ngIf="SkillName?.errors && SkillName?.touched">
+                    <p *ngIf="SkillName?.hasError('required')" class="text-danger" style="background-color: black;">
                       Ponga el nombre del skill.
                     </p>
                   </div>
@@ -35,10 +35,10 @@
                   <div class="col-lg-3">
                     <div class="input-group mb-3">
                       <label class="input-group-text">Nivel del skill en números</label>
-                      <input formControlName="levelnumber" type="number" class="form-control" placeholder="Entre 0 y 100"
-                        [ngClass]="{'is-invalid':Levelnumber?.errors && Levelnumber?.touched, 'is-valid':!Levelnumber?.errors && Levelnumber?.touched}">
-                      <div *ngIf="Levelnumber?.errors && Levelnumber?.touched">
-                        <p *ngIf="Levelnumber?.hasError('required') || Levelnumber?.hasError('min') || Levelnumber?.hasError('max')"
+                      <input formControlName="levelNumber" type="number" class="form-control" placeholder="Entre 0 y 100"
+                        [ngClass]="{'is-invalid':LevelNumber?.errors && LevelNumber?.touched, 'is-valid':!LevelNumber?.errors && LevelNumber?.touched}">
+                      <div *ngIf="LevelNumber?.errors && LevelNumber?.touched">
+                        <p *ngIf="LevelNumber?.hasError('required') || LevelNumber?.hasError('min') || LevelNumber?.hasError('max')"
                           class="text-danger" style="background-color: black;">
                           Ponga el nivel del skill en números entre 0 y 100.
                         </p>
@@ -50,7 +50,7 @@
                     <select formControlName="skill_tipo">
                       <option *ngFor="let skill_tipo of skill_tipoLista" [value]="skill_tipo.id" placeholder="Tipo de skill"
                         [ngClass]="{'is-invalid':Skill_tipo?.errors && Skill_tipo?.touched, 'is-valid':!Skill_tipo?.errors && Skill_tipo?.touched}">
-                        {{skill_tipo.typename}}
+                        {{skill_tipo.typeName}}
                       </option>
                     </select>
                     <p *ngIf="Skill_tipo?.hasError('required')" class="text-danger" style="background-color: black;">
@@ -60,7 +60,7 @@
                 </div>
                 <div class="input-group mb-3">
                   <label class="input-group-text">Descripción del skill</label>
-                  <input formControlName="skilldescription" type="text" class="form-control" placeholder="Descripción del skill">
+                  <input formControlName="skillDescription" type="text" class="form-control" placeholder="Descripción del skill">
                 </div>
                 <div class="d-grip gap-2">
                   <button type="submit" class="btn btn-success btn-lg" [disabled]="!form.valid" data-bs-dismiss="modal">Aceptar</button>
@@ -75,27 +75,27 @@
     </div>
     <div>
       <ng-container *ngFor="let skillTipo of skill_tipoLista">
-        <h3>{{skillTipo.typename}}</h3>
+        <h3>{{skillTipo.typeName}}</h3>
         <ul class="items-list row equal-cols justify-content-start" style="padding: 0px;">
           <ng-container *ngFor="let skill of skillLista">
-            <li *ngIf="skill.skill_tipo?.typename == skillTipo.typename" class="col-4">
+            <li *ngIf="skill.skill_tipo?.typeName == skillTipo.typeName" class="col-4">
               <div class="data-container list-info">
                 <div class="table">
                   <tr>
-                    <h5>{{skill.skillname}}</h5>
+                    <h5>{{skill.skillName}}</h5>
                     <td *ngIf="isAdmin"><i (click)="actualizarSkill(skill)" class="fa-regular fa-pen-to-square text-info"
                         data-bs-toggle="modal" data-bs-target="#skillModal"></i></td>
                     <td *ngIf="isAdmin"><i (click)="borrarSkill(skill.id!)" class="fa-regular fa-trash-can text-danger"></i></td>
                   </tr>
                 </div>
                 <div class="progress">
-                  <mat-progress-bar mode="determinate" value="{{skill.levelnumber}}" style="height: 20px;">
-                    <p>Nivel: {{skill.levelnumber}}</p>
+                  <mat-progress-bar mode="determinate" value="{{skill.levelNumber}}" style="height: 20px;">
+                    <p>Nivel: {{skill.levelNumber}}</p>
                   </mat-progress-bar>
-                  <div style="position: absolute; color: black;">&nbsp;{{skill.levelnumber}}%</div>
+                  <div style="position: absolute; color: black;">&nbsp;{{skill.levelNumber}}%</div>
                 </div>
-                <col>{{skill.skill_tipo?.typename}}
-                <col>{{skill.skilldescription}}
+                <col>{{skill.skill_tipo?.typeName}}
+                <col>{{skill.skillDescription}}
               </div>
             </li>
           </ng-container>
