@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EducacionTipo } from 'src/app/modelos/educacion-tipo.model';
 import { Educacion } from 'src/app/modelos/educacion.model';
 import { EducacionService } from 'src/app/servicios/educacion.service';
 import { TokenService } from 'src/app/servicios/token.service';
@@ -23,13 +24,15 @@ import { TokenService } from 'src/app/servicios/token.service';
 
 export class EducacionComponent implements OnInit {
   educacionLista?:Educacion[];
-  educacion:Educacion = { id: 0, schoolName: '', title: '', logo: '', startDate: new(Date), endDate: new(Date), typeOfSchool: '',
-    studiesStatus: '', educationDescription: '', currentEducation: false, persona: 0 };
+  educacion:Educacion = { id: 0, schoolName: '', title: '', logo: '', startDate: new(Date), endDate: new(Date),
+    studiesStatus: '', educationDescription: '', currentEducation: false, educacion_tipo: {id: 0, educationType: ''}, persona: 0 };
   accion = 'Agregar';
   form: FormGroup;
   id: number | undefined;
   authority!:string;
   isAdmin = false;
+  educacion_tipo:EducacionTipo = { id: 0, educationType: '' };
+  educacion_tipoLista?:EducacionTipo[];
 
   constructor(private educacionService:EducacionService, private fb:FormBuilder, private tokenService: TokenService) {
     this.form = this.fb.group({
@@ -38,15 +41,16 @@ export class EducacionComponent implements OnInit {
       logo: [''],
       startDate: [0,[Validators.required]],
       endDate: [0,[Validators.required]],
-      typeOfSchool: ['',[Validators.required]],
       studiesStatus: ['',[Validators.required]],
       educationDescription: ['',[Validators.required]],
-      currentEducation: false
+      currentEducation: false,
+      educacion_tipo: ['',[Validators.required]]
     })
   }
 
   ngOnInit(): void {
     this.obtenerEducacion();
+    this.obtenerEducacionTipo();
     this.isAdmin = this.tokenService.isAdmin();
   }
 
@@ -58,6 +62,14 @@ export class EducacionComponent implements OnInit {
     })
   }
 
+  obtenerEducacionTipo(){
+    this.educacionService.obtenerEducacionTipo().subscribe(educacion_tipo => {
+      this.educacion_tipoLista=educacion_tipo;
+    }, error => {
+      console.log(error)
+    });
+  }
+
   crearEducacion() {
     const educacion: Educacion = {
       schoolName: this.form.get('schoolName')?.value,
@@ -65,10 +77,10 @@ export class EducacionComponent implements OnInit {
       logo: this.form.get('logo')?.value,
       startDate: this.form.get('startDate')?.value,
       endDate: this.form.get('endDate')?.value,
-      typeOfSchool: this.form.get('typeOfSchool')?.value,
       studiesStatus: this.form.get('studiesStatus')?.value,
       educationDescription: this.form.get('educationDescription')?.value,
-      currentEducation: this.form.get('currentEducation')?.value
+      currentEducation: this.form.get('currentEducation')?.value,
+      educacion_tipo: this.educacion_tipoLista!.find(et=>et.id==this.form.get('educacion_tipo')?.value)
     }
 
     if(this.id == undefined) {
@@ -108,10 +120,10 @@ export class EducacionComponent implements OnInit {
       logo: educacion.logo,
       startDate: educacion.startDate,
       endDate: educacion.endDate,
-      typeOfSchool: educacion.typeOfSchool,
       studiesStatus: educacion.studiesStatus,
       educationDescription: educacion.educationDescription,
-      currentEducation: educacion.currentEducation
+      currentEducation: educacion.currentEducation,
+      educacion_tipo: educacion.educacion_tipo?.id
     })
   }
 
@@ -137,10 +149,6 @@ export class EducacionComponent implements OnInit {
   get EndDate(){
     return this.form.get('endDate');
   }
-
-  get TypeOfSchool(){
-    return this.form.get('typeOfSchool');
-  }
   
   get StudiesStatus(){
     return this.form.get('studiesStatus');
@@ -148,5 +156,9 @@ export class EducacionComponent implements OnInit {
   
   get EducationDescription(){
     return this.form.get('educationDescription');
+  }
+
+  get Educacion_tipo(){
+    return this.form.get('educacion_tipo')
   }
 }

@@ -86,15 +86,17 @@
                 <div class="row">
                   <div class="col-lg-5">
                     <div class="input-group mb-3">
-                      <label class="input-group-text">Tipo de institución</label>
-                      <input formControlName="typeOfSchool" type="text" class="form-control" placeholder="Tipo de institución"
-                          [ngClass]="{'is-invalid':TypeOfSchool?.errors && TypeOfSchool?.touched, 'is-valid':!TypeOfSchool?.errors && TypeOfSchool?.touched}">
-                      <div *ngIf="TypeOfSchool?.errors && TypeOfSchool?.touched">
-                          <p *ngIf="TypeOfSchool?.hasError('required')" class="text-danger" style="background-color: black;">
-                            Ponga el tipo de institución.
-                          </p>
+                      <label class="input-group-text">Tipo de educación</label>
+                      <select formControlName="educacion_tipo">
+                        <option *ngFor="let educacion_tipo of educacion_tipoLista" [value]="educacion_tipo.id" placeholder="Tipo de educación"
+                          [ngClass]="{'is-invalid':Educacion_tipo?.errors && Educacion_tipo?.touched, 'is-valid':!Educacion_tipo?.errors && Educacion_tipo?.touched}">
+                          {{educacion_tipo.educationType}}
+                        </option>
+                      </select>
+                      <p *ngIf="Educacion_tipo?.hasError('required')" class="text-danger" style="background-color: black;">
+                        Ponga el tipo de educación.
+                      </p>
                       </div>
-                    </div>
                   </div>
                   <div class="col-lg-5">
                     <div class="input-group mb-3">
@@ -155,7 +157,7 @@
                     <col>Desde {{educacion.startDate | date:"MMMM 'de' yyyy"}} hasta la actualidad
                   </h5>
                   <h5>
-                    <col>{{educacion.typeOfSchool}} - {{educacion.studiesStatus}}
+                    <col>{{educacion.educacion_tipo?.educationType}} - {{educacion.studiesStatus}}
                   </h5>
                   <col><p>{{educacion.educationDescription}}</p>
                 </tr>

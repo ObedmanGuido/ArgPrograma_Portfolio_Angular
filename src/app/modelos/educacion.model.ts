@@ -1,3 +1,5 @@
+import { EducacionTipo } from "./educacion-tipo.model";
+
 export interface Educacion {
     id?: number;
     schoolName: string;
@@ -5,9 +7,9 @@ export interface Educacion {
     logo: string;
     startDate: Date;
     endDate: Date;
-    typeOfSchool: string;
     studiesStatus: string;
     educationDescription: string;
     currentEducation: Boolean;
+    educacion_tipo?: EducacionTipo;
     persona?: number;
 }
