@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { SkillTipo } from 'src/app/modelos/skill-tipo.model';
 import { Skill } from 'src/app/modelos/skill.model';
 import { SkillsService } from 'src/app/servicios/skills.service';
@@ -30,7 +31,7 @@ import { TokenService } from 'src/app/servicios/token.service';
     skill_tipo:SkillTipo = { id: 0, typeName: '' };
     skill_tipoLista?:SkillTipo[];
 
-    constructor(private skillsService:SkillsService, private fb:FormBuilder, private tokenService: TokenService) {
+    constructor(private skillsService:SkillsService, private fb:FormBuilder, private tokenService: TokenService, private toastr: ToastrService) {
       this.form = this.fb.group({
         skillName: ['',[Validators.required]],
         levelNumber: [0,[Validators.required,Validators.min(0),Validators.max(100)]],
@@ -72,12 +73,14 @@ import { TokenService } from 'src/app/servicios/token.service';
       if(this.id == undefined) {
         this.skillsService.crearSkill(skill).subscribe(skill => {
           this.obtenerSkill();
+          this.toastr.success(skill.skillName, 'Creado skill', { timeOut: 5000, positionClass: 'toast-top-center' });
           this.form.reset();
         }, error => {
           console.log(error);
         })
       } else {
         skill.id = this.id;
+        this.toastr.success(skill.skillName, 'Actualizado skill', { timeOut: 5000, positionClass: 'toast-top-center' });
         this.skillsService.actualizarSkill(this.id, skill).subscribe(skill => {
           this.form.reset();
           this.accion = 'Agregar';
@@ -91,7 +94,8 @@ import { TokenService } from 'src/app/servicios/token.service';
   
     borrarSkill(id: number) {
       this.skillsService.borrarSkill(id).subscribe(skill =>{
-        this.obtenerSkill()
+        this.toastr.error('Se eliminó un skill', 'Borrado skill', {timeOut: 5000, positionClass: 'toast-top-center'});
+        this.obtenerSkill();
       }, error => {
         console.log(error);
       })
@@ -110,9 +114,10 @@ import { TokenService } from 'src/app/servicios/token.service';
   
     cancelar(){
       this.form.reset();
-          this.accion = 'Agregar';
-          this.id = undefined;
-          this.obtenerSkill();
+      this.toastr.error('Se canceló agregar/editar skill', this.accion + ' cancelado', {timeOut: 5000, positionClass: 'toast-top-center'});
+      this.accion = 'Agregar';
+      this.id = undefined;
+      this.obtenerSkill();
     }
 
     get SkillName(){

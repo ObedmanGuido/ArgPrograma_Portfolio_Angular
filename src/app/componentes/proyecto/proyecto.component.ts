@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Proyecto } from 'src/app/modelos/proyecto.model';
 import { ProyectoService } from 'src/app/servicios/proyecto.service';
 import { TokenService } from 'src/app/servicios/token.service';
@@ -19,7 +20,7 @@ export class ProyectoComponent implements OnInit {
   authority!:string;
   isAdmin = false;
 
-  constructor(private proyectoService:ProyectoService, private fb:FormBuilder, private tokenService: TokenService) {
+  constructor(private proyectoService:ProyectoService, private fb:FormBuilder, private tokenService: TokenService, private toastr: ToastrService) {
     this.form = this.fb.group({
       projectName: ['',[Validators.required]],
       creationDate: ['',[Validators.required]],
@@ -63,12 +64,14 @@ export class ProyectoComponent implements OnInit {
     if(this.id == undefined) {
       this.proyectoService.crearProyecto(proyecto).subscribe(proyecto => {
         this.obtenerProyecto();
+        this.toastr.success(proyecto.projectName, 'Creado proyecto', { timeOut: 5000, positionClass: 'toast-top-center' });
         this.form.reset();
       }, error => {
         console.log(error);
       })
     } else {
       proyecto.id = this.id;
+      this.toastr.success(proyecto.projectName, 'Editado proyecto', { timeOut: 5000, positionClass: 'toast-top-center' });
       this.proyectoService.actualizarProyecto(this.id, proyecto).subscribe(proyecto => {
         this.form.reset();
         this.accion = 'Agregar';
@@ -82,7 +85,8 @@ export class ProyectoComponent implements OnInit {
 
   borrarProyecto(id: number) {
     this.proyectoService.borrarProyecto(id).subscribe(proyecto =>{
-      this.obtenerProyecto()
+      this.toastr.error('Se eliminó un proyecto', 'Borrado proyecto', {timeOut: 5000, positionClass: 'toast-top-center'});
+      this.obtenerProyecto();
     }, error => {
       console.log(error);
     })
@@ -105,9 +109,10 @@ export class ProyectoComponent implements OnInit {
 
   cancelar(){
     this.form.reset();
-        this.accion = 'Agregar';
-        this.id = undefined;
-        this.obtenerProyecto();
+    this.toastr.error('Se canceló agregar/editar proyecto', this.accion + ' cancelado', {timeOut: 5000, positionClass: 'toast-top-center'});
+    this.accion = 'Agregar';
+    this.id = undefined;
+    this.obtenerProyecto();
   }
 
   get ProjectName(){

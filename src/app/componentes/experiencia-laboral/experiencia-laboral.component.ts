@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { ExperienciaLaboral } from 'src/app/modelos/experiencia-laboral.model';
 import { ExperienciaLaboralService } from 'src/app/servicios/experiencia-laboral.service';
 import { TokenService } from 'src/app/servicios/token.service';
@@ -31,7 +32,7 @@ export class ExperienciaLaboralComponent implements OnInit {
   authority!:string;
   isAdmin = false;
   
-  constructor(private experiencialaboralService:ExperienciaLaboralService, private fb:FormBuilder, private tokenService: TokenService) {
+  constructor(private experiencialaboralService:ExperienciaLaboralService, private fb:FormBuilder, private tokenService: TokenService, private toastr: ToastrService) {
     this.form = this.fb.group({
       company: ['',[Validators.required]],
       position:['',[Validators.required]],
@@ -70,12 +71,14 @@ export class ExperienciaLaboralComponent implements OnInit {
     if(this.id == undefined) {
       this.experiencialaboralService.crearExperienciaLaboral(experiencialaboral).subscribe(experiencialaboral => {
         this.obtenerExperienciaLaboral();
+        this.toastr.success(experiencialaboral.position + ' en ' + experiencialaboral.company, 'Creada experiencia laboral', { timeOut: 5000, positionClass: 'toast-top-center' });
         this.form.reset();
       }, error => {
         console.log(error);
       })
     } else {
       experiencialaboral.id = this.id;
+      this.toastr.success(experiencialaboral.position + ' en ' + experiencialaboral.company, 'Editada experiencia laboral', { timeOut: 5000, positionClass: 'toast-top-center' });
       this.experiencialaboralService.actualizarExperienciaLaboral(this.id, experiencialaboral).subscribe(experiencialaboral => {
         this.form.reset();
         this.accion = 'Agregar';
@@ -89,7 +92,8 @@ export class ExperienciaLaboralComponent implements OnInit {
 
   borrarExperienciaLaboral(id: number) {
     this.experiencialaboralService.borrarExperienciaLaboral(id).subscribe(experiencialaboral =>{
-      this.obtenerExperienciaLaboral()
+      this.toastr.error('Se eliminó una experiencia laboral', 'Borrada experiencia laboral', {timeOut: 5000, positionClass: 'toast-top-center'});
+      this.obtenerExperienciaLaboral();
     }, error => {
       console.log(error);
     })
@@ -111,9 +115,10 @@ export class ExperienciaLaboralComponent implements OnInit {
 
   cancelar(){
     this.form.reset();
-        this.accion = 'Agregar';
-        this.id = undefined;
-        this.obtenerExperienciaLaboral();
+    this.toastr.error('Se canceló agregar/editar experiencia laboral', this.accion + ' cancelado', {timeOut: 5000, positionClass: 'toast-top-center'});
+    this.accion = 'Agregar';
+    this.id = undefined;
+    this.obtenerExperienciaLaboral();
   }
 
   get Company(){

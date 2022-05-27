@@ -76,6 +76,7 @@ export class PersonaComponent implements OnInit {
       provincia: this.provinciaLista!.find(p=>p.id==this.form.get('provincia')?.value) //Mandar el objeto de provincia al backend
     }
     persona.id = this.id;
+    this.toastr.success(persona.name + ' ' + persona.surname, 'Editada persona', { timeOut: 5000, positionClass: 'toast-top-center' });
     this.portfolioService.actualizarPersona(persona).subscribe(data => {
       this.obtenerPersona();
     }, error => {
@@ -102,8 +103,9 @@ export class PersonaComponent implements OnInit {
 
   cancelar(){
     this.form.reset();
-        this.id = 1;
-        this.obtenerPersona();
+    this.toastr.error('Se canceló editar persona', 'Cancelado editar persona', {timeOut: 5000, positionClass: 'toast-top-center'});
+    this.id = 1;
+    this.obtenerPersona();
   }
 
   get Name(){

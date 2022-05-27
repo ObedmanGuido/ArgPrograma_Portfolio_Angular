@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { EducacionEstado } from 'src/app/modelos/educacion-estado.model';
 import { EducacionTipo } from 'src/app/modelos/educacion-tipo.model';
 import { Educacion } from 'src/app/modelos/educacion.model';
@@ -37,7 +38,7 @@ export class EducacionComponent implements OnInit {
   educacion_estado:EducacionEstado = { id: 0, educationStatus: '' };
   educacion_estadoLista?:EducacionEstado[];
 
-  constructor(private educacionService:EducacionService, private fb:FormBuilder, private tokenService: TokenService) {
+  constructor(private educacionService:EducacionService, private fb:FormBuilder, private tokenService: TokenService, private toastr: ToastrService) {
     this.form = this.fb.group({
       schoolName: ['',[Validators.required]],
       title:['',[Validators.required]],
@@ -98,12 +99,14 @@ export class EducacionComponent implements OnInit {
     if(this.id == undefined) {
       this.educacionService.crearEducacion(educacion).subscribe(educacion => {
         this.obtenerEducacion();
+        this.toastr.success(educacion.title + ' en ' + educacion.schoolName, 'Creada educación', { timeOut: 5000, positionClass: 'toast-top-center' });
         this.form.reset();
       }, error => {
         console.log(error);
       })
     } else {
       educacion.id = this.id;
+      this.toastr.success(educacion.title + ' en ' + educacion.schoolName, 'Editada educación', { timeOut: 5000, positionClass: 'toast-top-center' });
       this.educacionService.actualizarEducacion(this.id, educacion).subscribe(educacion => {
         this.form.reset();
         this.accion = 'Agregar';
@@ -117,7 +120,8 @@ export class EducacionComponent implements OnInit {
 
   borrarEducacion(id: number) {
     this.educacionService.borrarEducacion(id).subscribe(educacion =>{
-      this.obtenerEducacion()
+      this.toastr.error('Se eliminó una educación', 'Borrada educación', {timeOut: 5000, positionClass: 'toast-top-center'});
+      this.obtenerEducacion();
     }, error => {
       console.log(error);
     })
@@ -141,9 +145,10 @@ export class EducacionComponent implements OnInit {
 
   cancelar(){
     this.form.reset();
-        this.accion = 'Agregar';
-        this.id = undefined;
-        this.obtenerEducacion();
+    this.toastr.error('Se canceló agregar/editar educación', this.accion + ' cancelado', {timeOut: 5000, positionClass: 'toast-top-center'});
+    this.accion = 'Agregar';
+    this.id = undefined;
+    this.obtenerEducacion();
   }
 
   get SchoolName(){
