@@ -96,18 +96,20 @@
                       <p *ngIf="Educacion_tipo?.hasError('required')" class="text-danger" style="background-color: black;">
                         Ponga el tipo de educación.
                       </p>
-                      </div>
+                    </div>
                   </div>
                   <div class="col-lg-5">
                     <div class="input-group mb-3">
-                      <label class="input-group-text">Estado</label>
-                      <input formControlName="studiesStatus" type="text" class="form-control" placeholder="Estado de estudios"
-                        [ngClass]="{'is-invalid':StudiesStatus?.errors && StudiesStatus?.touched, 'is-valid':!StudiesStatus?.errors && StudiesStatus?.touched}">
-                      <div *ngIf="StudiesStatus?.errors && StudiesStatus?.touched">
-                          <p *ngIf="StudiesStatus?.hasError('required')" class="text-danger" style="background-color: black;">
-                            Ponga el estado.
-                          </p>
-                      </div>
+                      <label class="input-group-text">Estado de educación</label>
+                      <select formControlName="educacion_estado">
+                        <option *ngFor="let educacion_estado of educacion_estadoLista" [value]="educacion_estado.id" placeholder="Estado de educación"
+                          [ngClass]="{'is-invalid':Educacion_estado?.errors && Educacion_estado?.touched, 'is-valid':!Educacion_estado?.errors && Educacion_estado?.touched}">
+                          {{educacion_estado.educationStatus}}
+                        </option>
+                      </select>
+                      <p *ngIf="Educacion_estado?.hasError('required')" class="text-danger" style="background-color: black;">
+                        Ponga el estado de educación.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -157,7 +159,7 @@
                     <col>Desde {{educacion.startDate | date:"MMMM 'de' yyyy"}} hasta la actualidad
                   </h5>
                   <h5>
-                    <col>{{educacion.educacion_tipo?.educationType}} - {{educacion.studiesStatus}}
+                    <col>{{educacion.educacion_tipo?.educationType}} - {{educacion.educacion_estado?.educationStatus}}
                   </h5>
                   <col><p>{{educacion.educationDescription}}</p>
                 </tr>

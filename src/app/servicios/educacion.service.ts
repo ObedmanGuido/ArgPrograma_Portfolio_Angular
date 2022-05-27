@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, timeout } from 'rxjs';
+import { EducacionEstado } from '../modelos/educacion-estado.model';
 import { EducacionTipo } from '../modelos/educacion-tipo.model';
 
 @Injectable({
@@ -28,5 +29,9 @@ export class EducacionService {
 
   obtenerEducacionTipo():Observable<EducacionTipo[]>{
     return this.http.get<EducacionTipo[]>(this.URL+'educacion/tipo/lista').pipe(timeout(1800000))
+  }
+
+  obtenerEducacionEstado():Observable<EducacionEstado[]>{
+    return this.http.get<EducacionEstado[]>(this.URL+'educacion/estado/lista').pipe(timeout(1800000))
   }
 }
