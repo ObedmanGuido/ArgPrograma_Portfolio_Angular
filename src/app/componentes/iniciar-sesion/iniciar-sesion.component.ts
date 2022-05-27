@@ -41,8 +41,8 @@ export class IniciarSesionComponent implements OnInit {
         timeOut: 5000, positionClass: 'toast-top-center'
       });
     }, error => {
-      this.messageError = error.error.message;
       this.toastr.error('Nombre de usuario y/o contraseña incorrecto/s', 'Fail', {timeOut: 5000, positionClass: 'toast-top-center'});
+      this.messageError = error.error.message;
     });
   }
 
