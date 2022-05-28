@@ -122,7 +122,7 @@
                 </tr>
                 <h3>{{experiencialaboral.company}}</h3>
                 <tr>
-                  <h5 *ngIf="experiencialaboral.currentJob == false">
+                  <h5 *ngIf="experiencialaboral.currentJob == false || experiencialaboral.currentJob == null">
                     <col>Desde el {{experiencialaboral.startDate | date:"d 'de' MMMM 'de' YYYY"}} hasta el {{experiencialaboral.endDate | date:"d 'de' MMMM 'de' YYYY"}}
                   </h5>
                   <h5 *ngIf="experiencialaboral.currentJob == true">

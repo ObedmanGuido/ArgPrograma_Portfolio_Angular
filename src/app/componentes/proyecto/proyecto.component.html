@@ -115,24 +115,30 @@
                                 </tr>
                             </div>
                         </div>
-                        <div *ngIf="proyecto.image1 !== '' || proyecto.image2 !== '' || proyecto.image3 !== ''">
-                            <h5>Imágenes:</h5>
-                            <img id="image1" [src]="proyecto.image1">
-                            <img id="image2" [src]="proyecto.image2">
-                            <img id="image3" [src]="proyecto.image3">
-                        </div>
+                        <ng-container *ngIf="proyecto.image1 !== null || proyecto.image2 !== null || proyecto.image3 !== null">
+                            <div *ngIf="proyecto.image1 !== '' || proyecto.image2 !== '' || proyecto.image3 !== ''">
+                                <h5>Imágenes:</h5>
+                                <p *ngIf="proyecto.image1 !== ''">Imagen 1:</p>
+                                <img *ngIf="proyecto.image1 !== ''" class="proyecto-image-1 image-fluid" [src]="proyecto.image1">
+                                <p *ngIf="proyecto.image2 !== ''">Imagen 2:</p>
+                                <img *ngIf="proyecto.image2 !== ''" class="proyecto-image-2 image-fluid" [src]="proyecto.image2">
+                                <p *ngIf="proyecto.image3 !== ''">Imagen 3:</p>
+                                <img *ngIf="proyecto.image3 !== ''" class="proyecto-image-3 image-fluid" [src]="proyecto.image3">
+                            </div>
+                        </ng-container>
                         <br>
-                        <div *ngIf="proyecto.video !== ''">
-                            <h5>Video:</h5>
-                            <youtube-player 
-                                videoId={{proyecto.video}} 
-                                suggestedQuality="highres"
-                                [height]="250" 
-                                [width]="500" 
-                                [startSeconds]="0"
-                                [endSeconds]="0">
-                            </youtube-player>
-                        </div>
+                        <ng-container *ngIf="proyecto.video !== null">
+                            <div *ngIf="proyecto.video !== ''">
+                                <h5>Video:</h5>
+                                <youtube-player 
+                                    videoId={{proyecto.video}} 
+                                    suggestedQuality="highres"
+                                    [startSeconds]="0"
+                                    [endSeconds]="0"
+                                    style="height: screen; width: screen;">
+                                </youtube-player>
+                            </div>
+                        </ng-container>
                     </div>
                 </li>
             </ul>

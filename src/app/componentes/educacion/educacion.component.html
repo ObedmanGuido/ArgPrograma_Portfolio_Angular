@@ -152,7 +152,7 @@
                 </tr>
                 <h3>{{educacion.schoolName}}</h3>
                 <tr>
-                  <h5 *ngIf="educacion.currentEducation == false">
+                  <h5 *ngIf="educacion.currentEducation == false || educacion.currentEducation == null">
                     <col>Desde {{educacion.startDate | date:"MMMM 'de' yyyy"}} hasta {{educacion.endDate | date:"MMMM 'de' yyyy"}}
                   </h5>
                   <h5 *ngIf="educacion.currentEducation == true">
