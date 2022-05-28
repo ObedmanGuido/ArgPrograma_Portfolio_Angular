@@ -74,11 +74,11 @@
       </div>
     </div>
     <div>
-      <ng-container *ngFor="let skillTipo of skill_tipoLista">
-        <h3>{{skillTipo.typeName}}</h3>
+      <ng-container *ngFor="let skillTipo of obtenerMisTipos()">
+        <h3>{{skillTipo}}</h3>
         <ul class="items-list row equal-cols justify-content-start" style="padding: 0px;">
           <ng-container *ngFor="let skill of skillLista">
-            <li *ngIf="skill.skill_tipo?.typeName == skillTipo.typeName" class="col-4">
+            <li *ngIf="skill.skill_tipo?.typeName == skillTipo" class="col-4">
               <div class="data-container list-info">
                 <div class="table">
                   <tr>

@@ -54,6 +54,15 @@ import { TokenService } from 'src/app/servicios/token.service';
       });
     }
 
+    obtenerMisTipos():string[]{
+      let listaNueva: (string)[] = [];
+      if(!this.skillLista){
+        return listaNueva;
+      }
+      listaNueva = this.skillLista!.map(skill => {{return skill.skill_tipo!.typeName}});
+      return [... new Set(listaNueva)];
+    }
+
     obtenerSkillTipo(){
       this.skillsService.obtenerSkillTipo().subscribe(skill_tipo => {
         this.skill_tipoLista=skill_tipo;
