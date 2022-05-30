@@ -10,17 +10,6 @@ import { TokenService } from 'src/app/servicios/token.service';
   templateUrl: './experiencia-laboral.component.html',
   styleUrls: ['./experiencia-laboral.component.css']
 })
-/*export class ExperienciaLaboralComponent implements OnInit {
-  experiencialaboralList:any;
-  constructor(private datosPortfolio:PortfolioService) { }
-
-  ngOnInit(): void {
-    this.datosPortfolio.obtenerDatos().subscribe(data =>{
-      this.experiencialaboralList=data.workexperience;
-    })
-  }
-
-} Versión previa con JSON.*/
 
 export class ExperienciaLaboralComponent implements OnInit {
   experiencialaboralLista?:ExperienciaLaboral[];

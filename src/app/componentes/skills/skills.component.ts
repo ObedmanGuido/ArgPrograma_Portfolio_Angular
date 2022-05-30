@@ -11,15 +11,7 @@ import { TokenService } from 'src/app/servicios/token.service';
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.css']
 })
-/*export class SkillsComponent implements OnInit {
-  skillsList:any;
-  constructor(private datosPortfolio:PortfolioService) { }
 
-  ngOnInit(): void {
-    this.datosPortfolio.obtenerDatos().subscribe(data =>{
-      this.skillsList=data.skill;
-    })
-  } Versión previa usando un JSON.*/
   export class SkillsComponent implements OnInit {
     skillLista?:Skill[];
     skill:Skill = { id: 0, skillName: '', levelNumber: 0, skillDescription: '', skill_tipo: {id: 0, typeName: ''}, persona: 0 };

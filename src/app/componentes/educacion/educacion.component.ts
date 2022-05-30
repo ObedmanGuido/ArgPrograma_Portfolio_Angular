@@ -12,17 +12,6 @@ import { TokenService } from 'src/app/servicios/token.service';
   templateUrl: './educacion.component.html',
   styleUrls: ['./educacion.component.css']
 })
-/*export class EducacionComponent implements OnInit {
-  educacionList:any;
-  constructor(private datosPortfolio:PortfolioService) { }
-
-  ngOnInit(): void {
-    this.datosPortfolio.obtenerDatos().subscribe(data =>{
-      this.educacionList=data.education;
-    })
-  }
-
-} Versión previa con JSON.*/
 
 export class EducacionComponent implements OnInit {
   educacionLista?:Educacion[];

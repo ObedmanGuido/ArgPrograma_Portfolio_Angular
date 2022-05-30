@@ -4,19 +4,6 @@ import { Observable, timeout } from 'rxjs';
 import { Persona } from '../modelos/persona.model';
 import { Provincia } from '../modelos/provincia.model';
 
-/*@Injectable({
-  providedIn: 'root'
-})
-export class PortfolioService {
-
-  constructor(private http:HttpClient) { }
-
-  obtenerDatos():Observable<any>{
-    return this.http.get('./assets/data/data.json');
-  }
-} Version previa con JSON.*/
-
-
 @Injectable({
   providedIn: 'root'
 })
