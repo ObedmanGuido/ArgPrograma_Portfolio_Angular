@@ -84,10 +84,17 @@ ul {
 }
 .fixed-footer {
     position: fixed;
-    width: 100%;
     bottom: 0%;
-    max-height: 20px;
-    font-size: 100%;
+    font-size: 15px;
+    background-color: white;
+    z-index:999;
+    width: 100%;
+    left: 0;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
 }
 .mat-progress-bar-fill::after {
     background: red;
@@ -129,6 +136,7 @@ ul {
     .font-fluid :is(.data-container){font-size: 12px !important;}
     .font-fluid :is(.fas){font-size: 20px !important;}
     .font-fluid :is(strong){font-size: 12px !important;}
+    #footer-text{font-size: 12px !important;}
 }
 @media screen and (max-width: 600px){
     .font-fluid :is(h2){font-size: 20px !important;}
@@ -137,4 +145,5 @@ ul {
     .font-fluid :is(.data-container){font-size: 10px !important;}
     .font-fluid :is(.fas){font-size: 15px !important;}
     .font-fluid :is(strong){font-size: 10px !important;}
+    #footer-text{font-size: 10px !important;}
 }
